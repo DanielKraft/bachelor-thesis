@@ -1,11 +1,14 @@
 \chapter{Einleitung}
-
-
-\section{Problemstellung}
-
+Dieses Kapitel betrachtet die Motivation hinter dieser Arbeit und geht auf die daraus folgenden Problemstellungen ein. Außerdem wird das Ziel dieser Arbeit näher betrachtet und anschließend wird der Aufbau dieser Arbeit erläutert.
 
 \section{Motivation}
+Heutzutage wird häufig beim Entwickeln von neuer Software auf die Standards von Domain-Driven Design zurückgegriffen. Besonders häufig findet es seinen Einsatz in der Entwicklung von Microservices. Aber bereits existierenden Systeme erfüllen nicht immer alle Standards vom Domain-Driven Design. Dadurch leidet meistens die Codequalität, denn Domain-Driven Design hilft zum Beispiel dabei modularen Quellcode zu entwickeln, wodurch das System leichter verändert werden kann. Außerdem sorgen die Standards dafür, dass der Quellcode lesbarer wird und weniger Duplikate enthält. Aufgrund dieser Vorteile kann es nützlich sein die Architektur eines vorhandenen Systems auf Basis von Domain-Driven Design abzuändern.
 
+\section{Problemstellung}
+Bei dem Vorhaben ein vorhandenes System, auf Basis von Domain-Driven Design, abzuändern, treten folgende Problemstellungen auf. Zuerst stellt sich die Frage, wie man die Architektur eines Java-Systems analysieren kann. Hierfür kann das Analysewerkzeug jQAsssiatnt eingesetzt werden, um eine Strukturanalyse von Java-Artefakten durchzuführen. Bei der Verwendung von jQAssiatnt müssen allerdings die Grenzen dieses Werkzeug bei der Analyse herrausgearbeitet werden. Abgesehen von der Auswahl eines Analysewerkzeugs muss geklärt werden anhand von welchen Merkmalen Domain-Driven Design erkannt werden kann. Und abschließend müssen die Grenzen des erzeugten Verbesserungsvorschlags definiert werden.
 
 \section{Ziel der Arbeit}
+Mit der Arbeit soll ein Konzept entwickelt werden, mithilfe dessen überprüft werden kann, ob ein bestehendes Java-System die Prinzipien von Domain-Driven Design einhält. Das bestehende System soll anhand einer Kennzahl, zum Beispiel die prozentuale Einhaltung der Prinzipien, bewertet werden können. Außerdem soll ein Algorithmus entwickelt werden, welcher versucht die nicht eingehaltenen Prinzipien, nach Möglichkeit, zu verbessern. Dabei liegt der Schwerpunkt auf der Verbesserung der Architektur. Dieser Algorithmus gilt als erfolgreich, wenn die Bewertung des verbesserten Systems besser geworden ist oder sich nicht verschlechtert hat.
 
+\section{Gliederung}
+Die Arbeit ist wie folgt aufgebaut. Nach dieser Einleitung wird ausführlich auf die Grundlagen dieser Arbeit eingegangen. Dieser Teil unterteilt sich in eine Einführung in Domain-Driven Design und in das Analysewerkzeug jQAssiatant. Anschließend werden verwandte Arbeiten betrachtet. Darauf folgt der Hauptteil dieser Arbeit. Der Hauptteil wurde in zwei Kapitel unterteilt. Im ersten Kapitel wird die Analyse des Java-Systems betrachtet. Dabei wird besonders ein Schwerpunkt auf die Erkennung der Merkmale von Domain-Driven Design gelegt. Das zweite Kapitel des Hauptteils beschäftigt sich mit der Umsetzung des Umwandlungsalgorithmuses. Die Arbeit endet mit einer Diskussion der Ergebnisse sowie einer Zusammenfassung.

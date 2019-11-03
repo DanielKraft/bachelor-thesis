@@ -1,5 +1,5 @@
 \chapter{Grundlagen}
-
+In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssistant eingegangen. Dabei wird der Schwerpunkt auf die Definition von den Prinzipien des Domain-Driven Design gelegt. Anschließend wird die Funktionsweise und die Bedienung von jQAssistant erläutert.
 
 \section{Einführung in Domain-Driven Design}
 \cite{DDD:Evans:2003}
@@ -10,11 +10,37 @@
 \cite{DDD:Avram:2007}
 \cite{DDD:Rademacher:2018b}
 
+\subsection{Bausteine von Domain-Driven Design}
+
+\subsubsection{Entities}
+
+
+\subsubsection{Value Objects}
+
+
+\subsubsection{Aggregates}
+
+
+\subsubsection{Factories}
+
+
+\subsubsection{Repositories}
+
+
+\subsubsection{Services}
+
+
+\subsubsection{Domain Event}
+
+
+\subsubsection{Modules}
+
+
 
 \section{Einführung in jQAssistant}
-Zur Analyse des bestehenden Java-Systems wird das Analyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} Dafür bietet jQAssistant die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifische Regeln, zu analysieren \cite{jQA:Buschmais:2019}.
+Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Analyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} Dafür bietet jQAssistant die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifische Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Das bedeutet jQAssistant bietet die Möglichkeit Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhänigkeiten zwischen den Elementen erfasst.
 
-jQAssistant akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speicher diese in der Neo4j Graphdatenbank. Anschließende werden auf diese Daten verschiedenen Regeln zur Datenanreicherung ausgeführt.\cite{jQA:Muller:2018}
+Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speicher diese in der Neo4j Graphdatenbank. Anschließende werden auf diese Daten verschiedenen Regeln zur Datenanreicherung ausgeführt.\cite{jQA:Muller:2018} So können zum Beispiel Abhänigkeiten erkannt und modelliert werden. 
 
 \subsection{Persistierung der Analysedaten in einer Neo4j-Datenbank}
 Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
@@ -25,5 +51,13 @@ Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfü
     RETURN file as Klassen
 \end{lstlisting}
 
-Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name (FQN) \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
+Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
 
+Für die Verwendung von Cypher-Abfrage aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
+
+\subsection{Verwendung von jQAssistant}
+jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung. Die erste Variante ist die Verwendung eins Maven Plugins, dabei kann der Scan des Projekts direkt aus dem Projekt heraus ausgeführt werden. Dafür ist es allerdings notwendig, dass das Projekt mit Maven verwaltet wird.
+
+Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Es bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
+
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image zur Verfügung gestellt. Dieser Docker-Container beinhaltet Command Line Tool, allerdings muss dafür dieses nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.

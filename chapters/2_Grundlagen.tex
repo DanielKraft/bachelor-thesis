@@ -2,7 +2,7 @@
 In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssistant eingegangen. Dabei wird der Schwerpunkt auf die Definition der Domain-Driven Design Prinzipien gelegt. Anschließend wird die Funktionsweise und die Bedienung von jQAssistant erläutert.
 
 \section{Einführung in Domain-Driven Design}
-Das Domain-Driven Design besteht zu einem Großen teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster \cite{DDD:Holmstrom:2019}. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
+Das Domain-Driven Design besteht zu einem Großen teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster \cite{DDD:Holmstrom:2019}. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
 
 \begin{figure}[htbp] 
   \centering
@@ -17,14 +17,13 @@ In der Abbildung \ref{fig:DDD:pattern} \cite{DDD:Plod:2019} sind die Zusammenhä
 Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet \grqq{} \cite{DDD:Plod:2019}.
 
 \subsection{Bounded Context}
-Es wird empfohlen für jede Domain ein seperates Modell zu erstellen \cite{DDD:Avram:2007}. Der Bounded Context  definiert den Kontext dieses Modells, dadurch werden zum Beispiel der Umsetzungen wie Codebasen und dem Datenbankschemata Grenzen gesetzt \cite{DDD:Evans:2003}. 
-
+Es wird empfohlen für jede Domain ein seperates Modell zu erstellen \cite{DDD:Avram:2007}. Der Bounded Context definiert den Kontext dieses Modells, dadurch werden der Umsetzungen, von zum Beispiel Codebasen oder Datenbankschemata, Grenzen gesetzt \cite{DDD:Evans:2003}.
 
 \subsection{Ubiquitous Language}
-Die Ubiquitous Language definiert die genutzten Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:DDD:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist \grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.  
+Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:DDD:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist \grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
 
 \subsection{Model-Driven Design}
-In der Abbildung \ref{fig:DDD:pattern} sieht man, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Plod:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design eine direkten Einfluss auf den Quellcode hat. 
+In der Abbildung \ref{fig:DDD:pattern} sieht man, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Plod:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design einen direkten Einfluss auf den Quellcode hat.
 
 In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Design, welche in der Abbildung \ref{fig:DDD:pattern} zu sehen sind, eingegangen.
 
@@ -40,67 +39,42 @@ Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:DDD:layer} 
 
 Die Application Layer des Systems und koordiniert Aufgaben und delegiert die Arbeit an Domain-Objekte der nächsten Ebene \cite{DDD:Evans:2003}. Somit enthält die Application Layer keine Geschäftslogik, außerdem hält sie nicht den Status der Domain-Objekte \cite{DDD:Avram:2007}.
 
-Die Domain Layer beinhaltet die Geschäftskonzepte, Informationen über die Geschäftslage und Geschäftsregeln \cite{DDD:Evans:2003}. Zudem wird in dieser Schicht das Datenmodell des Systems definiert. Evans beschreibt diese Schacht als \glqq the heart of business software\grqq{}\cite{DDD:Evans:2003}.
+Die Domain Layer beinhaltet die Geschäftskonzepte, Informationen über die Geschäftslage und Geschäftsregeln \cite{DDD:Evans:2003}. Zudem wird in dieser Schicht das Datenmodell des Systems definiert. Evans beschreibt diese Schicht als \glqq the heart of business software\grqq{}\cite{DDD:Evans:2003}.
 
-Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unterstützung der anderen Schichten benötigt und kann unter anderm die Persistierung der Domain oder das Versenden von Nachrichten beinhalten \cite{DDD:Evans:2003}.
+Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unterstützung der anderen Schichten benötigt und kann unter andrem das Persistieren der Domain oder das Versenden von Nachrichten beinhalten \cite{DDD:Evans:2003}.
 
-Die Bausteinedes Model-Driven Design, in den nachfolgenden Abschnitten, sind jeweils einer der zuvor genannten Schicht zugeordnet.
+Die Bausteine des Model-Driven Design, in den nachfolgenden Abschnitten, sind jeweils einer der zuvor genannten Schicht zugeordnet.
 
 \subsubsection{Entities}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
-
+Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, bieten sich daher die Attribute nicht an. Deshalb wird eine Identität des Objektes benötigt, dazu bietet sich meistens eine automatisch generierte ID an. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen von solchen Objekten werden Entities genannt. Der Vorteil von einer Entity ist, dass die Identität eines Objektes nicht von der Referenz abhängig ist \cite{DDD:Evans:2003}.
 
 \subsubsection{Value Objects}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
+Nicht für alle Objekte kann es sinnvoll sein, wenn sie eine Identität haben. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte welche nur Eigenschaften beschreiben sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
+
+Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten sollen die Attribute unveränderlich sein \cite{DDD:Avram:2007}. Das bedeutet, dass bei Veränderungen des Objektes ein neues Value Object erzeugt werden muss mit dem neuen Wert \cite{DDD:Avram:2007}. Somit gibt eine seiteneffektfreie Methode eines Value Objects immer ein neues Objekt zurück.
 
 
 \subsubsection{Aggregates}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
+Bei einem Komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects heißen Aggregates.
 
+Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Factories}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
-
+Bei komplexen Aggregate Roots kann es schnell kompliziert werden in Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung Aggregate Roots oder großer Value Objects viel internen Struktur preisgeben, Factories sorgen dabei für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern Erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
 
 \subsubsection{Repositories}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
+Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern muss, wird im Domain-Driven Design auf Repositories zurückgegriffen. Sie simulieren eine Sammlung aller Objekte des Typs der Aggregate Root \cite{DDD:Evans:2014, DDD:Plod:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
 
+Ein Repository unterscheidet von einer Factory, beim Rekonstruieren eines Objekts, darin, dass keine neue Identität erzeugt werden muss \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
-
-
-\subsubsection{Domain Event}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
-
+Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Der Service bildet dadurch eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
-\cite{DDD:Evans:2003}
-\cite{DDD:Evans:2014, DDD:Plod:2019}
-\cite{DDD:Avram:2007}
-\cite{DDD:Rademacher:2018b}
+Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werdem meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den viel Schichten aus der Layered Architecture in Abbildung \ref{fig:DDD:layer}.
 
-
+\subsubsection{Domain Event}
+Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Sie modellieren wichtige Zustandsänderungen von Entities, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie der Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \section{Einführung in jQAssistant}
 Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Analyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} Dafür bietet jQAssistant die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifische Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Das bedeutet jQAssistant bietet die Möglichkeit Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhänigkeiten zwischen den Elementen erfasst.

@@ -7,7 +7,7 @@ Zurzeit  wird  gerne  das  Domain-Driven  Design  verwendet.  Aber  nicht  in  a
 Mit der Arbeit möchte ich ein Konzept entwickeln, mithilfe derer überprüft werden kann, ob ein bestehendes Java-System die Prinzipien von Domain-Driven Design einhält. Das bestehende System wird anhand einer Kennzahl, zum Beispiel die prozentuale Einhaltung der Prinzipien, bewertet. Außerdem soll ein Algorithmus entwickelt werden, welcher versucht die nicht eingehaltenen Prinzipien, wenn es möglich ist, zu verbessern. Dabei möchte ich besonders meinen Schwerpunkt auf die Verbesserung der Architektur legen. Der Algorithmus gilt als erfolgreich, wenn die Bewertung des verbesserten Systems besser geworden ist oder sich nicht verschlechtert hat.
 
 ## Ergebnis
-Der Quellcode ist in folgenden Repository verfügbar: [**illumi-code-ddd**](https://github.com/DanielKraft/illumi-code-ddd)
+Der Quellcode ist in folgenden Repository verfügbar: [illumi-code-ddd](https://github.com/DanielKraft/illumi-code-ddd)
 
 ## Autor
 [**Kraft, Daniel**](https://github.com/DanielKraft)

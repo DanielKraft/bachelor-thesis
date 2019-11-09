@@ -46,7 +46,7 @@ Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unters
 Die Bausteine des Model-Driven Design, in den nachfolgenden Abschnitten, sind jeweils einer der zuvor genannten Schicht zugeordnet.
 
 \subsubsection{Entities}
-Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, bieten sich daher die Attribute nicht an. Deshalb wird eine Identität des Objektes benötigt, dazu bietet sich meistens eine automatisch generierte ID an. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen von solchen Objekten werden Entities genannt. Der Vorteil von einer Entity ist, dass die Identität eines Objektes nicht von der Referenz abhängig ist \cite{DDD:Evans:2003}.
+Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, bieten sich daher die Attribute nicht an. Deshalb wird eine Identität des Objektes benötigt, dazu wird meistens eine automatisch generierte ID verwendet. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen von solchen Objekten werden Entities genannt. Der Vorteil von einer Entity ist, dass die Identität eines Objektes nicht von der Referenz abhängig ist \cite{DDD:Evans:2003}.
 
 \subsubsection{Value Objects}
 Nicht für alle Objekte kann es sinnvoll sein, wenn sie eine Identität haben. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte welche nur Eigenschaften beschreiben sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
@@ -55,7 +55,7 @@ Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten sollen 
 
 
 \subsubsection{Aggregates}
-Bei einem Komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects heißen Aggregates.
+Bei einem Komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects heißen Aggregates.
 
 Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
@@ -63,12 +63,12 @@ Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{
 Bei komplexen Aggregate Roots kann es schnell kompliziert werden in Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung Aggregate Roots oder großer Value Objects viel internen Struktur preisgeben, Factories sorgen dabei für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern Erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
 
 \subsubsection{Repositories}
-Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern muss, wird im Domain-Driven Design auf Repositories zurückgegriffen. Sie simulieren eine Sammlung aller Objekte des Typs der Aggregate Root \cite{DDD:Evans:2014, DDD:Plod:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
+Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern müssen, werden im Domain-Driven Design auf Repositories verwendet. Sie simulieren eine Sammlung aller Objekte einer Aggregate Root \cite{DDD:Evans:2014, DDD:Plod:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
 
-Ein Repository unterscheidet von einer Factory, beim Rekonstruieren eines Objekts, darin, dass keine neue Identität erzeugt werden muss \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandenen Objekte mit Identitäten rekonstruiert wird \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
-Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Der Service bildet dadurch eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
+Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
 Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werdem meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den viel Schichten aus der Layered Architecture in Abbildung \ref{fig:DDD:layer}.
@@ -86,11 +86,11 @@ Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfü
 
 \begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},label=lst:cypher]
     MATCH (package:Package)-[:CONTAINS]->(file:File) 
-    WHERE package.fqn = "org.junit" AND file:Class
+    WHERE package.fqn = 'org.junit' AND file:Class
     RETURN file as Klassen
 \end{lstlisting}
 
-Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
+Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
 
 Für die Verwendung von Cypher-Abfrage aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
 

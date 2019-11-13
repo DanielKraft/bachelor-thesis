@@ -85,9 +85,9 @@ Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plug
 Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
 \begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},label=lst:cypher]
-    MATCH (package:Package)-[:CONTAINS]->(file:File) 
-    WHERE package.fqn = 'org.junit' AND file:Class
-    RETURN file as Klassen
+MATCH (package:Package)-[:CONTAINS]->(file:File) 
+WHERE package.fqn = 'org.junit' AND file:Class
+RETURN file as Klassen
 \end{lstlisting}
 
 Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.

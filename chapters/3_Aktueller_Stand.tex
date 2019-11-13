@@ -1,5 +1,25 @@
 \chapter{Verwandte Arbeiten}
-\cite{DDD:Mahler:2019}
-\cite{DDD:Quillevere:2015}
-\cite{DDD:Artemiuk:2017}
+In diesem Kapitel werden verwandte Arbeiten sowie der aktuelle Stand der Technik betrachtet. Hierzu wird das Kapitel in die zwei Abschnitte Analyse und Refactoring unterteilt. Um die beiden Themen getrennt voneinander betrachten zu können.
 
+\section{Analyse von Softwarearchitekturen auf Basis von Domain-Driven Design}
+Für das Analysewerkzeug jQAssistant wurde bereits ein offizielles Maven-Plugin, zum Zuordnen von Domain-Driven Design Bausteinen, entwickelt \cite{Related:Pirnbaum:2019}. Es bietet die Möglichkeit Domain-Driven Design Bausteine anhand von Annotationen im Quellcode zu erkennen.
+
+\begin{lstlisting}[caption={Klasse Produkt mit einer Aggregate Root Annotation},label=lst:jQA-DDD:artifact]
+@AggregateRoot
+public class Product { }
+\end{lstlisting}
+
+Zum Beispiel kann durch diese Erweiterung die Klasse aus Listing \ref{lst:jQA-DDD:artifact} \cite{Related:Mahler:2019} als Aggregate Root erkannt werden. jQAssistant fügt dem Knoten, in der Neo4j-Datenbank, das Label \texttt{:DDD:Aggregate} hinzugefügt\cite{Related:Mahler:2019}. Dadurch wird eine Analyse der Klasse zu einem Späteren Zeitpunkt nicht mehr benötigt. 
+
+\begin{lstlisting}[caption={Zuordnung eines Packages zu der Domain Layer mit einer Annotation},label=lst:jQA-DDD:layer]
+@DomainLayer
+package com.buschmais.shop.catalog.domain
+\end{lstlisting}
+
+Nicht nur Klassen und Interfaces können mit Domain-Driven Design Annotationen versehen werden. In Listing \ref{lst:jQA-DDD:layer} \cite{Related:Mahler:2019} sieht man ein Beispiel wie man ein Package einer Domain Layer zuordnen kann. Hierbei werden alle Klassen inerhalb diese Package der selben Domain zugeordent. 
+
+Zudem bietet diese Erweiterung für jQAssistant die Möglichkeit das System auf Verletzungen des Domain-Driven Design zu untersuchen \cite{Related:Pirnbaum:2019}. Dafür gibt es bereits vordefinierte Regeln. Die Sammlung von verwendeten Regeln kann auch von Nutzer manuell erweitert werden.
+
+Für diese Arbeit kann diese Erweiterung allerdings nicht verwendet werden, da es Annotationen benötigt. Da in dem Anwendungszenario dieser Arbeit solche Annotationen nicht vorausgesetzt werden.
+
+\section{Refactoring von Software Architektur}

@@ -6,14 +6,14 @@ In diesem Kapitel werden verwandte Arbeiten sowie der aktuelle Stand der Technik
 \subsection{jQAssistant Erweiterung zum Zuordnen Domain-Driven Design Bausteinen}
 Für das Analysewerkzeug jQAssistant wurde bereits ein offizielles Maven-Plugin, zum Zuordnen von Domain-Driven Design Bausteinen, entwickelt \cite{Related:Pirnbaum:2019}. Es bietet die Möglichkeit Domain-Driven Design Bausteine anhand von Annotationen im Quellcode zu erkennen.
 
-\begin{lstlisting}[caption={Klasse Produkt mit einer Aggregate Root Annotation},label=lst:jQA-DDD:artifact]
+\begin{lstlisting}[caption={Klasse Produkt mit einer Aggregate Root Annotation},captionpos=b,label=lst:jQA-DDD:artifact]
 @AggregateRoot
 public class Product { }
 \end{lstlisting}
 
 Zum Beispiel kann durch diese Erweiterung die Klasse aus Listing \ref{lst:jQA-DDD:artifact} \cite{Related:Mahler:2019} als Aggregate Root erkannt werden. jQAssistant fügt dem Knoten, in der Neo4j-Datenbank, das Label \texttt{:DDD:Aggregate} hinzugefügt\cite{Related:Mahler:2019}. Dadurch wird eine Analyse der Klasse zu einem Späteren Zeitpunkt nicht mehr benötigt. 
 
-\begin{lstlisting}[caption={Zuordnung eines Packages zu der Domain Layer mit einer Annotation},label=lst:jQA-DDD:layer]
+\begin{lstlisting}[caption={Zuordnung eines Packages zu der Domain Layer mit einer Annotation},captionpos=b,label=lst:jQA-DDD:layer]
 @DomainLayer
 package com.buschmais.shop.catalog.domain
 \end{lstlisting}

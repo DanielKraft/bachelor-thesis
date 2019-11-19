@@ -7,8 +7,8 @@ Das Domain-Driven Design besteht zu einem Großen teil aus dem Strategic Domain-
 \begin{figure}[htbp] 
   \centering
      \includegraphics[width=1.0\textwidth]{gfx/DDD_Simple_Overview.png}
-  \caption{Vereinfachter Überblick über die Muster-Sprache von Domain-Driven Design}
   \label{fig:DDD:pattern}
+  \caption{Vereinfachter Überblick über die Muster-Sprache von Domain-Driven Design}
 \end{figure}
 
 In der Abbildung \ref{fig:DDD:pattern} \cite{DDD:Plod:2019} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt.
@@ -31,8 +31,8 @@ In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Desi
 \begin{figure}
     \centering
     \includegraphics[width=0.5\textwidth]{gfx/DDD_Layer.pdf}
-    \caption{Darstellung der Layered Architecture des Model-Driven Design}
     \label{fig:DDD:layer}
+    \caption{Darstellung der Layered Architecture des Model-Driven Design}
 \end{figure}
 
 Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:DDD:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
@@ -84,7 +84,7 @@ Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plug
 \subsection{Persistierung der Analysedaten in einer Neo4j-Datenbank}
 Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
-\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},label=lst:cypher]
+\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:cypher]
 MATCH (package:Package)-[:CONTAINS]->(file:File) 
 WHERE package.fqn = 'org.junit' AND file:Class
 RETURN file as Klassen

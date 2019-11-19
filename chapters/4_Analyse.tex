@@ -14,6 +14,160 @@
 
 \section{Entwicklung einer Metrik zur Bewertung}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l||c|c|c|c|c|}   \hline
+        \textbf{Einstufungen}   & INFO  & MINOR & MAJOR & CRITICAL  & BLOCKER   \\ \hline
+        \textbf{Gewichtung}     & 0     & 1     & 3     & 5         & 10        \\ \hline
+    \end{tabular}
+    \label{tab:criteria}
+    \caption{Einstufungen der Relevanz eines Kriteriums}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Submodul von \glqq domain\grqq{}                            & MINOR             \\ \hline
+        Beinhaltet nur Domain-Artifakte                             & MAJOR             \\ \hline
+        Beinhaltet Aggregate Root                                   & CRITICAL          \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Module:Domain}
+    \caption{Kriterien zur Bewertung von Domain-Modulen}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Submodul von \glqq infrastructure\grqq{}                    & MINOR             \\ \hline
+        Beinhaltet nur Infrastructure-Artifakte                     & MAJOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Module:Infrastructure}
+    \caption{Kriterien zur Bewertung von Infrastructure-Modulen}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Submodul von \glqq application\grqq{}                       & MINOR             \\ \hline
+        Beinhaltet nur Application-Artifakte                        & MAJOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Module:Application}
+    \caption{Kriterien zur Bewertung von Application-Modulen}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Modul: \glqq domain.<domain>.model\grqq{}                   & MINOR             \\ \hline
+        Attribut-Typen: Entities oder Value Objects                 & MAJOR             \\ \hline
+        Ein Attribut für die eigene Identität                       & CRITICAL          \\ \hline
+        Methoden equals und hashCode                                & MINOR             \\ \hline
+        Getter für jedes Attribut                                   & MINOR             \\ \hline
+        Setter für jedes Attribut                                   & MINOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Entity}
+    \caption{Kriterien zur Bewertung von Entities}
+\end{table}
+
+ 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Modul: \glqq domain.<domain>.model\grqq{}                   & MINOR             \\ \hline
+        Attribut-Typen: Value Objects oder Standard Datentypen      & MAJOR             \\ \hline
+        Kein Attribut für eigenen Identität                         & BLOCKER           \\ \hline
+        Methoden equals und hashCode                                & MINOR             \\ \hline
+        Getter für jedes Attribut                                   & MINOR             \\ \hline
+        Getter heißen so wie das zugehörige Attribut                & INFO              \\ \hline
+        Setter für jedes Attribut                                   & MINOR             \\ \hline
+        Setter ist frei von Seiteneffekten.                         & CRITICAL          \\ \hline
+    \end{tabular}
+    \label{tab:criteria:ValueObject}
+    \caption{Kriterien zur Bewertung von Value Objects}
+\end{table}
+ 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Modul: \glqq domain.<domain>.model\grqq{}                   & MINOR             \\ \hline
+        Attribut-Typen: andere Entities oder Value Objects          & MAJOR             \\ \hline
+        Ein Attribut für die eigene Identität                       & CRITICAL          \\ \hline
+        Methoden equals und hashCode                                & MINOR             \\ \hline
+        Getter für jedes Attribut                                   & MINOR             \\ \hline
+        Setter für jedes Attribut                                   & MINOR             \\ \hline
+        Repository für die Aggregate Root existiert                 & MAJOR             \\ \hline
+        Factory für die Aggregate Root existiert                    & MAJOR             \\ \hline
+        Service für die Aggregate Root existiert                    & MAJOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:AggregateRoot}
+    \caption{Kriterien zur Bewertung von Aggregate Roots}
+\end{table}
+ 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Modul: \glqq domain.<domain>.model\grqq{}                   & MINOR             \\ \hline
+        Attribut für Zeitstempel                                    & MAJOR             \\ \hline
+        Attribut für die ID einer Entity                            & MAJOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:DomainEvent}
+    \caption{Kriterien zur Bewertung von Domain Events}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Interface-Namenssuffix: \glqq Repository\grqq{}             & INFO              \\ \hline 
+        Klassen-Namenssuffix: \glqq RepositoryImpl\grqq{}           & INFO              \\ \hline
+        Interface-Modul: \glqq domain.<domain>.model\grqq{}         & MINOR             \\ \hline
+        Klassen-Modul: \glqq domain.<domain>.model.impl\grqq{}      & MINOR             \\ \hline
+        Repository-Klasse implementiert Repository-Interface        & MINOR             \\ \hline
+        Methode zum Erzeugen einer neuen Identität (nextIdentity)   & MAJOR             \\ \hline
+        Methode zum Finden (findBy/get)                             & MAJOR             \\ \hline
+        Methode zum Speichern (save/add/insert/put)                 & MAJOR             \\ \hline
+        Methode zum Löschen (delete/remove)                         & MAJOR             \\ \hline
+        Methode zum Überprüfen der Existenz (contains/exists)       & MINOR             \\ \hline
+        Methode zum Aktualisieren (update)                          & MINOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Repository}
+    \caption{Kriterien zur Bewertung von Repositories}
+\end{table}
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Interface-Namenssuffix: \glqq Factory\grqq{}                & INFO              \\ \hline 
+        Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}              & INFO              \\ \hline
+        Interface-Modul: \glqq domain.<domain>.model\grqq{}         & MINOR             \\ \hline
+        Klassen-Modul: \glqq domain.<domain>.model.impl\grqq{}      & MINOR             \\ \hline
+        Factory-Klasse implementiert Factory-Interface              & MINOR             \\ \hline
+        Methode zum Erzeugen (create)                               & MAJOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Factory}
+    \caption{Kriterien zur Bewertung von Factories}
+\end{table}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
+        Service-Modul: \glqq application.<domain>\grqq{}	        & MINOR             \\ \hline
+        Application Service-Name beinhaltet \glqq Application\grqq{}& INFO              \\ \hline
+        Application Service-Modul: \glqq application\grqq{}	        & MINOR             \\ \hline
+    \end{tabular}
+    \label{tab:criteria:Service}
+    \caption{Kriterien zur Bewertung von Services}
+\end{table}
 
 \section{Implementierung der Architekturanalyse}
 \cite{DDD:Vernon:2013}

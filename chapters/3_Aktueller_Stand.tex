@@ -1,35 +1,41 @@
 \chapter{Verwandte Arbeiten}
+\label{ch:related}
 In diesem Kapitel werden verwandte Arbeiten sowie der aktuelle Stand der Technik betrachtet. Hierzu wird das Kapitel in die zwei Abschnitte Analyse und Refactoring unterteilt. Um die beiden Themen getrennt voneinander betrachten zu können.
 
 \section{Analyse von Softwarearchitekturen auf Basis von Domain-Driven Design}
+\label{sec:related:analyse}
 
 \subsection{jQAssistant Erweiterung zum Zuordnen Domain-Driven Design Bausteinen}
+\label{sec:related:analyse:jqa}
 Für das Analysewerkzeug jQAssistant wurde bereits ein offizielles Maven-Plugin, zum Zuordnen von Domain-Driven Design Bausteinen, entwickelt \cite{Related:Pirnbaum:2019}. Es bietet die Möglichkeit Domain-Driven Design Bausteine anhand von Annotationen im Quellcode zu erkennen.
 
-\begin{lstlisting}[caption={Klasse Produkt mit einer Aggregate Root Annotation},captionpos=b,label=lst:jQA-DDD:artifact]
+\begin{lstlisting}[caption={Klasse Produkt mit einer Aggregate Root Annotation},captionpos=b,label=lst:related:analyse:jqa:aggregate]
 @AggregateRoot
 public class Product { }
 \end{lstlisting}
 
-Zum Beispiel kann durch diese Erweiterung die Klasse aus Listing \ref{lst:jQA-DDD:artifact} \cite{Related:Mahler:2019} als Aggregate Root erkannt werden. jQAssistant fügt dem Knoten, in der Neo4j-Datenbank, das Label \texttt{:DDD:Aggregate} hinzugefügt\cite{Related:Mahler:2019}. Dadurch wird eine Analyse der Klasse zu einem Späteren Zeitpunkt nicht mehr benötigt. 
+Zum Beispiel kann durch diese Erweiterung die Klasse aus Listing \ref{lst:related:analyse:jqa:aggregate} \cite{Related:Mahler:2019} als Aggregate Root erkannt werden. jQAssistant fügt dem Knoten, in der Neo4j-Datenbank, das Label \texttt{:DDD:Aggregate} hinzugefügt\cite{Related:Mahler:2019}. Dadurch wird eine Analyse der Klasse zu einem Späteren Zeitpunkt nicht mehr benötigt. 
 
-\begin{lstlisting}[caption={Zuordnung eines Packages zu der Domain Layer mit einer Annotation},captionpos=b,label=lst:jQA-DDD:layer]
+\begin{lstlisting}[caption={Zuordnung eines Packages zu der Domain Layer mit einer Annotation},captionpos=b,label=lst:related:analyse:jqa:layer]
 @DomainLayer
 package com.buschmais.shop.catalog.domain
 \end{lstlisting}
 
-Nicht nur Klassen und Interfaces können mit Domain-Driven Design Annotationen versehen werden. In Listing \ref{lst:jQA-DDD:layer} \cite{Related:Mahler:2019} sieht man ein Beispiel wie man ein Package einer Domain Layer zuordnen kann. Hierbei werden alle Klassen innerhalb diese Package der selben Domain zugeordnet. 
+Nicht nur Klassen und Interfaces können mit Domain-Driven Design Annotationen versehen werden. In Listing \ref{lst:related:analyse:jqa:layer} \cite{Related:Mahler:2019} sieht man ein Beispiel wie man ein Package einer Domain Layer zuordnen kann. Hierbei werden alle Klassen innerhalb diese Package der selben Domain zugeordnet. 
 
 Zudem bietet diese Erweiterung für jQAssistant die Möglichkeit das System auf Verletzungen des Domain-Driven Design zu untersuchen \cite{Related:Pirnbaum:2019}. Dafür gibt es bereits vordefinierte Regeln. Die Sammlung von verwendeten Regeln kann auch von Nutzer manuell erweitert werden.
 
 Für diese Arbeit kann diese Erweiterung allerdings nicht verwendet werden, da es Annotationen benötigt. Da in dem Anwendungszenario dieser Arbeit solche Annotationen nicht vorausgesetzt werden.
 
 \section{Refactoring von Software Architektur}
+\label{sec:related:refactoring}
 
 \subsection{Manuelles Refactoring auf Basis von Domain-Driven Design}
+\label{sec:related:refactoring:ddd}
 In dem Blogeintrag \glqq Refactoring from anemic model to DDD\grqq{} \cite{Related:Artemiuk:2017} aus dem Jahr 2017 wird anhand eines Beispiels beschrieben, wie man eine gegebene Softwarearchitektur in Domain-Driven Design umwandelt. Dieses Refactoring wird an Entity- und Repository-Klassen sowie Packages verdeutlicht. 
 
 \subsection{Manuelles Refactoring anhand von \glqq Bad Smells\grqq{} und Metriken}
+\label{sec:related:refactoring:metrik}
 2007 beschrieben Bourquin und Keller in \glqq High-impact Refactoring Based on Architecture Violations\grqq{} \cite{Related:Bourquin:2007}, welche Werkzeuge sie für das Refactoring einer Java EE Anwendung verwendet haben. Hauptsächlich lag ihr Augenmerk darin \glqq Bad Smells\grqq{} aufzuspüren. Diese \glqq Bad Smells\grqq{} zeigen dabei auf Abschnitte in der Anwendung welche überarbeitet werden sollten \cite{Related:Bourquin:2007}. Neben diesen \glqq Bad Smells\grqq{} wurden auch Metriken eingesetzt um Schwachstellen in der Architektur aufzuspüren.
 
 Dieser Ansatz von Bourquin und Keller ähnelt dem Ansatz dieser Arbeit. Denn auch bei der Umsetzung dieser Arbeit werden Schwachstellen identifiziert und die Architektur anhand von Metriken evaluiert. Allerdings wird dieser Vorgang nicht manuell sondern automatisch durch einen Algorithmus ausgeführt.

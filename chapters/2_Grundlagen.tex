@@ -1,41 +1,48 @@
 \chapter{Grundlagen}
+\label{ch:basics}
 In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssistant eingegangen. Dabei wird der Schwerpunkt auf die Definition der Domain-Driven Design Prinzipien gelegt. Anschließend wird die Funktionsweise und die Bedienung von jQAssistant erläutert.
 
 \section{Einführung in Domain-Driven Design}
+\label{sec:basics:ddd}
 Das Domain-Driven Design besteht zu einem Großen teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster \cite{DDD:Holmstrom:2019}. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
 
 \begin{figure}[htbp] 
   \centering
-     \includegraphics[width=1.0\textwidth]{gfx/DDD_Simple_Overview.png}
+     \includegraphics[width=1.0\textwidth]{gfx/Simple_Overview.png}
   \caption{Vereinfachter Überblick über die Muster-Sprache von Domain-Driven Design}
-  \label{fig:DDD:pattern}
+  \label{fig:basics:ddd:pattern}
 \end{figure}
 
-In der Abbildung \ref{fig:DDD:pattern} \cite{DDD:Plod:2019} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt.
+In der Abbildung \ref{fig:basics:ddd:pattern} \cite{DDD:Plod:2019} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt.
 
 \subsection{Domain}
+\label{sec:basics:ddd:domain}
 Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet \grqq{} \cite{DDD:Plod:2019}.
 
 \subsection{Bounded Context}
+\label{sec:basics:ddd:context}
 Es wird empfohlen für jede Domain ein seperates Modell zu erstellen \cite{DDD:Avram:2007}. Der Bounded Context definiert den Kontext dieses Modells, dadurch werden der Umsetzungen, von zum Beispiel Codebasen oder Datenbankschemata, Grenzen gesetzt \cite{DDD:Evans:2003}.
 
 \subsection{Ubiquitous Language}
-Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:DDD:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist \grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
+\label{sec:basics:ddd:language}
+Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist \grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
 
 \subsection{Model-Driven Design}
-In der Abbildung \ref{fig:DDD:pattern} sieht man, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Plod:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design einen direkten Einfluss auf den Quellcode hat.
+\label{sec:basics:ddd:mdd}
+In der Abbildung \ref{fig:basics:ddd:pattern} sieht man, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Plod:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design einen direkten Einfluss auf den Quellcode hat.
 
-In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Design, welche in der Abbildung \ref{fig:DDD:pattern} zu sehen sind, eingegangen.
+In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Design, welche in der Abbildung \ref{fig:basics:ddd:pattern} zu sehen sind, eingegangen.
 
 \subsubsection{Layered Architecture}
+\label{sec:basics:ddd:mdd:layer}
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{gfx/DDD_Layer.pdf}
+    \includegraphics[width=0.5\textwidth]{gfx/Layer.pdf}
     \caption{Darstellung der Layered Architecture des Model-Driven Design}
-    \label{fig:DDD:layer}
+    \label{fig:basics:ddd:mdd:layer}
 \end{figure}
 
-Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:DDD:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
+Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:basics:ddd:mdd:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
 
 Die Application Layer des Systems und koordiniert Aufgaben und delegiert die Arbeit an Domain-Objekte der nächsten Ebene \cite{DDD:Evans:2003}. Somit enthält die Application Layer keine Geschäftslogik, außerdem hält sie nicht den Status der Domain-Objekte \cite{DDD:Avram:2007}.
 
@@ -46,55 +53,66 @@ Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unters
 Die Bausteine des Model-Driven Design, in den nachfolgenden Abschnitten, sind jeweils einer der zuvor genannten Schicht zugeordnet.
 
 \subsubsection{Entities}
+\label{sec:basics:ddd:mdd:entity}
 Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, bieten sich daher die Attribute nicht an. Deshalb wird eine Identität des Objektes benötigt, dazu wird meistens eine automatisch generierte ID verwendet. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen von solchen Objekten werden Entities genannt. Der Vorteil von einer Entity ist, dass die Identität eines Objektes nicht von der Referenz abhängig ist \cite{DDD:Evans:2003}.
 
 \subsubsection{Value Objects}
+\label{sec:basics:ddd:mdd:value_object}
 Nicht für alle Objekte kann es sinnvoll sein, wenn sie eine Identität haben. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte welche nur Eigenschaften beschreiben sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
 
 Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten sollen die Attribute unveränderlich sein \cite{DDD:Avram:2007}. Das bedeutet, dass bei Veränderungen des Objektes ein neues Value Object erzeugt werden muss mit dem neuen Wert \cite{DDD:Avram:2007}. Somit gibt eine seiteneffektfreie Methode eines Value Objects immer ein neues Objekt zurück.
 
 
 \subsubsection{Aggregates}
+\label{sec:basics:ddd:mdd:aggregate}
 Bei einem Komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects heißen Aggregates.
 
 Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Factories}
+\label{sec:basics:ddd:mdd:factory}
 Bei komplexen Aggregate Roots kann es schnell kompliziert werden in Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung Aggregate Roots oder großer Value Objects viel internen Struktur preisgeben, Factories sorgen dabei für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern Erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
 
 \subsubsection{Repositories}
+\label{sec:basics:ddd:mdd:repository}
 Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern müssen, werden im Domain-Driven Design auf Repositories verwendet. Sie simulieren eine Sammlung aller Objekte einer Aggregate Root \cite{DDD:Evans:2014, DDD:Plod:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
 
 Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandenen Objekte mit Identitäten rekonstruiert wird \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
+\label{sec:basics:ddd:mdd:service}
 Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
-Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werdem meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den viel Schichten aus der Layered Architecture in Abbildung \ref{fig:DDD:layer}.
+\label{sec:basics:ddd:mdd:module}
+Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werdem meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den viel Schichten aus der Layered Architecture in Abbildung \ref{fig:basics:ddd:mdd:layer}.
 
 \subsubsection{Domain Event}
+\label{sec:basics:ddd:mdd:event}
 Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Sie modellieren wichtige Zustandsänderungen von Entities, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie der Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \section{Einführung in jQAssistant}
+\label{sec:basics:jqa}
 Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Analyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} Dafür bietet jQAssistant die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifische Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Das bedeutet jQAssistant bietet die Möglichkeit Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhänigkeiten zwischen den Elementen erfasst.
 
 Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speicher diese in der Neo4j Graphdatenbank. Anschließende werden auf diese Daten verschiedenen Regeln zur Datenanreicherung ausgeführt.\cite{jQA:Muller:2018} So können zum Beispiel Abhänigkeiten erkannt und modelliert werden. 
 
 \subsection{Persistierung der Analysedaten in einer Neo4j-Datenbank}
+\label{sec:basics:jqa:neo4j}
 Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
-\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:cypher]
+\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher]
 MATCH (package:Package)-[:CONTAINS]->(file:File) 
 WHERE package.fqn = 'org.junit' AND file:Class
 RETURN file as Klassen
 \end{lstlisting}
 
-Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
+Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:basics:jqa:neo4j:cypher} ist eine solche Abfrage zu sehen. Wie man an dieser Anfrage sieht, besteht eine Cypher-Abfrage auf drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
 
 Für die Verwendung von Cypher-Abfrage aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
 
 \subsection{Verwendung von jQAssistant}
+\label{sec:basics:jqa:usage}
 jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung. Die erste Variante ist die Verwendung eins Maven Plugins, dabei kann der Scan des Projekts direkt aus dem Projekt heraus ausgeführt werden. Dafür ist es allerdings notwendig, dass das Projekt mit Maven verwaltet wird.
 
 Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Es bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.

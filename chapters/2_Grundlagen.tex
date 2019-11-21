@@ -71,7 +71,8 @@ Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{
 
 \subsubsection{Factories}
 \label{sec:basics:ddd:mdd:factory}
-Bei komplexen Aggregate Roots kann es schnell kompliziert werden ein Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung von Aggregate Roots oder großer Value Objects viel der internen Struktur preisgeben. Dabei sorgen Factories für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
+Bei komplexen Aggregate Roots kann es schnell kompliziert werden ein Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung von Aggregate Roots oder großer Value Objects viel der internen Struktur preisgeben. Dabei sorgen Factories für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. 
+Durch das Auslagern der Parameter-Validierung in die Factory kann zudem die Komplexität des Konstruktors reduziert werden \cite{DDD:Hippchen:2017}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
 
 \subsubsection{Repositories}
 \label{sec:basics:ddd:mdd:repository}

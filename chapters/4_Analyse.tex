@@ -4,18 +4,11 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 
 \section{Erkennung der Domain-Driven Design Artefakte}
 \label{sec:analyse:characteristics}
-
-\cite{DDD:Vernon:2013}
-\cite{DDD:Vernon:2017}
-
-\cite{DDD:Holmstrom:2019}
-\cite{DDD:Le:2016}
-\cite{DDD:Rademacher:2018a}
-\cite{DDD:Hippchen:2017}
-\cite{DDD:Nair:2019}
+Sobald ein Java-System mit jQAssistant analysiert wurde, müssen die einzelnen Java-Artefakte analysiert werden. Dabei müssen die Artefakte den richtigen Domain-Driven Design Bausteinen zugeordnet werden. In diesem Abschnitt wird erläutert anhand von welchen Merkmalen die Domain-Driven Design Bausteine erkannt werden können.
 
 \subsection{Entities}
 \label{sec:analyse:characteristics:entity}
+Bei dem Auffinden von Entities muss darauf wert gelegt werden ob es sich, bei dem Artefakt, um ein Bestandteil des Datenmodells handelt. 
 
 \begin{figure}[htbp] 
     \centering
@@ -24,18 +17,30 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
     \label{fig:analyse:characteristics:entity}
 \end{figure}
 
+In der Abbildung \ref{fig:analyse:characteristics:entity} ist ein möglicher Kandidat für eine Entity zusehen. Anhand dieses Beispiels werden die Merkmale von Entities veranschaulicht.
+
+Wie bereits in dem Abschnitt \ref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte welche eine eigene Identität besitzen. Daher kann das in Abbildung \ref{fig:analyse:characteristics:entity} gezeigte Beispiel ohne weitere Einwende als Entity klassifiziert werden.
+
+Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden ob es sich um eine Entity handelt. Ein weiteres Merkmal ist das Vorhandensein von Gettern und Settern, also Methoden zum Auslesen und Setzten von Attributen. Eine Entity besitzt für meisten Attribut eine solche Methode. Auch dieses Merkmal ist bei dem Beispiel in der Abbildung \ref{fig:analyse:characteristics:entity} erfüllt.
+
 \subsection{Value Objects}
 \label{sec:analyse:characteristics:value_object}
-
 \begin{figure}[htbp] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Value_Object.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/Characteristics-Value_Object.pdf}
     \caption{Beispiel für ein Value Object}
     \label{fig:analyse:characteristics:value_object}
 \end{figure}
 
+Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unterscheiden sich allerdings in zwei entscheiden Punkten. Diese beiden Unterscheide können anhand der Klasse \texttt{Adresse} aus der Abbildung \ref{fig:analyse:characteristics:value_object} näher aufgezeigt werden.
+
+Wenn man die Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale überprüft, fällt direkt auf, dass es keine Identität besitzt aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um Value Object handeln.
+
+Damit die Klasse eindeutig als Value Object identifiziert werden kann müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity ist und nur Attribute vom Typ eines Standard Datentyp oder anderen Value Object besitzen, handelt es sich sehr wahrscheinlich um ein Value Object.
+
 \subsection{Aggregate Roots}
 \label{sec:analyse:characteristics:aggregate}
+Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Objects unterteilt wurde, müssen den Domains Aggregate Roots zugeordnet werden \cite{DDD:Holmstrom:2019}. Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:aggregate} erläutert können nur Entities die Rolle als Aggregate Root einnehmen.
 
 \begin{figure}[htbp] 
     \centering
@@ -44,8 +49,11 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
     \label{fig:analyse:characteristics:aggregate}
 \end{figure}
 
+In der Abbildung \ref{fig:analyse:characteristics:aggregate} ist ein vereinfachtes Datenmodell aufgezeigt. In diesem Datenmodell gibt es nur zwei mögliche Kandidaten für die Aggregate Root, nämlich die Klassen \texttt{Haus} und \texttt{Mieter}. Bei der Entscheidung welche Klasse als Aggregate Root ausgewählt wird, spielen die Abhängigkeiten der Klassen eine entscheidende Rolle. Für jede Klasse wird gezählt von wie vielen Klassen sie abhängig ist \cite{DDD:Vernon:2013}. In diesem Beispiel ist die Klasse \texttt{Mieter} von einer Klasse abhängig. Die Klasse \texttt{Haus} besitzt allerdings keine Abhängigkeiten und wird daher als Aggregate Root ausgewählt.
+
 \subsection{Domain Events}
 \label{sec:analyse:characteristics:event}
+Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Domain Events durch zwei Merkmale aus. Zum einen besitzen sie ein Attribut welches den Auslösungszeitpunkt des Events und ein zweites Attribut welches die Identität der Beteiligten Entity repräsentiert.
 
 \begin{figure}[htbp] 
     \centering
@@ -54,18 +62,41 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
     \label{fig:analyse:characteristics:event}
 \end{figure}
 
+Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristics:event} weißt die beiden oben genannten Merkmale auf. In selten Fällen in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity welcher das Domain Event zugeordnet ist.
+
 \subsection{Factories}
 \label{sec:analyse:characteristics:factory}
+\begin{figure}[htbp] 
+    \centering
+    \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Factory.pdf}
+    \caption{Beispiel für eine Factory}
+    \label{fig:analyse:characteristics:factory}
+\end{figure}
+
+Die Abbildung \ref{fig:analyse:characteristics:factory} zeigt die Factory \texttt{HausFactory}. Anhand dieses Beispiels lässt sich gut aufzeigen, durch welche Merkmale eine Factory erkannt werden kann. 
+
+An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Namen von Factories mit \glqq Factory \grqq{}. Aber auch Repositories als Attribute und Methoden mit denen Entity Instanzen erstellt werden weisen auf mögliche Factories hin.
 
 \subsection{Repositories}
 \label{sec:analyse:characteristics:repository}
+\begin{figure}[htbp] 
+    \centering
+    \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Repository.pdf}
+    \caption{Beispiel für ein Repository}
+    \label{fig:analyse:characteristics:repository}
+\end{figure}
+
+Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories ab. Auch hier kann der Name des möglichen Repositories dabei helfen. Wie das Artefakt \texttt{HausRepository} aus der Abbildung \ref{fig:analyse:characteristics:repository} enden meistens die Namen von Repositories mit \glqq Repository \grqq{}. 
+
+Zusätzlich zum Namen des Repositories können die Methoden weiterhelfen. Grundsätzlich sollten Repositories die Hauptoperationen von Datenbanken realisieren. Zu diesen Operationen zählen das Erzeugen, Lesen, Aktualisieren und Löschen von Instanzen.
+
 
 \subsection{Services}
 \label{sec:analyse:characteristics:service}
+Um eine Service zu erkennen muss zwischen Domain und Application Services unterschieden werden, da sie unterschiedliche Merkmale aufweisen.
 
-\subsection{Domain Services}
+\subsubsection{Domain Services}
 \label{sec:analyse:characteristics:service:domain}
-
 \begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Domain_Service.pdf}
@@ -73,15 +104,22 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
     \label{fig:analyse:characteristics:domain}
 \end{figure}
 
-\subsection{Application Services}
-\label{sec:analyse:characteristics:service:application}
+Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist besitzen Domain Services meistens eine Instanz des Repositories einer Entity. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
 
+\subsubsection{Application Services}
+\label{sec:analyse:characteristics:service:application}
 \begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Application_Service.pdf}
     \caption{Beispiel für ein Application Service}
     \label{fig:analyse:characteristics:application}
 \end{figure}
+
+Im Gegensatz zu Domain Services besitzen Application Services keine Repository-Instanz und sind auch nicht einer Entity zugeordnet. Meistens besteht der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, aus \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist erkennt man sie an der Methode mit dem Name \glqq main\grqq{}.
+
+\subsection{Infrastruktur}
+\label{sec:analyse:characteristics:infrastructure}
+Alle vorher nicht zugeordneten Artefakte werden der Infrastrukturebene zugeordnet, da sie keine Geschäftslogik enthalten und auch kein Teil des Datenmodells sind.
 
 \section{Bewertung der Domain-Driven Design Artefakte}
 \label{sec:analyse:rating}
@@ -105,7 +143,7 @@ Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeic
 
 \subsection{Bewertung von Modulen}
 \label{sec:analyse:rating:modul}
-Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unterscheiden. Das wichtigste Modul im Domain-Driven Design ist das Domain-Modul. Denn im Domain-Modul sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Das Applikation-Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Das dritte Modul ist das Infrastruktur-Modul. In diesem Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
+Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unterscheiden. Das wichtigste Modul im Domain-Driven Design ist das Domain-Modul. Denn im Domain-Modul sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Dieses Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Das dritte Modul ist das Infrastruktur-Modul. In diesem Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
 
 \begin{table}[htbp] 
     \centering
@@ -121,7 +159,7 @@ Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unte
 
 In der Tabelle \ref{tab:analyse:rating:modul:domain:criteria} sind die Kriterien von Domain-Modulen aufgelistet. Das erste Kriterium beschreibt, dass jedes Domain-Modul dem Modul \glqq domain\grqq{} untergeordnet sein sollte. Dieses Kriterium wurde als \texttt{MINOR} eingestuft, da es als Best Practice gilt, aber nicht zwingend notwendig ist.
 
-Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäfts- oder Infrastruktur-Logik. Da dieses Kriterium wichtiger ist, als das erste wurde es als \texttt{MAJOR} gekennzeichnet.
+Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäftslogik oder Infrastrukturlogik. Da dieses Kriterium wichtiger ist, als das erste wurde es als \texttt{MAJOR} gekennzeichnet.
 
 Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:modul:domain:criteria}, ist gleichzeitig das wichtigste. Denn jedes Domain-Modul symbolisiert eine Domain und muss daher genau eine Aggregate Root beinhalten. Da dieses Kriterium für die korrekte Umsetzung von Domain-Driven Design notwendig ist, wurde es als \texttt{CRITICAL} eingestuft.
 
@@ -176,7 +214,7 @@ Die Attribute von Entities sollten immer Instanzen von anderen Entities oder Val
 
 In der dritten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:entity:criteria} ist das wichtigste Kriterium einer Entity aufgeführt. Dieses Kriterium sagt aus, dass jede Entity, wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:entity} beschrieben, eine Identität besitzen muss. Für dieses Kriterium ist die Art und Weise der Modellierung nicht relevant. Da dieses Kriterium der hauptsächliche Unterschied zu Value Objects ist \cite{DDD:Vernon:2013}, wurde es als \texttt{CRITICAL} gekennzeichnet.
 
-Als letztes werden notwendige Methoden aufgeführt welche implementiert sein müssen. Dazu zählen Getter und Setter, also Methoden zum Auslesen und Setzten von Attributen \cite{DDD:Vernon:2013}. Die Existenz von Gettern und Settern wird mit \texttt{MINOR} gewichtet. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
+Als letztes werden notwendige Methoden aufgeführt welche implementiert sein müssen. Dazu zählen Getter und Setter \cite{DDD:Vernon:2013}. Die Existenz von Gettern und Settern wird mit \texttt{MINOR} gewichtet. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Value Objects}
 \label{sec:analyse:rating:artifakt:value_object}
@@ -350,7 +388,7 @@ Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, is
     \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:total}
 \end{equation}
 
-m ersten Schritt muss, anhand der Formel \ref{align:analyse:metric:total}, die Wertigkeit aller Kriterien berechnet werden. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
+Im ersten Schritt muss, anhand der Formel \ref{align:analyse:metric:total}, die Wertigkeit aller Kriterien berechnet werden. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
 
 \begin{equation}
     \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:fulfilled}
@@ -367,19 +405,19 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|c|l|l|}   \hline
-        \textbf{Note}   & \textbf{Beschreibung} & \textbf{Wertebereich}                     \\ \hline\hline
-        \texttt{A}      & sehr gut              & $\text{Metrik } \geq 90.0$                \\ \hline
-        \texttt{B}      & gut                   & $90.0 \gneqq \text{ Metrik } \geq 80.0$   \\ \hline
-        \texttt{C}      & befriedigend          & $80.0 \gneqq \text{ Metrik } \geq 60.0$   \\ \hline
-        \texttt{D}      & ausreichend           & $60.0 \gneqq \text{ Metrik } \geq 40.0$   \\ \hline
-        \texttt{E}      & mangelhaft            & $40.0 \gneqq \text{ Metrik } \geq 20.0$   \\ \hline
-        \texttt{F}      & ungenügend            & $20.0 \gneqq \text{ Metrik } \geq 0.0$    \\ \hline
+        \textbf{Note}   & \textbf{Beschreibung} & \textbf{Wertebereich}                 \\ \hline\hline
+        \texttt{A}      & sehr gut              & $\text{Metrik } \geq 95.0$            \\ \hline
+        \texttt{B}      & gut                   & $95.0 > \text{ Metrik } \geq 90.0$    \\ \hline
+        \texttt{C}      & befriedigend          & $90.0 > \text{ Metrik } \geq 80.0$    \\ \hline
+        \texttt{D}      & ausreichend           & $80.0 > \text{ Metrik } \geq 50.0$    \\ \hline
+        \texttt{E}      & mangelhaft            & $50.0 > \text{ Metrik } \geq 20.0$    \\ \hline
+        \texttt{F}      & ungenügend            & $20.0 > \text{ Metrik } \geq 0.0$     \\ \hline
     \end{tabular}
     \caption{Benotung der Domain-Driven Design Metrik}
     \label{tab:analyse:metric}
 \end{table}
 
-Um die Metrik aus \ref{align:analyse:metric} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric} eine Note gegeben.
+Um die Metrik aus \ref{align:analyse:metric} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an ihrem \glqq Maintainability Rating \grqq{} \cite{Related:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt.
 
 \begin{lstlisting}[caption={Ausschnitt der Gesamtbewertung eines Systems},captionpos=b,label=lst:analyse:metric:output]
 {

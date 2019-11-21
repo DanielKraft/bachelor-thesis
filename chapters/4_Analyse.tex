@@ -17,7 +17,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Entities}
 \label{sec:analyse:characteristics:entity}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Entity.pdf}
     \caption{Beispiel für eine Entity}
@@ -27,7 +27,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Value Objects}
 \label{sec:analyse:characteristics:value_object}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Value_Object.pdf}
     \caption{Beispiel für ein Value Object}
@@ -37,7 +37,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Aggregate Roots}
 \label{sec:analyse:characteristics:aggregate}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.7\textwidth]{gfx/Characteristics-Aggregate_Root.pdf}
     \caption{Beispiel für eine Aggregate Root}
@@ -47,7 +47,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Domain Events}
 \label{sec:analyse:characteristics:event}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Domain_Event.pdf}
     \caption{Beispiel für ein Domain Event}
@@ -66,7 +66,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Domain Services}
 \label{sec:analyse:characteristics:service:domain}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Domain_Service.pdf}
     \caption{Beispiel für ein Domain Service}
@@ -76,7 +76,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \subsection{Application Services}
 \label{sec:analyse:characteristics:service:application}
 
-\begin{figure}
+\begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Application_Service.pdf}
     \caption{Beispiel für ein Application Service}
@@ -87,7 +87,7 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit d
 \label{sec:analyse:rating}
 In diesem Abschnitt wird darauf eingegangen anhand von welchen Kriterien die Artefakte bewertet werden. Ein Kriterium besteht aus zwei Bestandteilen. Einer Beschreibung was erfüllt sein muss, um das Kriterium zu erfüllen und der Relevanz des Kriteriums. Die Relevanz hat einen direkten Einfluss auf die Gewichtung des Kriteriums.
 
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|l||c|c|c|c|c|}   \hline
         \textbf{Einstufungen}   & \texttt{INFO} & \texttt{MINOR}    & \texttt{MAJOR}    & \texttt{CRITICAL}     & \texttt{BLOCKER}  \\ \hline
@@ -107,7 +107,7 @@ Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeic
 \label{sec:analyse:rating:modul}
 Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unterscheiden. Das wichtigste Modul im Domain-Driven Design ist das Domain-Modul. Denn im Domain-Modul sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Das Applikation-Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Das dritte Modul ist das Infrastruktur-Modul. In diesem Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
 
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -123,9 +123,9 @@ In der Tabelle \ref{tab:analyse:rating:modul:domain:criteria} sind die Kriterien
 
 Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäfts- oder Infrastruktur-Logik. Da dieses Kriterium wichtiger ist, als das erste wurde es als \texttt{MAJOR} gekennzeichnet.
 
-Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:modul:domain:criteria}, ist gleichzeitig das wichtigste. Denn jedes Domain-Modul symbolisiert einen Domain und muss daher genau eine Aggregate Root beinhalten. Da dieses Kriterium für die korrekte Umsetzung von Domain-Driven Design notwendig ist, wurde es als \texttt{CRITICAL} eingestuft.
+Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:modul:domain:criteria}, ist gleichzeitig das wichtigste. Denn jedes Domain-Modul symbolisiert eine Domain und muss daher genau eine Aggregate Root beinhalten. Da dieses Kriterium für die korrekte Umsetzung von Domain-Driven Design notwendig ist, wurde es als \texttt{CRITICAL} eingestuft.
 
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -136,7 +136,7 @@ Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:
     \label{tab:analyse:rating:modul:applictaion:criteria}
 \end{table}
 
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -155,7 +155,7 @@ Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain
 
 \subsubsection{Bewertungskriterien von Entities}
 \label{sec:analyse:rating:artifakt:entity}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -180,7 +180,7 @@ Als letztes werden notwendige Methoden aufgeführt welche implementiert sein mü
 
 \subsubsection{Bewertungskriterien von Value Objects}
 \label{sec:analyse:rating:artifakt:value_object}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -201,13 +201,13 @@ Die Kriterien von Value Objects aus Tabelle \ref{tab:analyse:rating:artifakt:val
 
 Das erste Kriterium, von Value Objects, welches sich grundlegend unterscheidet, steht in der dritten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:value_object:criteria}. Wie bereits in Abschnitte \ref{sec:basics:ddd:mdd:value_object} beschrieben, stellt die Existenz einer Identität eine Architekturverletzung dar. Deshalb wurde dieses Kriterium als \texttt{BLOCKER} eingestuft.
 
-Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zu besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \glqq get \grqq{} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
+Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \glqq get \grqq{} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
 
 Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückliefert. In beiden Fällen wird gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objecte eine Grundvoraussetzung ist dieses Kriterium \texttt{CRITICAL}.
 
 \subsubsection{Bewertungskriterien von Aggregate Roots}
 \label{sec:analyse:rating:artifakt:aggregate}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -231,7 +231,7 @@ Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weiter
 
 \subsubsection{Bewertungskriterien von Domain Events}
 \label{sec:analyse:rating:artifakt:event}
-\begin{table}[ht]
+\begin{table}[htbp]
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -249,7 +249,7 @@ Wie bereits im Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben wurde, muss 
 
 \subsubsection{Bewertungskriterien von Factories}
 \label{sec:analyse:rating:artifakt:factory}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                      & \textbf{Relevanz} \\ \hline\hline
@@ -269,11 +269,11 @@ Bei der Bewertung von Factories muss zunächst zwischen Factory-Interfaces und F
 
 Die Factory-Interfaces und Factory-Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \glqq model\grqq{} sind, sollten die Klassen in einem untergeordneten Modul, mit dem Namen \glqq impl\grqq{} abgelegt sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
 
-Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Dieses beiden Kriterien wurden mit einer Relevanz von \texttt{MAJOR} bewertet.
+Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Diese beiden Kriterien wurden mit einer Relevanz von \texttt{MAJOR} bewertet.
 
 \subsubsection{Bewertungskriterien von Repositories}
 \label{sec:analyse:rating:artifakt:repository}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
@@ -303,7 +303,7 @@ In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so rele
 
 \subsubsection{Bewertungskriterien von Services}
 \label{sec:analyse:rating:artifakt:service}
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
         \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
@@ -340,7 +340,7 @@ Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachv
 }
 \end{lstlisting}
 
-Listing \ref{lst:analyse:rating:issue:output} zeigt eine Ausschnitt des Rückgabewertes eines bewerteten Artefakts. Man kann daran deutlich erkennen, welche Kriterien nicht eingehalten wurden und woran es gelegen hat.
+Listing \ref{lst:analyse:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes eines bewerteten Artefakts. Man kann daran deutlich erkennen, welche Kriterien nicht eingehalten wurden und woran es gelegen hat.
 
 \section{Bewertung anhand einer Metrik}
 \label{sec:analyse:metric}
@@ -364,7 +364,7 @@ Als Nächstes wird die Formel \ref{align:analyse:metric:fulfilled} verwendet, um
 
 Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Formel \ref{align:analyse:metric} miteinander verrechnet. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
 
-\begin{table}[ht]
+\begin{table}[htbp] 
     \centering
     \begin{tabular}{|c|l|l|}   \hline
         \textbf{Note}   & \textbf{Beschreibung} & \textbf{Wertebereich}                     \\ \hline\hline

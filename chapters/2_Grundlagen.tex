@@ -80,6 +80,10 @@ Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern mü
 
 Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandene Objekte mit Identitäten rekonstruiert werden \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
+\subsubsection{Domain Event}
+\label{sec:basics:ddd:mdd:event}
+Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Sie modellieren wichtige Zustandsänderungen von Entities, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
+
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}
 Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
@@ -87,10 +91,6 @@ Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung ein
 \subsubsection{Modules}
 \label{sec:basics:ddd:mdd:module}
 Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werden meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den vier Schichten aus der Layered Architecture in Abbildung \ref{fig:basics:ddd:mdd:layer}.
-
-\subsubsection{Domain Event}
-\label{sec:basics:ddd:mdd:event}
-Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Sie modellieren wichtige Zustandsänderungen von Entities, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \section{Einführung in jQAssistant}
 \label{sec:basics:jqa}

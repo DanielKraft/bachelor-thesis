@@ -51,19 +51,6 @@ Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Ob
 
 In der Abbildung \ref{fig:analyse:characteristics:aggregate} ist ein vereinfachtes Datenmodell aufgezeigt. In diesem Datenmodell gibt es nur zwei mögliche Kandidaten für die Aggregate Root, nämlich die Klassen \texttt{Haus} und \texttt{Mieter}. Bei der Entscheidung welche Klasse als Aggregate Root ausgewählt wird, spielen die Abhängigkeiten der Klassen eine entscheidende Rolle \cite{DDD:Vernon:2013}. Für jede Klasse wird gezählt von wie vielen Klassen sie abhängig ist. In diesem Beispiel ist die Klasse \texttt{Mieter} von einer Klasse abhängig. Die Klasse \texttt{Haus} besitzt allerdings keine Abhängigkeiten und wird daher als Aggregate Root ausgewählt.
 
-\subsection{Domain Events}
-\label{sec:analyse:characteristics:event}
-Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Domain Events durch zwei Merkmale aus. Zum einen besitzen sie ein Attribut welches den Auslösungszeitpunkt des Domain Events und ein zweites Attribut welches die Identität der beteiligten Entity repräsentiert.
-
-\begin{figure}[htbp] 
-    \centering
-    \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Domain_Event.pdf}
-    \caption{Beispiel für ein Domain Event}
-    \label{fig:analyse:characteristics:event}
-\end{figure}
-
-Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristics:event} weißt die beiden oben genannten Merkmale auf. In selten Fällen in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity welcher das Domain Event zugeordnet ist.
-
 \subsection{Factories}
 \label{sec:analyse:characteristics:factory}
 \begin{figure}[htbp] 
@@ -90,6 +77,18 @@ Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories
 
 Zusätzlich zum Namen des Repositories können die Methoden weiterhelfen. Grundsätzlich sollten Repositories die Hauptoperationen von Datenbanken realisieren. Zu diesen Operationen zählen das Erzeugen, Lesen, Aktualisieren und Löschen von Instanzen.
 
+\subsection{Domain Events}
+\label{sec:analyse:characteristics:event}
+Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Domain Events durch zwei Merkmale aus. Zum einen besitzen sie ein Attribut welches den Auslösungszeitpunkt des Domain Events und ein zweites Attribut welches die Identität der beteiligten Entity repräsentiert.
+
+\begin{figure}[htbp] 
+    \centering
+    \includegraphics[width=0.3\textwidth]{gfx/Characteristics-Domain_Event.pdf}
+    \caption{Beispiel für ein Domain Event}
+    \label{fig:analyse:characteristics:event}
+\end{figure}
+
+Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristics:event} weißt die beiden oben genannten Merkmale auf. In selten Fällen in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity welcher das Domain Event zugeordnet ist.
 
 \subsection{Services}
 \label{sec:analyse:characteristics:service}
@@ -267,27 +266,6 @@ Auch die Kriterien von Aggregate Roots, in der Tabelle \ref{tab:analyse:rating:a
 
 Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens einen Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien wurden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
 
-\subsubsection{Bewertungskriterien von Domain Events}
-\label{sec:analyse:rating:artifakt:event}
-\begin{table}[htbp]
-    \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
-        Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ \hline
-        Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ \hline
-        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
-    \end{tabular}
-    \caption{Kriterien zur Bewertung von Domain Events}
-    \label{tab:analyse:rating:artifakt:event:criteria}
-\end{table}
-
-Das erste Kriterium, aus der Tabelle \ref{tab:analyse:rating:artifakt:event:criteria}, von Domain Events verhält sich analog zu den bereits behandelten Komponenten. 
-
-Wie bereits im Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben wurde, muss ein Domain Event zwei Attribute besitzen. Ein Attribut welches den Zeitpunkt des Auftretens des Events dokumentiert. Sowie ein Attribut mit der Identität der beteiligten Entity. Die Relevanz beider Kriterien ist \texttt{MAJOR}.
-
-Das wichtigste Bewertungskriterium ist die Unveränderlichkeit von Domain Events. Dieses Bewertungskriterium wurde wie bei der Bewertung von Value Objects anhand von seiteneffektfreien Settern realisiert und auch als \texttt{CRITICAL} eingestuft.
-
 \subsubsection{Bewertungskriterien von Factories}
 \label{sec:analyse:rating:artifakt:factory}
 \begin{table}[htbp] 
@@ -341,6 +319,27 @@ Bei den notwendigen Methoden unterscheiden sich allerdings die Bewertungskriteri
 Die erste Kategorie enthält Methoden, welche unverzichtbar für ein Repository sind. Zu den Methoden der ersten Kategorie gehören Methoden zum Erzeugen einer neuen Identität sowie zum Finden, Speichern und Löschen einer Entity. Die Methoden dieser Kategorie wurden als \texttt{MAJOR} eingestuft.
 
 In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so relevant wie die Methoden aus der ersten Kategorie. Dazu gehören Methoden zum Aktualisieren und Überprüfen der Existenz einer Entity. Aufgrund ihrer geringeren Relevanz wurden diese Methoden als \texttt{MINOR} bewertet.
+
+\subsubsection{Bewertungskriterien von Domain Events}
+\label{sec:analyse:rating:artifakt:event}
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
+        Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ \hline
+        Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ \hline
+        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
+    \end{tabular}
+    \caption{Kriterien zur Bewertung von Domain Events}
+    \label{tab:analyse:rating:artifakt:event:criteria}
+\end{table}
+
+Das erste Kriterium, aus der Tabelle \ref{tab:analyse:rating:artifakt:event:criteria}, von Domain Events verhält sich analog zu den bereits behandelten Komponenten. 
+
+Wie bereits im Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben wurde, muss ein Domain Event zwei Attribute besitzen. Ein Attribut welches den Zeitpunkt des Auftretens des Events dokumentiert. Sowie ein Attribut mit der Identität der beteiligten Entity. Die Relevanz beider Kriterien ist \texttt{MAJOR}.
+
+Das wichtigste Bewertungskriterium ist die Unveränderlichkeit von Domain Events. Dieses Bewertungskriterium wurde wie bei der Bewertung von Value Objects anhand von seiteneffektfreien Settern realisiert und auch als \texttt{CRITICAL} eingestuft.
 
 \subsubsection{Bewertungskriterien von Services}
 \label{sec:analyse:rating:artifakt:service}

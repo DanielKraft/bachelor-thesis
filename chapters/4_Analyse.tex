@@ -1,6 +1,6 @@
 \chapter{Analyse der Architektur eines Java Systems}
 \label{ch:analyse}
-Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit der Entwicklung einer Metrik zur Architekturbewertung. Im ersten Schritt wird darauf eingegangen anhand welcher Merkmale Domain-Driven Design Bausteine erkannt wurden. Danach wird der Schwerpunkt auf die Bewertung der eingelesenen Bausteine sowie der zugehörigen Architektur gelegt. Als letztes werden die einzelnen Bewertungen zu einer Metrik zusammengefasst, um den Zustand des eingelesenen Systems zu bewerten.
+Diese Kapitel behandelt die Umsetzung der Architekturanalyse in Verbindung mit der Entwicklung einer Metrik zur Architekturbewertung. Im ersten Schritt wird darauf eingegangen anhand welcher Merkmale Domain-Driven Design Bausteine erkannt werden können. Anschießend werden die Bewertungskriterien für die eingelesenen Bausteine vorgestellt. Zum Schluss werden die einzelnen Bewertungen zu einer Metrik zusammengefasst, um den Zustand des eingelesenen Systems zu bewerten.
 
 \section{Erkennung der Domain-Driven Design Artefakte}
 \label{sec:analyse:characteristics}
@@ -8,7 +8,7 @@ Sobald ein Java-System mit jQAssistant analysiert wurde, müssen die einzelnen J
 
 \subsection{Entities}
 \label{sec:analyse:characteristics:entity}
-Bei dem Auffinden von Entities muss darauf wert gelegt werden ob es sich, bei dem Artefakt, um ein Bestandteil des Datenmodells handelt. 
+Bei dem Auffinden von Entities muss darauf Wert gelegt werden, ob es sich, bei dem Artefakt, um ein Bestandteil des Datenmodells handelt. 
 
 \begin{figure}[htbp] 
     \centering
@@ -19,9 +19,9 @@ Bei dem Auffinden von Entities muss darauf wert gelegt werden ob es sich, bei de
 
 In der Abbildung \ref{fig:analyse:characteristics:entity} ist ein möglicher Kandidat für eine Entity zusehen. Anhand dieses Beispiels werden die Merkmale von Entities veranschaulicht.
 
-Wie bereits in dem Abschnitt \ref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte welche eine eigene Identität besitzen. Daher kann das in Abbildung \ref{fig:analyse:characteristics:entity} gezeigte Beispiel ohne weitere Einwende als Entity klassifiziert werden.
+Wie bereits in dem Abschnitt \ref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte welche eine eigene Identität besitzen. Daher kann das in Abbildung \ref{fig:analyse:characteristics:entity} gezeigte Beispiel, ohne weitere Einwende, als Entity klassifiziert werden. Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden, ob es sich um eine Entity handelt. 
 
-Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden ob es sich um eine Entity handelt. Ein weiteres Merkmal ist das Vorhandensein von Gettern und Settern, also Methoden zum Auslesen und Setzten von Attributen. Eine Entity besitzt für meisten Attribut eine solche Methode. Auch dieses Merkmal ist bei dem Beispiel in der Abbildung \ref{fig:analyse:characteristics:entity} erfüllt.
+Ein weiteres Merkmal ist das Vorhandensein von Gettern und Settern, also Methoden zum Lesen und Schreiben von Attributen. Typischerweise besitzt eine Entity für die meisten Attribut eine solche Methode. Auch dieses Merkmal ist bei dem Beispiel in der Abbildung \ref{fig:analyse:characteristics:entity} erfüllt.
 
 \subsection{Value Objects}
 \label{sec:analyse:characteristics:value_object}
@@ -34,9 +34,9 @@ Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um 
 
 Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unterscheiden sich allerdings in zwei entscheiden Punkten. Diese beiden Unterscheide können anhand der Klasse \texttt{Adresse} aus der Abbildung \ref{fig:analyse:characteristics:value_object} näher aufgezeigt werden.
 
-Wenn man die Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale überprüft, fällt direkt auf, dass es keine Identität besitzt aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um Value Object handeln.
+Wenn man die Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale überprüft, fällt direkt auf, dass sie keine Identität besitzt aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um Value Object handeln.
 
-Damit die Klasse eindeutig als Value Object identifiziert werden kann müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity ist und nur Attribute vom Typ eines Standard Datentyp oder anderen Value Object besitzen, handelt es sich sehr wahrscheinlich um ein Value Object.
+Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity ist und nur Attribute vom Typ eines Standard Datentyp oder anderer Value Objects besitzen, handelt es sich sehr wahrscheinlich um ein Value Object.
 
 \subsection{Aggregate Roots}
 \label{sec:analyse:characteristics:aggregate}
@@ -49,11 +49,11 @@ Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Ob
     \label{fig:analyse:characteristics:aggregate}
 \end{figure}
 
-In der Abbildung \ref{fig:analyse:characteristics:aggregate} ist ein vereinfachtes Datenmodell aufgezeigt. In diesem Datenmodell gibt es nur zwei mögliche Kandidaten für die Aggregate Root, nämlich die Klassen \texttt{Haus} und \texttt{Mieter}. Bei der Entscheidung welche Klasse als Aggregate Root ausgewählt wird, spielen die Abhängigkeiten der Klassen eine entscheidende Rolle. Für jede Klasse wird gezählt von wie vielen Klassen sie abhängig ist \cite{DDD:Vernon:2013}. In diesem Beispiel ist die Klasse \texttt{Mieter} von einer Klasse abhängig. Die Klasse \texttt{Haus} besitzt allerdings keine Abhängigkeiten und wird daher als Aggregate Root ausgewählt.
+In der Abbildung \ref{fig:analyse:characteristics:aggregate} ist ein vereinfachtes Datenmodell aufgezeigt. In diesem Datenmodell gibt es nur zwei mögliche Kandidaten für die Aggregate Root, nämlich die Klassen \texttt{Haus} und \texttt{Mieter}. Bei der Entscheidung welche Klasse als Aggregate Root ausgewählt wird, spielen die Abhängigkeiten der Klassen eine entscheidende Rolle \cite{DDD:Vernon:2013}. Für jede Klasse wird gezählt von wie vielen Klassen sie abhängig ist. In diesem Beispiel ist die Klasse \texttt{Mieter} von einer Klasse abhängig. Die Klasse \texttt{Haus} besitzt allerdings keine Abhängigkeiten und wird daher als Aggregate Root ausgewählt.
 
 \subsection{Domain Events}
 \label{sec:analyse:characteristics:event}
-Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Domain Events durch zwei Merkmale aus. Zum einen besitzen sie ein Attribut welches den Auslösungszeitpunkt des Events und ein zweites Attribut welches die Identität der Beteiligten Entity repräsentiert.
+Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Domain Events durch zwei Merkmale aus. Zum einen besitzen sie ein Attribut welches den Auslösungszeitpunkt des Domain Events und ein zweites Attribut welches die Identität der beteiligten Entity repräsentiert.
 
 \begin{figure}[htbp] 
     \centering
@@ -75,7 +75,7 @@ Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristi
 
 Die Abbildung \ref{fig:analyse:characteristics:factory} zeigt die Factory \texttt{HausFactory}. Anhand dieses Beispiels lässt sich gut aufzeigen, durch welche Merkmale eine Factory erkannt werden kann. 
 
-An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Namen von Factories mit \glqq Factory \grqq{}. Aber auch Repositories als Attribute und Methoden mit denen Entity Instanzen erstellt werden weisen auf mögliche Factories hin.
+An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Namen von Factories mit \glqq Factory\grqq{}. Aber auch Repositories als Attribute und Methoden mit denen Entity Instanzen erstellt werden weisen auf mögliche Factories hin.
 
 \subsection{Repositories}
 \label{sec:analyse:characteristics:repository}
@@ -86,7 +86,7 @@ An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Na
     \label{fig:analyse:characteristics:repository}
 \end{figure}
 
-Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories ab. Auch hier kann der Name des möglichen Repositories dabei helfen. Wie das Artefakt \texttt{HausRepository} aus der Abbildung \ref{fig:analyse:characteristics:repository} enden meistens die Namen von Repositories mit \glqq Repository \grqq{}. 
+Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories ab. Auch hier kann der Name des möglichen Repositories dabei helfen. Wie das Artefakt \texttt{HausRepository} aus der Abbildung \ref{fig:analyse:characteristics:repository} enden meistens die Namen von Repositories mit \glqq Repository\grqq{}. 
 
 Zusätzlich zum Namen des Repositories können die Methoden weiterhelfen. Grundsätzlich sollten Repositories die Hauptoperationen von Datenbanken realisieren. Zu diesen Operationen zählen das Erzeugen, Lesen, Aktualisieren und Löschen von Instanzen.
 
@@ -104,7 +104,7 @@ Um eine Service zu erkennen muss zwischen Domain und Application Services unters
     \label{fig:analyse:characteristics:domain}
 \end{figure}
 
-Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist besitzen Domain Services meistens eine Instanz des Repositories einer Entity. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
+Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist besitzen Domain Services meistens die Instanz eines Repositories als Attribut. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
 
 \subsubsection{Application Services}
 \label{sec:analyse:characteristics:service:application}
@@ -115,7 +115,7 @@ Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist besitz
     \label{fig:analyse:characteristics:application}
 \end{figure}
 
-Im Gegensatz zu Domain Services besitzen Application Services keine Repository-Instanz und sind auch nicht einer Entity zugeordnet. Meistens besteht der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, aus \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist erkennt man sie an der Methode mit dem Name \glqq main\grqq{}.
+Im Gegensatz zu Domain Services besitzen Application Services keine Repository-Instanz und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist erkennt man Application Services sehr leicht an der Methode \texttt{main(java.lang.String[])}.
 
 \subsection{Infrastruktur}
 \label{sec:analyse:characteristics:infrastructure}
@@ -123,7 +123,7 @@ Alle vorher nicht zugeordneten Artefakte werden der Infrastrukturebene zugeordne
 
 \section{Bewertung der Domain-Driven Design Artefakte}
 \label{sec:analyse:rating}
-In diesem Abschnitt wird darauf eingegangen anhand von welchen Kriterien die Artefakte bewertet werden. Ein Kriterium besteht aus zwei Bestandteilen. Einer Beschreibung was erfüllt sein muss, um das Kriterium zu erfüllen und der Relevanz des Kriteriums. Die Relevanz hat einen direkten Einfluss auf die Gewichtung des Kriteriums.
+In diesem Abschnitt wird darauf eingegangen anhand von welchen Bewertungskriterium die Artefakte bewertet werden. Ein Bewertungskriterium besteht einer Beschreibung was erfüllt sein muss, um das Kriterium zu erfüllen und der Relevanz des Kriteriums. Die Relevanz spiegelt die Gewichtung des Bewertungskriteriums wieder.
 
 \begin{table}[htbp] 
     \centering
@@ -139,7 +139,7 @@ In der Tabelle \ref{tab:analyse:rating:criteria} sind die fünf Einstufungen der
 
 Als \texttt{MINOR} oder \texttt{MAJOR} eingestufte Kriterien sollten eingehalten werden, aber von ihrer Einhaltung hängt nicht die komplette Architektur ab. Dies betrifft zum Beispiel das implementieren von vorgegebenen Methoden.
 
-Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeichnet wurden, sollten zwingend erfüllt sein, da sonst Grundprinzipien der Architektur verletzt werden. Deshalb werden diese Kriterien besonders stark gewichtet.
+Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeichnet wurden, sollten zwingend erfüllt sein, da sonst Grundprinzipien vom Domain-Driven Design verletzt werden. Deshalb werden diese Kriterien besonders stark gewichtet.
 
 \subsection{Bewertung von Modulen}
 \label{sec:analyse:rating:modul}
@@ -148,16 +148,16 @@ Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unte
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Submodul von \glqq domain\grqq{}                            & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Domain-Artifakte                             & \texttt{MAJOR}    \\ \hline
-        Beinhaltet Aggregate Root                                   & \texttt{CRITICAL} \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain}                                              & \texttt{MINOR}    \\ \hline
+        Beinhaltet nur Domain-Artifakte                                     & \texttt{MAJOR}    \\ \hline
+        Beinhaltet Aggregate Root                                           & \texttt{CRITICAL} \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Domain-Modulen}
     \label{tab:analyse:rating:modul:domain:criteria}
 \end{table}
 
-In der Tabelle \ref{tab:analyse:rating:modul:domain:criteria} sind die Kriterien von Domain-Modulen aufgelistet. Das erste Kriterium beschreibt, dass jedes Domain-Modul dem Modul \glqq domain\grqq{} untergeordnet sein sollte. Dieses Kriterium wurde als \texttt{MINOR} eingestuft, da es als Best Practice gilt, aber nicht zwingend notwendig ist.
+In der Tabelle \ref{tab:analyse:rating:modul:domain:criteria} sind die Kriterien von Domain-Modulen aufgelistet. Das erste Kriterium beschreibt, dass jedes Domain-Modul dem Modul \texttt{domain} untergeordnet sein sollte. Dieses Kriterium wurde als \texttt{MINOR} eingestuft, da es als Best Practice gilt, aber nicht zwingend notwendig ist.
 
 Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäftslogik oder Infrastrukturlogik. Da dieses Kriterium wichtiger ist, als das erste wurde es als \texttt{MAJOR} gekennzeichnet.
 
@@ -166,9 +166,9 @@ Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Submodul von \glqq application\grqq{}                       & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Application-Artifakte                        & \texttt{MAJOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{application}                                         & \texttt{MINOR}    \\ \hline
+        Beinhaltet nur Application-Artifakte                                & \texttt{MAJOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Applikation-Modulen}
     \label{tab:analyse:rating:modul:applictaion:criteria}
@@ -177,9 +177,9 @@ Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:analyse:rating:
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Submodul von \glqq infrastructure\grqq{}                    & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Infrastructure-Artifakte                     & \texttt{MAJOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{infrastructure}                                      & \texttt{MINOR}    \\ \hline
+        Beinhaltet nur Infrastructure-Artifakte                             & \texttt{MAJOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Infrastruktur-Modulen}
     \label{tab:analyse:rating:modul:infrastructure:criteria}
@@ -196,40 +196,40 @@ Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Modul: \glqq domain.<domain>.model\grqq{}                   & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: Entities oder Value Objects                 & \texttt{MAJOR}    \\ \hline
-        Ein Attribut für die eigene Identität                       & \texttt{CRITICAL} \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}          & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
-        Setter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
+        Attribut-Typen: Entities oder Value Objects                         & \texttt{MAJOR}    \\ \hline
+        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ \hline
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Entities}
     \label{tab:analyse:rating:artifakt:entity:criteria}
 \end{table}
 
-Die erste Tabelle \ref{tab:analyse:rating:artifakt:entity:criteria} zeigt die Kriterien, welche von allen Entities eingehalten werden müssen. Das erste Kriterium beschreibt welchem Modul Entities zugeordnet sind. Da Entities zur Modellierung von Domains eingesetzt werden, sollten sie sich in dem Modul \glqq model\grqq{} befinden \cite{DDD:Vernon:2013}.
+Die Tabelle \ref{tab:analyse:rating:artifakt:entity:criteria} zeigt die Kriterien, welche von allen Entities eingehalten werden müssen. Das erste Kriterium beschreibt welchem Modul Entities zugeordnet sind. Da Entities zur Modellierung von Domains eingesetzt werden, sollten sie sich in dem Modul \texttt{domain.<domain>.model} befinden \cite{DDD:Vernon:2013}.
 
 Die Attribute von Entities sollten immer Instanzen von anderen Entities oder Value Objects sein. Zum Beispiel werden zum Modellieren von Identitäten Value Objects verwendet \cite{DDD:Vernon:2013}. Da dieses Kriterium einen wichtigen Bestandteil von Entities einnimmt, wurde es als \texttt{MAJOR} eingestuft.
 
 In der dritten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:entity:criteria} ist das wichtigste Kriterium einer Entity aufgeführt. Dieses Kriterium sagt aus, dass jede Entity, wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:entity} beschrieben, eine Identität besitzen muss. Für dieses Kriterium ist die Art und Weise der Modellierung nicht relevant. Da dieses Kriterium der hauptsächliche Unterschied zu Value Objects ist \cite{DDD:Vernon:2013}, wurde es als \texttt{CRITICAL} gekennzeichnet.
 
-Als letztes werden notwendige Methoden aufgeführt welche implementiert sein müssen. Dazu zählen Getter und Setter \cite{DDD:Vernon:2013}. Die Existenz von Gettern und Settern wird mit \texttt{MINOR} gewichtet. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
+Als letztes werden notwendige Methoden aufgeführt welche implementiert sein müssen. Dazu zählen Getter und Setter \cite{DDD:Vernon:2013}. Die Existenz von Gettern und Settern wird mit \texttt{MINOR} gewichtet, da von ihrer Existenz. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Value Objects}
 \label{sec:analyse:rating:artifakt:value_object}
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Modul: \glqq domain.<domain>.model\grqq{}                   & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: Value Objects oder Standard Datentypen      & \texttt{MAJOR}    \\ \hline
-        Kein Attribut für eigenen Identität                         & \texttt{BLOCKER}  \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}          & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
-        Getter heißen so wie das zugehörige Attribut                & \texttt{INFO}     \\ \hline
-        Setter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
-        Setter ist frei von Seiteneffekten.                         & \texttt{CRITICAL} \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
+        Attribut-Typen: Value Objects oder Standard Datentypen              & \texttt{MAJOR}    \\ \hline
+        Kein Attribut für eigenen Identität                                 & \texttt{BLOCKER}  \\ \hline
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Getter heißen so wie das zugehörige Attribut                        & \texttt{INFO}     \\ \hline
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Value Objects}
     \label{tab:analyse:rating:artifakt:value_object:criteria}
@@ -239,25 +239,25 @@ Die Kriterien von Value Objects aus Tabelle \ref{tab:analyse:rating:artifakt:val
 
 Das erste Kriterium, von Value Objects, welches sich grundlegend unterscheidet, steht in der dritten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:value_object:criteria}. Wie bereits in Abschnitte \ref{sec:basics:ddd:mdd:value_object} beschrieben, stellt die Existenz einer Identität eine Architekturverletzung dar. Deshalb wurde dieses Kriterium als \texttt{BLOCKER} eingestuft.
 
-Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \glqq get \grqq{} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
+Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \texttt{get} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
 
-Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückliefert. In beiden Fällen wird gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objecte eine Grundvoraussetzung ist dieses Kriterium \texttt{CRITICAL}.
+Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückliefert. In beiden Fällen wird gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist dieses Kriterium \texttt{CRITICAL}.
 
 \subsubsection{Bewertungskriterien von Aggregate Roots}
 \label{sec:analyse:rating:artifakt:aggregate}
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Modul: \glqq domain.<domain>.model\grqq{}                   & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: andere Entities oder Value Objects          & \texttt{MAJOR}    \\ \hline
-        Ein Attribut für die eigene Identität                       & \texttt{CRITICAL} \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}          & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
-        Setter für jedes Attribut                                   & \texttt{MINOR}    \\ \hline
-        Repository für die Aggregate Root existiert                 & \texttt{MAJOR}    \\ \hline
-        Factory für die Aggregate Root existiert                    & \texttt{MAJOR}    \\ \hline
-        Service für die Aggregate Root existiert                    & \texttt{MAJOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
+        Attribut-Typen: andere Entities oder Value Objects                  & \texttt{MAJOR}    \\ \hline
+        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ \hline
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Repository für die Aggregate Root existiert                         & \texttt{MAJOR}    \\ \hline
+        Factory für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \hline
+        Service für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Aggregate Roots}
     \label{tab:analyse:rating:artifakt:aggregate:criteria}
@@ -265,17 +265,18 @@ Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte habe
 
 Auch die Kriterien von Aggregate Roots, in der Tabelle \ref{tab:analyse:rating:artifakt:aggregate:criteria}, sind den Kriterien von Entities sehr ähnlich. Da Aggregate Roots, wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:aggregate} beschrieben, nur spezielle Entities sind, sind die ersten sechs Kriterien identisch.
 
-Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich eine Repository, eine Factory und mindestens einen Service \cite{DDD:Vernon:2013}. Diese drei Kriterien wurden aufgrund ihrer Wichtigkeit als \texttt{MAJOR} eingestuft.
+Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens einen Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien wurden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Domain Events}
 \label{sec:analyse:rating:artifakt:event}
 \begin{table}[htbp]
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Modul: \glqq domain.<domain>.model\grqq{}                   & \texttt{MINOR}    \\ \hline
-        Attribut für Zeitstempel                                    & \texttt{MAJOR}    \\ \hline
-        Attribut für die ID einer Entity                            & \texttt{MAJOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
+        Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ \hline
+        Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ \hline
+        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Domain Events}
     \label{tab:analyse:rating:artifakt:event:criteria}
@@ -285,27 +286,29 @@ Das erste Kriterium, aus der Tabelle \ref{tab:analyse:rating:artifakt:event:crit
 
 Wie bereits im Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben wurde, muss ein Domain Event zwei Attribute besitzen. Ein Attribut welches den Zeitpunkt des Auftretens des Events dokumentiert. Sowie ein Attribut mit der Identität der beteiligten Entity. Die Relevanz beider Kriterien ist \texttt{MAJOR}.
 
+Das wichtigste Bewertungskriterium ist die Unveränderlichkeit von Domain Events. Dieses Bewertungskriterium wurde wie bei der Bewertung von Value Objects anhand von seiteneffektfreien Settern realisiert und auch als \texttt{CRITICAL} eingestuft.
+
 \subsubsection{Bewertungskriterien von Factories}
 \label{sec:analyse:rating:artifakt:factory}
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                      & \textbf{Relevanz} \\ \hline\hline
-        Interface-Namenssuffix: \glqq Factory\grqq{}            & \texttt{INFO}     \\ \hline 
-        Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}          & \texttt{INFO}     \\ \hline
-        Interface Modul: \glqq domain.<domain>.model\grqq{}     & \texttt{MINOR}    \\ \hline
-        Klassen Modul: \glqq domain.<domain>.model.impl\grqq{}  & \texttt{MINOR}    \\ \hline
-        Factory-Klasse implementiert Factory-Interface          & \texttt{MINOR}    \\ \hline
-        Enthält eine Instanz eines Repositories	                & \texttt{MAJOR}    \\ \hline
-        Methode zum Erzeugen (\texttt{create})                  & \texttt{MAJOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Interface-Namenssuffix: \glqq Factory\grqq{}                        & \texttt{INFO}     \\ \hline 
+        Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}                      & \texttt{INFO}     \\ \hline
+        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ \hline
+        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ \hline
+        Factory-Klasse implementiert Factory-Interface                      & \texttt{MINOR}    \\ \hline
+        Enthält eine Instanz eines Repositories	                            & \texttt{MAJOR}    \\ \hline
+        Methode zum Erzeugen (\texttt{create})                              & \texttt{MAJOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Factories}
     \label{tab:analyse:rating:artifakt:factory:criteria}
 \end{table}
 
-Bei der Bewertung von Factories muss zunächst zwischen Factory-Interfaces und Factory-Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:analyse:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet da es eine Java-Konvention ist Klassen welche ein Interface implementieren mit dem Suffix \glqq Impl\grqq{} zu benennen \cite{DDD:Vernon:2013}.
+Bei der Bewertung von Factories muss zunächst zwischen Factory-Interfaces und Factory-Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:analyse:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet, da es eine Java-Konvention ist Klassen welche ein Interface implementieren mit dem Suffix \glqq Impl\grqq{} zu benennen \cite{DDD:Vernon:2013}.
 
-Die Factory-Interfaces und Factory-Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \glqq model\grqq{} sind, sollten die Klassen in einem untergeordneten Modul, mit dem Namen \glqq impl\grqq{} abgelegt sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
+Die Factory-Interfaces und Factory-Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \texttt{domain.<domain>.model} sind, sollten die Klassen in dem untergeordneten Modul \texttt{impl} zu finden sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
 
 Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:analyse:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Diese beiden Kriterien wurden mit einer Relevanz von \texttt{MAJOR} bewertet.
 
@@ -317,8 +320,8 @@ Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, 
         \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
         Interface-Namenssuffix: \glqq Repository\grqq{}                     & \texttt{INFO}     \\ \hline 
         Klassen-Namenssuffix: \glqq RepositoryImpl\grqq{}                   & \texttt{INFO}     \\ \hline
-        Interface Modul: \glqq domain.<domain>.model\grqq{}                 & \texttt{MINOR}    \\ \hline
-        Klassen Modul: \glqq domain.<domain>.model.impl\grqq{}              & \texttt{MINOR}    \\ \hline
+        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ \hline
+        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ \hline
         Repository-Klasse implementiert Repository-Interface                & \texttt{MINOR}    \\ \hline
         Methode zum Erzeugen einer neuen Identität (\texttt{nextIdentity})  & \texttt{MAJOR}    \\ \hline
         Methode zum Finden (\texttt{findBy/get})                            & \texttt{MAJOR}    \\ \hline
@@ -333,21 +336,21 @@ Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, 
 
 Die ersten fünf Kriterien von Repositories, in der Tabelle \ref{tab:analyse:rating:artifakt:repository:criteria} sind gleich aufgebaut wie im vorherigen Abschnitt \ref{sec:analyse:rating:artifakt:factory}.
 
-Bei den notwendigen Methoden unterscheiden sich allerdings die Kriterien der Repositories und der Factories. Die erforderlichen Methoden wurden in zwei Kategorien eingeteilt.
+Bei den notwendigen Methoden unterscheiden sich allerdings die Bewertungskriterien der Repositories und Factories. Die erforderlichen Methoden wurden in zwei Kategorien eingeteilt.
 
 Die erste Kategorie enthält Methoden, welche unverzichtbar für ein Repository sind. Zu den Methoden der ersten Kategorie gehören Methoden zum Erzeugen einer neuen Identität sowie zum Finden, Speichern und Löschen einer Entity. Die Methoden dieser Kategorie wurden als \texttt{MAJOR} eingestuft.
 
-In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so relevant wie die Methoden aus der ersten Kategorie, zum Beispiel Methoden zum Aktualisieren und Überprüfen der Existenz einer Entity. Aufgrund ihrer geringeren Relevanz wurden diese Methoden als \texttt{MINOR} bewertet.
+In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so relevant wie die Methoden aus der ersten Kategorie. Dazu gehören Methoden zum Aktualisieren und Überprüfen der Existenz einer Entity. Aufgrund ihrer geringeren Relevanz wurden diese Methoden als \texttt{MINOR} bewertet.
 
 \subsubsection{Bewertungskriterien von Services}
 \label{sec:analyse:rating:artifakt:service}
 \begin{table}[htbp] 
     \centering
     \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                          & \textbf{Relevanz} \\ \hline\hline
-        Application Service Name beinhaltet \glqq Application\grqq{}& \texttt{INFO}     \\ \hline
-        Application Service Modul: \glqq application\grqq{}	        & \texttt{MINOR}    \\ \hline
-        Domain Service Modul: \glqq application.<domain>\grqq{}	    & \texttt{MINOR}    \\ \hline
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
+        Application Service Name beinhaltet \glqq Application\grqq{}        & \texttt{INFO}     \\ \hline
+        Application Service Modul: \texttt{application}                     & \texttt{MINOR}    \\ \hline
+        Domain Service Modul: \texttt{application.<domain>}                 & \texttt{MINOR}    \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Services}
     \label{tab:analyse:rating:artifakt:service:criteria}
@@ -355,13 +358,13 @@ In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so rele
 
 Bei der Bewertung von Services muss zwischen zwei Services unterschieden werden, die Application und Domain Services. 
 
-Die Application Services werden anhand von zwei Kriterien bewertet, siehe Tabelle \ref{tab:analyse:rating:artifakt:service:criteria}. Der Name des Application Service sollte das Wort \glqq Application\grqq{} beinhalten. Dieses Kriterium ist mit \texttt{INFO} gewichtet. Außerdem muss der Application Service dem Modul \glqq application\grqq{} zugeordnet sein. Die Zuordnung zu dem speziellen Modul ist als \texttt{MINOR} eingestuft.
+Die Application Services werden anhand von zwei Kriterien bewertet, siehe Tabelle \ref{tab:analyse:rating:artifakt:service:criteria}. Der Name des Application Service sollte das Wort \glqq Application\grqq{} beinhalten. Dieses Kriterium ist mit \texttt{INFO} gewichtet. Außerdem muss der Application Service dem Modul \texttt{application} zugeordnet sein. Die Zuordnung zu dem speziellen Modul ist als \texttt{MINOR} eingestuft.
 
-Die Domain Services erfüllen alle Kriterien wenn, sie in dem Modul \glqq application.<domain>\grqq{} enthalten sind. Auch dieses Kriterium besitzt eine Relevanz von \texttt{MINOR}.
+Die Domain Services erfüllen alle Kriterien wenn, sie in dem Modul \texttt{appli\-cation.\-<domain>} enthalten sind. Auch dieses Kriterium besitzt eine Relevanz von \texttt{MINOR}.
 
 \subsection{Dokumentation der nicht erfüllten Kriterien}
 \label{sec:analyse:rating:issue}
-Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachvollzogen werden kann, werden die nicht erfüllten Kriterien zurückgegeben.
+Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachvollzogen werden kann, werden die nicht erfüllten Kriterien, mit einer Beschreibung des Problems, zurückgegeben.
 
 \begin{lstlisting}[caption={Ausschnitt der Bewertung eines Artefakts},captionpos=b,label=lst:analyse:rating:issue:output]
 {
@@ -388,13 +391,13 @@ Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, is
     \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:total}
 \end{equation}
 
-Im ersten Schritt muss, anhand der Formel \ref{align:analyse:metric:total}, die Wertigkeit aller Kriterien berechnet werden. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
+Im ersten Schritt wurde, anhand der Formel \ref{align:analyse:metric:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
 
 \begin{equation}
     \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:fulfilled}
 \end{equation}
 
-Als Nächstes wird die Formel \ref{align:analyse:metric:fulfilled} verwendet, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
+Als Nächstes wurde die Formel \ref{align:analyse:metric:fulfilled} verwendet, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
 
 \begin{equation}
     \text{Metrik} = \frac{\text{Erfüllte Kriterien} \cdot 100}{\text{Totale Kriterien}} \label{align:analyse:metric}
@@ -417,18 +420,33 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
     \label{tab:analyse:metric}
 \end{table}
 
-Um die Metrik aus \ref{align:analyse:metric} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an ihrem \glqq Maintainability Rating \grqq{} \cite{Related:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt.
+Um die Metrik aus \ref{align:analyse:metric} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an dem Maintainability Rating \cite{Related:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt. 
 
 \begin{lstlisting}[caption={Ausschnitt der Gesamtbewertung eines Systems},captionpos=b,label=lst:analyse:metric:output]
 {
-    "score": "D",
-    "criteria": {
-        "total": 121,
-        "fulfilled": 64
+    "metric": {
+        "score": "D",
+        "criteria": {
+            "total":        121,
+            "fulfilled":    64
+        },
+        "fitness":  52.89,
+        "#Issues":  35
     },
-    "fitness": 52.89,
-    "#Issues": 35
+    "DDD": {
+        "#APPLICATION_SERVICE": 1,
+        "#VALUE_OBJECT":        2,
+        "#CONTROLLER":          1,
+        "#MODULE":              3,
+        "#FACTORY":             0,
+        "#REPOSITORY":          1,
+        "#INFRASTRUCTUR":       3,
+        "#SERVICE":             7,
+        "#ENTITY":              1,
+        "#AGGREGATE_ROOT":      1
+    },
+    ...
 }
 \end{lstlisting}
 
-Anschließend wird die Gesamtbewertung in dem Format aus Listing \ref{lst:analyse:metric:output} zurückgegeben.
+Anschließend wird die Gesamtbewertung in dem Format aus Listing \ref{lst:analyse:metric:output}, mit zusätzlichen Informationen, zurückgegeben.

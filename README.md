@@ -15,4 +15,4 @@ Der Quellcode ist in folgenden Repository verfügbar: [illumi-code-ddd](https://
 [**Kraft, Daniel**](https://github.com/DanielKraft)
 
 ## Danksagung
-[**adesso AG**](https://www.adesso.de/de/)
+[**adesso SE**](https://www.adesso.de/de/)

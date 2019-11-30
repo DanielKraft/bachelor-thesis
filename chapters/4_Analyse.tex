@@ -40,7 +40,7 @@ Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen d
 
 \subsection{Aggregate Roots}
 \label{sec:analyse:characteristics:aggregate}
-Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Objects unterteilt wurde, müssen den Domains Aggregate Roots zugeordnet werden \cite{DDD:Holmstrom:2019}. Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:aggregate} erläutert können nur Entities die Rolle als Aggregate Root einnehmen.
+Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Objects unterteilt wurde, müssen den Domains Aggregate Roots zugeordnet werden \cite{DDD:Vernon:2013}. Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:aggregate} erläutert können nur Entities die Rolle als Aggregate Root einnehmen.
 
 \begin{figure}[htbp] 
     \centering
@@ -228,7 +228,7 @@ Als letztes werden notwendige Methoden aufgeführt welche implementiert sein mü
         Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
         Getter heißen so wie das zugehörige Attribut                        & \texttt{INFO}     \\ \hline
         Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
+        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Value Objects}
     \label{tab:analyse:rating:artifakt:value_object:criteria}
@@ -329,7 +329,8 @@ In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so rele
         Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
         Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ \hline
         Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ \hline
-        Setter ist frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
     \end{tabular}
     \caption{Kriterien zur Bewertung von Domain Events}
     \label{tab:analyse:rating:artifakt:event:criteria}

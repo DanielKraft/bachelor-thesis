@@ -383,27 +383,83 @@ Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachv
 
 Listing \ref{lst:analyse:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes eines bewerteten Artefakts. Man kann daran deutlich erkennen, welche Kriterien nicht eingehalten wurden und woran es gelegen hat.
 
-\section{Bewertung anhand einer Metrik}
+\section{Bewertung anhand von verschiedenen Metriken}
 \label{sec:analyse:metric}
+
+\subsection{Object-Oriented Design Metriken}
+\label{sec:analyse:metric:ood}
+In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Object-Oriented Design behandelt. Die verwendeten Metriken stammen aus dem Artikel \glqq OO Design Quality Metrics\grqq{} \cite{Metric:Martin:1994}. Die Metriken beschreiben die Zustände der einzelnen Module eines Systems. Dabei wird die Abstraktheit sowie die Stabilität der Module gemessen.
+
+\begin{equation}
+    \text{Abstractness} = \frac{\text{Anzahl abstrakter Artefakte}}{\text{Gesamt Anzahl aller Artefakte}} \label{align:analyse:metric:ood:abstractness}
+\end{equation}
+
+Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0,1].
+
+Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Packages, welche von diesem Package abhängig sind \cite{Metric:Martin:1994}. Afferent Couplings ist das Gegenteil von Afferent Couplings. Afferent Couplings ist die Anzahl der Klassen innerhalb dieses Packages, welche von einem anderem Package abhängen.
+
+\begin{equation}
+    \text{Instability} = \frac{\text{Efferent Couplings}}{\text{Afferent Couplings} + \text{Efferent Couplings}} \label{align:analyse:metric:ood:instability}
+\end{equation}
+
+Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitzt \cite{Metric:Martin:1994}. Anhand der Formel \ref{align:analyse:metric:ood:instability} kann die Instabiliät berechnet werden. Auch hier ist der Wertebereich [0,1].
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth]{gfx/OOD_Quality_Metric.pdf}
+    \caption{Zusammenhang zwischen den Object-Oriented Design Metriken}
+    \label{fig:analyse:metric:ood}
+\end{figure}
+
+Laut \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} \cite{Metric:Martin:1994} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Packages auf der Main Sequence liegen.
+
+\begin{equation}
+    \text{Distanz} = | \text{Abstractness} + \text{Instability} - 1 | \label{align:analyse:metric:ood:distance}
+\end{equation}
+
+Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden.
+
+\begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output]
+"OOD": {
+    "metric": {
+        "avg": 0.39,
+        "min": 0.17,
+        "max": 1
+    },
+    "module": {
+        "BOOT-INF.classes.org.springframework.samples.petclinic.visit": {
+            "distance": 0.17,
+            "instability": 0.33,
+            "abstractness": 0.5
+        }, 
+        ...
+    }
+}
+\end{lstlisting}
+
+Die in diesem Abschnitt beschriebenen Metriken werden für jedes Module berechnet und in dem Format aus Listing \ref{lst:analyse:metric:ood:output} zurückgegeben.
+
+\subsection{Domain-Driven Design Metrik}
+\label{sec:analyse:metric:ddd}
 Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, ist es notwendig eine Metrik zu definieren. In dieser Metrik sollten alle Kriterien und ihre Relevanz einbezogen werden, damit sie aussagekräftig ist.
 
 \begin{equation}
-    \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:total}
+    \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:ddd:total}
 \end{equation}
 
-Im ersten Schritt wurde, anhand der Formel \ref{align:analyse:metric:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
+Im ersten Schritt wurde, anhand der Formel \ref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
 
 \begin{equation}
-    \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:fulfilled}
+    \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:ddd:fulfilled}
 \end{equation}
 
-Als Nächstes wurde die Formel \ref{align:analyse:metric:fulfilled} verwendet, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
+Als Nächstes wurde die Formel \ref{align:analyse:metric:ddd:fulfilled} verwendet, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
 
 \begin{equation}
-    \text{Metrik} = \frac{\text{Erfüllte Kriterien} \cdot 100}{\text{Totale Kriterien}} \label{align:analyse:metric}
+    \text{Metrik} = \frac{\text{Erfüllte Kriterien} \cdot 100}{\text{Totale Kriterien}} \label{align:analyse:metric:ddd}
 \end{equation}
 
-Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Formel \ref{align:analyse:metric} miteinander verrechnet. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
+Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Formel \ref{align:analyse:metric:ddd} miteinander verrechnet. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
 
 \begin{table}[htbp] 
     \centering
@@ -417,36 +473,30 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
         \texttt{F}      & ungenügend            & $20.0 > \text{ Metrik } \geq 0.0$     \\ \hline
     \end{tabular}
     \caption{Benotung der Domain-Driven Design Metrik}
-    \label{tab:analyse:metric}
+    \label{tab:analyse:metric:ddd}
 \end{table}
 
-Um die Metrik aus \ref{align:analyse:metric} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an dem Maintainability Rating \cite{Related:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt. 
+Um die Metrik aus \ref{align:analyse:metric:ddd} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric:ddd} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an dem Maintainability Rating \cite{Metric:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt. 
 
-\begin{lstlisting}[caption={Ausschnitt der Gesamtbewertung eines Systems},captionpos=b,label=lst:analyse:metric:output]
-{
-    "metric": {
-        "score": "D",
-        "criteria": {
-            "total":        121,
-            "fulfilled":    64
-        },
-        "fitness":  52.89,
-        "#Issues":  35
-    },
-    "DDD": {
+\begin{lstlisting}[caption={Ausschnitt der Domain-Driven Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ddd:output]
+"DDD": {
+    "artifact": {
         "#APPLICATION_SERVICE": 1,
-        "#VALUE_OBJECT":        2,
-        "#CONTROLLER":          1,
-        "#MODULE":              3,
-        "#FACTORY":             0,
-        "#REPOSITORY":          1,
-        "#INFRASTRUCTUR":       3,
-        "#SERVICE":             7,
-        "#ENTITY":              1,
-        "#AGGREGATE_ROOT":      1
+        "#CONTROLLER": 6,
+        "#MODULE": 5,
+        "#REPOSITORY": 4,
+        "#INFRASTRUCTUR": 1,
+        "#SERVICE": 2,
+        "#ENTITY": 7,
+        "#AGGREGATE_ROOT": 2
+    },
+    "metric": {
+        "score": "E",
+        "fitness": 40.26,
+        "#Issues": 85
     },
     ...
 }
 \end{lstlisting}
 
-Anschließend wird die Gesamtbewertung in dem Format aus Listing \ref{lst:analyse:metric:output}, mit zusätzlichen Informationen, zurückgegeben.
+Anschließend wird die Gesamtbewertung in dem Format aus Listing \ref{lst:analyse:metric:ddd:output}, mit zusätzlichen Informationen, zurückgegeben.

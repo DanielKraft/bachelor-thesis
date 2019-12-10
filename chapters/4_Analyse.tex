@@ -396,7 +396,7 @@ In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Object-Orient
 
 Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0,1].
 
-Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Packages, welche von diesem Package abhängig sind \cite{Metric:Martin:1994}. Afferent Couplings ist das Gegenteil von Afferent Couplings. Afferent Couplings ist die Anzahl der Klassen innerhalb dieses Packages, welche von einem anderem Package abhängen.
+Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Packages, welche von diesem Package abhängig sind \cite{Metric:Martin:1994}. Efferent Couplings ist das Gegenteil von Afferent Couplings. Efferent Couplings ist die Anzahl der Klassen innerhalb dieses Packages, welche von einem anderem Package abhängen.
 
 \begin{equation}
     \text{Instability} = \frac{\text{Efferent Couplings}}{\text{Afferent Couplings} + \text{Efferent Couplings}} \label{align:analyse:metric:ood:instability}
@@ -421,7 +421,7 @@ Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der M
 
 \begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output]
 "OOD": {
-    "metric": {
+    "distance": {
         "avg": 0.39,
         "min": 0.17,
         "max": 1

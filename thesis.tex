@@ -43,6 +43,7 @@
 %*************************************************************************
 \input{hdathesis-config}
 \input{classicthesis-config}
+\usepackage{float}
 
 %*************************************************************************
 % Bibliographies
@@ -118,8 +119,9 @@
 %*************************************************************************
 \appendix
 %\renewcommand{\thechapter}{\alph{chapter}}
-%\cleardoublepage
-%\part{Anhang}
+
+\part{Anhang}\label{pt:appendix}
+\include{chapters/8_Anhang}
 %*************************************************************************
 % Other Stuff in the Back
 %*************************************************************************

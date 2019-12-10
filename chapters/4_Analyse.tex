@@ -369,6 +369,7 @@ Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachv
 \begin{lstlisting}[caption={Ausschnitt der Bewertung eines Artefakts},captionpos=b,label=lst:analyse:rating:issue:output]
 {
     "DDD": "VALUE_OBJECT",
+    "fitness": 50,
     "domain": "issue",
     "name": "IssueId",
     "issues": [
@@ -424,7 +425,9 @@ Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der M
     "distance": {
         "avg": 0.39,
         "min": 0.17,
-        "max": 1
+        "median": 0.2,
+        "max": 1,
+        "standard deviation": 0.41
     },
     "module": {
         "BOOT-INF.classes.org.springframework.samples.petclinic.visit": {
@@ -482,18 +485,24 @@ Um die Metrik aus \ref{align:analyse:metric:ddd} besser einzuordnen, wird dem Sy
 "DDD": {
     "artifact": {
         "#APPLICATION_SERVICE": 1,
-        "#CONTROLLER": 6,
         "#MODULE": 5,
         "#REPOSITORY": 4,
-        "#INFRASTRUCTUR": 1,
+        "#INFRASTRUCTUR": 7,
         "#SERVICE": 2,
         "#ENTITY": 7,
         "#AGGREGATE_ROOT": 2
     },
     "metric": {
         "score": "E",
-        "fitness": 40.26,
-        "#Issues": 85
+        "statistic": {
+            "avg": 30.96,
+            "min": 0,
+            "median": 40,
+            "max": 80,
+            "standard deviation": 27.25
+        },
+        "fitness": 44.22,
+        "#Issues": 81
     },
     ...
 }

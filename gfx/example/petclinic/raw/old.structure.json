@@ -1,0 +1,419 @@
+[
+    {
+        "contains": [
+            {
+                "extends": "org.springframework.samples.petclinic.model.BaseEntity",
+                "DDD": "DOMAIN_EVENT",
+                "fitness": 42.11,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getDate(): java.time.LocalDate",
+                    "+ setDate(java.time.LocalDate): void",
+                    "+ getDescription(): java.lang.String",
+                    "+ setDescription(java.lang.String): void",
+                    "+ getPetId(): java.lang.Integer",
+                    "+ setPetId(java.lang.Integer): void"
+                ],
+                "name": "Visit",
+                "fields": [
+                    "- date: java.time.LocalDate",
+                    "- description: java.lang.String",
+                    "- petId: java.lang.Integer"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "methods": [
+                    "+ save(org.springframework.samples.petclinic.visit.Visit): void",
+                    "+ findByPetId(java.lang.Integer): java.util.List"
+                ],
+                "name": "VisitRepository"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 40,
+        "name": "visit"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ triggerException(): java.lang.String"
+                ],
+                "name": "CrashController"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ welcome(): java.lang.String"
+                ],
+                "name": "WelcomeController"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ petclinicCacheConfigurationCustomizer(): org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer",
+                    "- cacheConfiguration(): javax.cache.configuration.Configuration",
+                    "- lambda$petclinicCacheConfigurationCustomizer$0(javax.cache.CacheManager): void"
+                ],
+                "name": "CacheConfiguration"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 80,
+        "name": "system"
+    },
+    {
+        "DDD": "APPLICATION_SERVICE",
+        "fitness": 0,
+        "methods": [
+            "+ <init>(): void",
+            "+ main(java.lang.String[]): void"
+        ],
+        "name": "PetClinicApplication"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "org.springframework.samples.petclinic.visit.Visit",
+                    "org.springframework.samples.petclinic.owner.PetRepository",
+                    "org.springframework.samples.petclinic.visit.VisitRepository",
+                    "org.springframework.samples.petclinic.owner.Pet"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(org.springframework.samples.petclinic.visit.VisitRepository,org.springframework.samples.petclinic.owner.PetRepository): void",
+                    "+ setAllowedFields(org.springframework.web.bind.WebDataBinder): void",
+                    "+ loadPetWithVisit(int,java.util.Map): org.springframework.samples.petclinic.visit.Visit",
+                    "+ initNewVisitForm(int,java.util.Map): java.lang.String",
+                    "+ processNewVisitForm(org.springframework.samples.petclinic.visit.Visit,org.springframework.validation.BindingResult): java.lang.String"
+                ],
+                "name": "VisitController",
+                "fields": [
+                    "- visits: org.springframework.samples.petclinic.visit.VisitRepository",
+                    "- pets: org.springframework.samples.petclinic.owner.PetRepository"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.OwnerRepository",
+                    "org.springframework.samples.petclinic.owner.Owner"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(org.springframework.samples.petclinic.owner.OwnerRepository): void",
+                    "+ setAllowedFields(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initCreationForm(java.util.Map): java.lang.String",
+                    "+ processCreationForm(org.springframework.samples.petclinic.owner.Owner,org.springframework.validation.BindingResult): java.lang.String",
+                    "+ initFindForm(java.util.Map): java.lang.String",
+                    "+ processFindForm(org.springframework.samples.petclinic.owner.Owner,org.springframework.validation.BindingResult,java.util.Map): java.lang.String",
+                    "+ initUpdateOwnerForm(int,org.springframework.ui.Model): java.lang.String",
+                    "+ processUpdateOwnerForm(org.springframework.samples.petclinic.owner.Owner,org.springframework.validation.BindingResult,int): java.lang.String",
+                    "+ showOwner(int): org.springframework.web.servlet.ModelAndView"
+                ],
+                "name": "OwnerController",
+                "fields": [
+                    "- VIEWS_OWNER_CREATE_OR_UPDATE_FORM: java.lang.String",
+                    "- owners: org.springframework.samples.petclinic.owner.OwnerRepository"
+                ]
+            },
+            {
+                "extends": "org.springframework.samples.petclinic.model.NamedEntity",
+                "DDD": "ENTITY",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.Owner",
+                    "org.springframework.samples.petclinic.visit.Visit",
+                    "org.springframework.samples.petclinic.owner.PetType"
+                ],
+                "fitness": 72.41,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ setBirthDate(java.time.LocalDate): void",
+                    "+ getBirthDate(): java.time.LocalDate",
+                    "+ getType(): org.springframework.samples.petclinic.owner.PetType",
+                    "+ setType(org.springframework.samples.petclinic.owner.PetType): void",
+                    "+ getOwner(): org.springframework.samples.petclinic.owner.Owner",
+                    "# setOwner(org.springframework.samples.petclinic.owner.Owner): void",
+                    "# getVisitsInternal(): java.util.Set",
+                    "# setVisitsInternal(java.util.Set): void",
+                    "+ getVisits(): java.util.List",
+                    "+ addVisit(org.springframework.samples.petclinic.visit.Visit): void"
+                ],
+                "name": "Pet",
+                "fields": [
+                    "- birthDate: java.time.LocalDate",
+                    "- type: org.springframework.samples.petclinic.owner.PetType",
+                    "- owner: org.springframework.samples.petclinic.owner.Owner",
+                    "- visits: java.util.Set"
+                ]
+            },
+            {
+                "extends": "org.springframework.samples.petclinic.model.Person",
+                "DDD": "AGGREGATE_ROOT",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.Pet"
+                ],
+                "fitness": 47.37,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getAddress(): java.lang.String",
+                    "+ setAddress(java.lang.String): void",
+                    "+ getCity(): java.lang.String",
+                    "+ setCity(java.lang.String): void",
+                    "+ getTelephone(): java.lang.String",
+                    "+ setTelephone(java.lang.String): void",
+                    "# getPetsInternal(): java.util.Set",
+                    "# setPetsInternal(java.util.Set): void",
+                    "+ getPets(): java.util.List",
+                    "+ addPet(org.springframework.samples.petclinic.owner.Pet): void",
+                    "+ getPet(java.lang.String): org.springframework.samples.petclinic.owner.Pet",
+                    "+ getPet(java.lang.String,boolean): org.springframework.samples.petclinic.owner.Pet",
+                    "+ toString(): java.lang.String"
+                ],
+                "name": "Owner",
+                "fields": [
+                    "- address: java.lang.String",
+                    "- city: java.lang.String",
+                    "- telephone: java.lang.String",
+                    "- pets: java.util.Set"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.PetType",
+                    "org.springframework.samples.petclinic.owner.PetRepository"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(org.springframework.samples.petclinic.owner.PetRepository): void",
+                    "+ print(org.springframework.samples.petclinic.owner.PetType,java.util.Locale): java.lang.String",
+                    "+ parse(java.lang.String,java.util.Locale): org.springframework.samples.petclinic.owner.PetType",
+                    "+ print(java.lang.Object,java.util.Locale): java.lang.String",
+                    "+ parse(java.lang.String,java.util.Locale): java.lang.Object"
+                ],
+                "name": "PetTypeFormatter",
+                "fields": [
+                    "- pets: org.springframework.samples.petclinic.owner.PetRepository"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "methods": [
+                    "+ findPetTypes(): java.util.List",
+                    "+ findById(java.lang.Integer): org.springframework.samples.petclinic.owner.Pet",
+                    "+ save(org.springframework.samples.petclinic.owner.Pet): void"
+                ],
+                "name": "PetRepository"
+            },
+            {
+                "extends": "org.springframework.samples.petclinic.model.NamedEntity",
+                "DDD": "ENTITY",
+                "fitness": 55.56,
+                "methods": [
+                    "+ <init>(): void"
+                ],
+                "name": "PetType"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.OwnerRepository",
+                    "org.springframework.samples.petclinic.owner.Pet",
+                    "org.springframework.samples.petclinic.owner.PetValidator",
+                    "org.springframework.samples.petclinic.owner.PetType",
+                    "org.springframework.samples.petclinic.owner.Owner",
+                    "org.springframework.samples.petclinic.owner.PetRepository"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(org.springframework.samples.petclinic.owner.PetRepository,org.springframework.samples.petclinic.owner.OwnerRepository): void",
+                    "+ populatePetTypes(): java.util.Collection",
+                    "+ findOwner(int): org.springframework.samples.petclinic.owner.Owner",
+                    "+ initOwnerBinder(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initPetBinder(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initCreationForm(org.springframework.samples.petclinic.owner.Owner,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ processCreationForm(org.springframework.samples.petclinic.owner.Owner,org.springframework.samples.petclinic.owner.Pet,org.springframework.validation.BindingResult,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ initUpdateForm(int,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ processUpdateForm(org.springframework.samples.petclinic.owner.Pet,org.springframework.validation.BindingResult,org.springframework.samples.petclinic.owner.Owner,org.springframework.ui.ModelMap): java.lang.String"
+                ],
+                "name": "PetController",
+                "fields": [
+                    "- VIEWS_PETS_CREATE_OR_UPDATE_FORM: java.lang.String",
+                    "- pets: org.springframework.samples.petclinic.owner.PetRepository",
+                    "- owners: org.springframework.samples.petclinic.owner.OwnerRepository"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "depends": [
+                    "org.springframework.samples.petclinic.owner.Pet"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ validate(java.lang.Object,org.springframework.validation.Errors): void",
+                    "+ supports(java.lang.Class): boolean"
+                ],
+                "name": "PetValidator",
+                "fields": [
+                    "- REQUIRED: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "methods": [
+                    "+ findByLastName(java.lang.String): java.util.Collection",
+                    "+ findById(java.lang.Integer): org.springframework.samples.petclinic.owner.Owner",
+                    "+ save(org.springframework.samples.petclinic.owner.Owner): void"
+                ],
+                "name": "OwnerRepository"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 60,
+        "name": "owner"
+    },
+    {
+        "contains": [
+            {
+                "extends": "org.springframework.samples.petclinic.model.Person",
+                "DDD": "AGGREGATE_ROOT",
+                "depends": [
+                    "org.springframework.samples.petclinic.vet.Specialty"
+                ],
+                "fitness": 52.17,
+                "methods": [
+                    "+ <init>(): void",
+                    "# getSpecialtiesInternal(): java.util.Set",
+                    "# setSpecialtiesInternal(java.util.Set): void",
+                    "+ getSpecialties(): java.util.List",
+                    "+ getNrOfSpecialties(): int",
+                    "+ addSpecialty(org.springframework.samples.petclinic.vet.Specialty): void"
+                ],
+                "name": "Vet",
+                "fields": [
+                    "- specialties: java.util.Set"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 0,
+                "methods": [
+                    "+ findAll(): java.util.Collection"
+                ],
+                "name": "VetRepository"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "org.springframework.samples.petclinic.vet.Vets",
+                    "org.springframework.samples.petclinic.vet.VetRepository"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(org.springframework.samples.petclinic.vet.VetRepository): void",
+                    "+ showVetList(java.util.Map): java.lang.String",
+                    "+ showResourcesVetList(): org.springframework.samples.petclinic.vet.Vets"
+                ],
+                "name": "VetController",
+                "fields": [
+                    "- vets: org.springframework.samples.petclinic.vet.VetRepository"
+                ]
+            },
+            {
+                "extends": "org.springframework.samples.petclinic.model.NamedEntity",
+                "DDD": "ENTITY",
+                "fitness": 55.56,
+                "methods": [
+                    "+ <init>(): void"
+                ],
+                "name": "Specialty"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "org.springframework.samples.petclinic.vet.Vet"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getVetList(): java.util.List"
+                ],
+                "name": "Vets",
+                "fields": [
+                    "- vets: java.util.List"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 60,
+        "name": "vet"
+    },
+    {
+        "contains": [
+            {
+                "extends": "org.springframework.samples.petclinic.model.BaseEntity",
+                "DDD": "ENTITY",
+                "fitness": 47.37,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getFirstName(): java.lang.String",
+                    "+ setFirstName(java.lang.String): void",
+                    "+ getLastName(): java.lang.String",
+                    "+ setLastName(java.lang.String): void"
+                ],
+                "name": "Person",
+                "fields": [
+                    "- firstName: java.lang.String",
+                    "- lastName: java.lang.String"
+                ]
+            },
+            {
+                "extends": "org.springframework.samples.petclinic.model.BaseEntity",
+                "DDD": "ENTITY",
+                "fitness": 50,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getName(): java.lang.String",
+                    "+ setName(java.lang.String): void",
+                    "+ toString(): java.lang.String"
+                ],
+                "name": "NamedEntity",
+                "fields": [
+                    "- name: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 50,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getId(): java.lang.Integer",
+                    "+ setId(java.lang.Integer): void",
+                    "+ isNew(): boolean"
+                ],
+                "name": "BaseEntity",
+                "fields": [
+                    "- id: java.lang.Integer"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 40,
+        "name": "model"
+    }
+]

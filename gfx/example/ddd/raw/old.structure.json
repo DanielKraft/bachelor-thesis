@@ -1,0 +1,300 @@
+[
+    {
+        "contains": [
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.IssueComment",
+                    "pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "pl.pragmatists.ddd.adm.domain.IssueId"
+                ],
+                "fitness": 63.16,
+                "methods": [
+                    "+ getId(): pl.pragmatists.ddd.adm.domain.IssueId",
+                    "+ getName(): java.lang.String",
+                    "+ getStatus(): pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "+ getComments(): java.util.List",
+                    "+ <init>(java.lang.String,pl.pragmatists.ddd.adm.domain.IssueId): void",
+                    "+ addComment(java.lang.String): void",
+                    "+ changeStatusTo(pl.pragmatists.ddd.adm.domain.IssueStatus): void",
+                    "- <init>(): void"
+                ],
+                "name": "Issue",
+                "fields": [
+                    "- id: pl.pragmatists.ddd.adm.domain.IssueId",
+                    "- name: java.lang.String",
+                    "- status: pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "- comments: java.util.List"
+                ]
+            },
+            {
+                "DDD": "VALUE_OBJECT",
+                "fitness": 68.42,
+                "methods": [
+                    "+ value(): java.lang.Long",
+                    "+ from(java.lang.String): pl.pragmatists.ddd.adm.domain.IssueId",
+                    "- <init>(): void",
+                    "- <init>(java.lang.Long): void",
+                    "+ next(): pl.pragmatists.ddd.adm.domain.IssueId"
+                ],
+                "name": "IssueId",
+                "fields": [
+                    "- issueId: java.lang.Long"
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 36.84,
+                "methods": [
+                    "+ getComment(): java.lang.String",
+                    "+ <init>(java.lang.String): void",
+                    "- <init>(): void",
+                    "+ getId(): java.lang.Long"
+                ],
+                "name": "IssueComment",
+                "fields": [
+                    "- id: java.lang.Long",
+                    "- comment: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "methods": [
+                    "+ save(pl.pragmatists.ddd.adm.domain.Issue): pl.pragmatists.ddd.adm.domain.Issue",
+                    "+ findAll(): java.util.List",
+                    "+ findBy(pl.pragmatists.ddd.adm.domain.IssueId): pl.pragmatists.ddd.adm.domain.Issue"
+                ],
+                "name": "IssueRepository"
+            },
+            {
+                "DDD": "SERVICE",
+                "fitness": 100,
+                "methods": [
+                    "+ nextId(): pl.pragmatists.ddd.adm.domain.IssueId"
+                ],
+                "name": "IssueIdSequenceGenerator"
+            },
+            {
+                "DDD": "VALUE_OBJECT",
+                "fitness": 100,
+                "name": "IssueStatus",
+                "fields": [
+                    "+ NEW: pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "+ DONE: pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "+ IN_PROGRESS: pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "- $VALUES: pl.pragmatists.ddd.adm.domain.IssueStatus[]"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 90,
+        "name": "domain"
+    },
+    {
+        "DDD": "APPLICATION_SERVICE",
+        "fitness": 0,
+        "methods": [
+            "+ <init>(): void",
+            "+ main(java.lang.String[]): void"
+        ],
+        "name": "Application"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 100,
+                "methods": [
+                    "+ findTopById(): pl.pragmatists.ddd.adm.domain.IssueId"
+                ],
+                "name": "CrudIssueRepository"
+            },
+            {
+                "implements": [
+                    "pl.pragmatists.ddd.adm.domain.IssueIdSequenceGenerator"
+                ],
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.IssueId",
+                    "pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository): void",
+                    "+ nextId(): pl.pragmatists.ddd.adm.domain.IssueId"
+                ],
+                "name": "JpaIssueIdSequenceGenerator",
+                "fields": [
+                    "- issueRepository: pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository"
+                ]
+            },
+            {
+                "implements": [
+                    "pl.pragmatists.ddd.adm.domain.IssueRepository"
+                ],
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.Issue",
+                    "pl.pragmatists.ddd.adm.domain.IssueId",
+                    "pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository): void",
+                    "+ findAll(): java.util.List",
+                    "+ save(pl.pragmatists.ddd.adm.domain.Issue): pl.pragmatists.ddd.adm.domain.Issue",
+                    "+ findBy(pl.pragmatists.ddd.adm.domain.IssueId): pl.pragmatists.ddd.adm.domain.Issue",
+                    "- lambda$findAll$0(java.util.List,pl.pragmatists.ddd.adm.domain.Issue): void"
+                ],
+                "name": "JpaIssueRepository",
+                "fields": [
+                    "- crudIssueRepository: pl.pragmatists.ddd.adm.infrastructure.CrudIssueRepository"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "infrastructure"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.IssueStatus"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(pl.pragmatists.ddd.adm.domain.IssueStatus): void"
+                ],
+                "name": "UpdateIssueJson",
+                "fields": [
+                    "+ status: pl.pragmatists.ddd.adm.domain.IssueStatus"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.application.NewIssueCommentJson",
+                    "pl.pragmatists.ddd.adm.domain.IssueId",
+                    "pl.pragmatists.ddd.adm.application.IssueJson",
+                    "pl.pragmatists.ddd.adm.application.UpdateIssueJson",
+                    "pl.pragmatists.ddd.adm.application.IssueService",
+                    "pl.pragmatists.ddd.adm.domain.Issue",
+                    "pl.pragmatists.ddd.adm.application.NewIssueJson"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(pl.pragmatists.ddd.adm.application.IssueService): void",
+                    "+ get(java.lang.String): pl.pragmatists.ddd.adm.application.IssueJson",
+                    "+ all(): java.util.List",
+                    "+ newIssue(pl.pragmatists.ddd.adm.application.NewIssueJson): java.lang.Long",
+                    "+ update(java.lang.String,pl.pragmatists.ddd.adm.application.UpdateIssueJson): org.springframework.http.ResponseEntity",
+                    "+ newIssueComment(java.lang.String,pl.pragmatists.ddd.adm.application.NewIssueCommentJson): org.springframework.http.ResponseEntity",
+                    "- lambda$all$0(pl.pragmatists.ddd.adm.domain.Issue): pl.pragmatists.ddd.adm.application.IssueJson"
+                ],
+                "name": "IssueController",
+                "fields": [
+                    "- issueService: pl.pragmatists.ddd.adm.application.IssueService"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.Issue",
+                    "pl.pragmatists.ddd.adm.domain.IssueComment",
+                    "pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "pl.pragmatists.ddd.adm.application.IssueCommentJson"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ fromModel(pl.pragmatists.ddd.adm.domain.Issue): pl.pragmatists.ddd.adm.application.IssueJson",
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String,pl.pragmatists.ddd.adm.domain.IssueStatus,java.util.List): void",
+                    "+ <init>(java.lang.String): void",
+                    "+ getComments(): java.util.List",
+                    "+ equals(java.lang.Object): boolean",
+                    "+ hashCode(): int",
+                    "- lambda$new$0(pl.pragmatists.ddd.adm.domain.IssueComment): pl.pragmatists.ddd.adm.application.IssueCommentJson"
+                ],
+                "name": "IssueJson",
+                "fields": [
+                    "+ name: java.lang.String",
+                    "+ comments: java.util.List",
+                    "+ status: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.IssueComment"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void",
+                    "+ fromModel(pl.pragmatists.ddd.adm.domain.IssueComment): pl.pragmatists.ddd.adm.application.IssueCommentJson",
+                    "+ equals(java.lang.Object): boolean",
+                    "+ hashCode(): int"
+                ],
+                "name": "IssueCommentJson",
+                "fields": [
+                    "+ comment: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void"
+                ],
+                "name": "NewIssueCommentJson",
+                "fields": [
+                    "+ comment: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void"
+                ],
+                "name": "NewIssueJson",
+                "fields": [
+                    "+ name: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "depends": [
+                    "pl.pragmatists.ddd.adm.domain.Issue",
+                    "pl.pragmatists.ddd.adm.domain.IssueId",
+                    "pl.pragmatists.ddd.adm.domain.IssueIdSequenceGenerator",
+                    "pl.pragmatists.ddd.adm.domain.IssueStatus",
+                    "pl.pragmatists.ddd.adm.domain.IssueRepository"
+                ],
+                "fitness": 0,
+                "methods": [
+                    "+ get(java.lang.String): pl.pragmatists.ddd.adm.domain.Issue",
+                    "+ all(): java.util.List",
+                    "+ create(java.lang.String): pl.pragmatists.ddd.adm.domain.Issue",
+                    "+ update(java.lang.String,pl.pragmatists.ddd.adm.domain.IssueStatus): void",
+                    "+ addComment(java.lang.String,java.lang.String): void",
+                    "+ <init>(pl.pragmatists.ddd.adm.domain.IssueRepository,pl.pragmatists.ddd.adm.domain.IssueIdSequenceGenerator): void"
+                ],
+                "name": "IssueService",
+                "fields": [
+                    "- issueRepository: pl.pragmatists.ddd.adm.domain.IssueRepository",
+                    "- issueIdSequenceGenerator: pl.pragmatists.ddd.adm.domain.IssueIdSequenceGenerator"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 20,
+        "name": "application"
+    }
+]

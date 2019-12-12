@@ -1,0 +1,354 @@
+{
+    "DDD": {
+        "artifact": {
+            "#APPLICATION_SERVICE": 1,
+            "#MODULE": 5,
+            "#REPOSITORY": 4,
+            "#INFRASTRUCTUR": 8,
+            "#SERVICE": 2,
+            "#ENTITY": 6,
+            "#AGGREGATE_ROOT": 2
+        },
+        "metric": {
+            "score": "E",
+            "statistic": {
+                "avg": 30.09,
+                "min": 0,
+                "median": 40,
+                "max": 80,
+                "standard deviation": 27.22
+            },
+            "fitness": 46.21,
+            "#Issues": 76
+        },
+        "hotspot": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "CrashController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'CrashController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "WelcomeController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'WelcomeController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "CacheConfiguration",
+                "issues": [
+                    "[MINOR] The infrastructure service 'CacheConfiguration' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "APPLICATION_SERVICE",
+                "fitness": 0,
+                "name": "PetClinicApplication",
+                "issues": [
+                    "[MINOR] The application service 'PetClinicApplication' is not part of an application module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "VisitController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'VisitController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "OwnerController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'OwnerController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "fitness": 0,
+                "name": "PetTypeFormatter",
+                "issues": [
+                    "[MINOR] The service 'PetTypeFormatter' should be placed at 'application.null'"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "PetController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'PetController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "fitness": 0,
+                "name": "PetValidator",
+                "issues": [
+                    "[MINOR] The service 'PetValidator' should be placed at 'application.null'"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "VetController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'VetController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "vet",
+                "name": "Vets",
+                "issues": [
+                    "[MINOR] The infrastructure service 'Vets' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 0,
+                "domain": "vet",
+                "name": "VetRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'VetRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'VetRepository' has no findBy/get method.",
+                    "[MAJOR] The Repository 'VetRepository' has no save/add/insert/put method.",
+                    "[MAJOR] The Repository 'VetRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'VetRepository' should be placed in 'domain.vet.model'",
+                    "[MINOR] The Repository 'VetRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'VetRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 40,
+                "name": "visit",
+                "issues": [
+                    "[CRITICAL] The module 'visit' does not contain an Aggregate Root.",
+                    "[MINOR] The module 'visit' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 40,
+                "name": "model",
+                "issues": [
+                    "[CRITICAL] The module 'model' does not contain an Aggregate Root.",
+                    "[MINOR] The module 'model' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "domain": "visit",
+                "name": "VisitRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'VisitRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'VisitRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'VisitRepository' should be placed in 'domain.visit.model'",
+                    "[MINOR] The Repository 'VisitRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'VisitRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "domain": "owner",
+                "name": "PetRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'PetRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'PetRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'PetRepository' should be placed in 'domain.owner.model'",
+                    "[MINOR] The Repository 'PetRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'PetRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "domain": "owner",
+                "name": "OwnerRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'OwnerRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'OwnerRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'OwnerRepository' should be placed in 'domain.owner.model'",
+                    "[MINOR] The Repository 'OwnerRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'OwnerRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "DOMAIN_EVENT",
+                "fitness": 42.11,
+                "domain": "visit",
+                "name": "Visit",
+                "issues": [
+                    "[CRITICAL] The method 'setDate(...)' is not immutable.",
+                    "[CRITICAL] The method 'setPetId(...)' is not immutable.",
+                    "[MINOR] The Domain Event 'Visit' is not placed at 'domain.visit.model'"
+                ]
+            },
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 47.37,
+                "domain": "owner",
+                "name": "Owner",
+                "issues": [
+                    "[MAJOR] The Field 'address' of the Entity 'Owner' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'city' of the Entity 'Owner' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'telephone' of the Entity 'Owner' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MAJOR] No factory of the aggregate root 'Owner' is available",
+                    "[MAJOR] No service of the aggregate root 'Owner' is available",
+                    "[MINOR] The Entity 'Owner' is not placed at 'domain.owner.model'",
+                    "[MINOR] The field 'pets' of the Entity 'Owner' has no setter."
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 47.37,
+                "domain": "model",
+                "name": "Person",
+                "issues": [
+                    "[MAJOR] The Field 'firstName' of the Entity 'Person' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'lastName' of the Entity 'Person' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'Person' is not placed at 'domain.model.model'"
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 50,
+                "domain": "model",
+                "name": "NamedEntity",
+                "issues": [
+                    "[MAJOR] The Field 'name' of the Entity 'NamedEntity' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'NamedEntity' is not placed at 'domain.model.model'"
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 50,
+                "domain": "model",
+                "name": "BaseEntity",
+                "issues": [
+                    "[MAJOR] The Field 'id' of the Entity 'BaseEntity' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'BaseEntity' is not placed at 'domain.model.model'"
+                ]
+            },
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 52.17,
+                "domain": "vet",
+                "name": "Vet",
+                "issues": [
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MAJOR] No factory of the aggregate root 'Vet' is available",
+                    "[MAJOR] No service of the aggregate root 'Vet' is available",
+                    "[MINOR] The Entity 'Vet' is not placed at 'domain.vet.model'",
+                    "[MINOR] The field 'specialties' of the Entity 'Vet' has no setter."
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 55.56,
+                "domain": "owner",
+                "name": "PetType",
+                "issues": [
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'PetType' is not placed at 'domain.owner.model'"
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 55.56,
+                "domain": "vet",
+                "name": "Specialty",
+                "issues": [
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'Specialty' is not placed at 'domain.vet.model'"
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 60,
+                "name": "owner",
+                "issues": [
+                    "[MAJOR] The module 'owner' dose not only contains domain artifacts.",
+                    "[MINOR] The module 'owner' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 60,
+                "name": "vet",
+                "issues": [
+                    "[MAJOR] The module 'vet' dose not only contains domain artifacts.",
+                    "[MINOR] The module 'vet' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 72.41,
+                "domain": "owner",
+                "name": "Pet",
+                "issues": [
+                    "[MAJOR] The Field 'birthDate' of the Entity 'Pet' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'Pet' is not placed at 'domain.owner.model'",
+                    "[MINOR] The field 'visits' of the Entity 'Pet' has no setter."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 80,
+                "name": "system",
+                "issues": [
+                    "[MINOR] The module 'system' is not an infrastructure module."
+                ]
+            }
+        ]
+    },
+    "OOD": {
+        "distance": {
+            "avg": 0.39,
+            "min": 0.17,
+            "median": 0.2,
+            "max": 1,
+            "standard deviation": 0.41
+        },
+        "module": {
+            "BOOT-INF.classes.org.springframework.samples.petclinic.owner": {
+                "distance": 0.2,
+                "instability": 1,
+                "abstractness": 0.2
+            },
+            "BOOT-INF.classes.org.springframework.samples.petclinic.model": {
+                "distance": 1,
+                "instability": 0,
+                "abstractness": 0
+            },
+            "BOOT-INF.classes.org.springframework.samples.petclinic.visit": {
+                "distance": 0.17,
+                "instability": 0.33,
+                "abstractness": 0.5
+            },
+            "BOOT-INF.classes.org.springframework.samples.petclinic.vet": {
+                "distance": 0.2,
+                "instability": 1,
+                "abstractness": 0.2
+            },
+            "BOOT-INF.classes.org.springframework.samples.petclinic.system": {
+                "abstractness": 0
+            }
+        }
+    }
+}

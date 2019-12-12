@@ -1,0 +1,195 @@
+{
+    "DDD": {
+        "artifact": {
+            "#APPLICATION_SERVICE": 1,
+            "#VALUE_OBJECT": 2,
+            "#MODULE": 3,
+            "#REPOSITORY": 1,
+            "#INFRASTRUCTUR": 9,
+            "#SERVICE": 2,
+            "#ENTITY": 1,
+            "#AGGREGATE_ROOT": 1
+        },
+        "metric": {
+            "score": "D",
+            "statistic": {
+                "avg": 45.92,
+                "min": 0,
+                "median": 38.42,
+                "max": 100,
+                "standard deviation": 44.69
+            },
+            "fitness": 55.37,
+            "#Issues": 34
+        },
+        "hotspot": [
+            {
+                "DDD": "APPLICATION_SERVICE",
+                "fitness": 0,
+                "name": "Application",
+                "issues": [
+                    "[MINOR] The application service 'Application' is not part of an application module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "application",
+                "name": "UpdateIssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'UpdateIssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "IssueController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "application",
+                "name": "IssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "application",
+                "name": "IssueCommentJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueCommentJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "application",
+                "name": "NewIssueCommentJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'NewIssueCommentJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "application",
+                "name": "NewIssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'NewIssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "fitness": 0,
+                "name": "IssueService",
+                "issues": [
+                    "[MINOR] The service 'IssueService' should be placed at 'application.null'"
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 20,
+                "name": "application",
+                "issues": [
+                    "[MAJOR] The module 'application' dose not only contains infrastructure artifacts.",
+                    "[MINOR] The module 'application' is not an infrastructure module."
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 36.84,
+                "domain": "domain",
+                "name": "IssueComment",
+                "issues": [
+                    "[MAJOR] The Field 'id' of the Entity 'IssueComment' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'comment' of the Entity 'IssueComment' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'IssueComment' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'IssueComment' is not placed at 'domain.domain.model'",
+                    "[MINOR] The field 'id' of the Entity 'IssueComment' has no setter.",
+                    "[MINOR] The field 'comment' of the Entity 'IssueComment' has no setter."
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 40,
+                "domain": "domain",
+                "name": "IssueRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'IssueRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'IssueRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'IssueRepository' should be placed in 'domain.domain.model'",
+                    "[MINOR] The Repository 'IssueRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'IssueRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 63.16,
+                "domain": "domain",
+                "name": "Issue",
+                "issues": [
+                    "[MAJOR] The Field 'name' of the Entity 'Issue' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'Issue' does not contains all needed methods (equals/hashCode).",
+                    "[MAJOR] No factory of the aggregate root 'Issue' is available",
+                    "[MINOR] The Entity 'Issue' is not placed at 'domain.domain.model'",
+                    "[MINOR] The field 'id' of the Entity 'Issue' has no setter.",
+                    "[MINOR] The field 'name' of the Entity 'Issue' has no setter.",
+                    "[MINOR] The field 'status' of the Entity 'Issue' has no setter.",
+                    "[MINOR] The field 'comments' of the Entity 'Issue' has no setter."
+                ]
+            },
+            {
+                "DDD": "VALUE_OBJECT",
+                "fitness": 68.42,
+                "domain": "domain",
+                "name": "IssueId",
+                "issues": [
+                    "[MAJOR] The Entity 'IssueId' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Value Object 'IssueId' is not placed at 'domain.domain.model'",
+                    "[MINOR] The field 'issueId' of the Value Object 'IssueId' has no Getter.",
+                    "[MINOR] The field 'issueId' of the Value Object 'IssueId' has no setter."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 90,
+                "name": "domain",
+                "issues": [
+                    "[MINOR] The module 'domain' is not a submodule of the module 'domain'."
+                ]
+            }
+        ]
+    },
+    "OOD": {
+        "distance": {
+            "avg": 0.33,
+            "min": 0,
+            "median": 0.33,
+            "max": 0.67,
+            "standard deviation": 0.33
+        },
+        "module": {
+            "pl.pragmatists.ddd.adm.infrastructure": {
+                "distance": 0.33,
+                "instability": 1,
+                "abstractness": 0.33
+            },
+            "pl.pragmatists.ddd.adm.domain": {
+                "distance": 0.67,
+                "instability": 0,
+                "abstractness": 0.33
+            },
+            "pl.pragmatists.ddd.adm.application": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            }
+        }
+    }
+}

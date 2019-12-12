@@ -1,0 +1,735 @@
+[
+    {
+        "contains": [
+            {
+                "contains": [
+                    {
+                        "DDD": "SERVICE",
+                        "depends": [
+                            "petclinic.domain.owner.model.PetType",
+                            "petclinic.domain.owner.model.PetRepository"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ <init>(petclinic.domain.owner.model.PetRepository): void",
+                            "+ print(petclinic.domain.owner.model.PetType,java.util.Locale): java.lang.String",
+                            "+ parse(java.lang.String,java.util.Locale): petclinic.domain.owner.model.PetType",
+                            "+ print(java.lang.Object,java.util.Locale): java.lang.String",
+                            "+ parse(java.lang.String,java.util.Locale): java.lang.Object"
+                        ],
+                        "name": "PetTypeFormatter",
+                        "fields": [
+                            "- pets: petclinic.domain.owner.model.PetRepository"
+                        ]
+                    },
+                    {
+                        "DDD": "SERVICE",
+                        "depends": [
+                            "petclinic.domain.owner.model.Pet"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ <init>(): void",
+                            "+ validate(java.lang.Object,org.springframework.validation.Errors): void",
+                            "+ supports(java.lang.Class): boolean"
+                        ],
+                        "name": "PetValidator",
+                        "fields": [
+                            "- REQUIRED: java.lang.String"
+                        ]
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "owner"
+            },
+            {
+                "DDD": "APPLICATION_SERVICE",
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ main(java.lang.String[]): void"
+                ],
+                "name": "PetClinicApplication"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "application"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 100,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ triggerException(): java.lang.String"
+                ],
+                "name": "CrashController"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 100,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ welcome(): java.lang.String"
+                ],
+                "name": "WelcomeController"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 100,
+                "methods": [
+                    "~ <init>(): void",
+                    "+ petclinicCacheConfigurationCustomizer(): org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer",
+                    "- cacheConfiguration(): javax.cache.configuration.Configuration",
+                    "- lambda$petclinicCacheConfigurationCustomizer$0(javax.cache.CacheManager): void"
+                ],
+                "name": "CacheConfiguration"
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "petclinic.domain.owner.model.Visit",
+                    "petclinic.domain.owner.model.PetRepository",
+                    "petclinic.domain.owner.model.VisitRepository",
+                    "petclinic.domain.owner.model.Pet"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(petclinic.domain.owner.model.VisitRepository,petclinic.domain.owner.model.PetRepository): void",
+                    "+ setAllowedFields(org.springframework.web.bind.WebDataBinder): void",
+                    "+ loadPetWithVisit(int,java.util.Map): petclinic.domain.owner.model.Visit",
+                    "+ initNewVisitForm(int,java.util.Map): java.lang.String",
+                    "+ processNewVisitForm(petclinic.domain.owner.model.Visit,org.springframework.validation.BindingResult): java.lang.String"
+                ],
+                "name": "VisitController",
+                "fields": [
+                    "- visits: petclinic.domain.owner.model.VisitRepository",
+                    "- pets: petclinic.domain.owner.model.PetRepository"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "petclinic.domain.owner.model.OwnerRepository",
+                    "petclinic.domain.owner.model.Owner"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(petclinic.domain.owner.model.OwnerRepository): void",
+                    "+ setAllowedFields(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initCreationForm(java.util.Map): java.lang.String",
+                    "+ processCreationForm(petclinic.domain.owner.model.Owner,org.springframework.validation.BindingResult): java.lang.String",
+                    "+ initFindForm(java.util.Map): java.lang.String",
+                    "+ processFindForm(petclinic.domain.owner.model.Owner,org.springframework.validation.BindingResult,java.util.Map): java.lang.String",
+                    "+ initUpdateOwnerForm(int,org.springframework.ui.Model): java.lang.String",
+                    "+ processUpdateOwnerForm(petclinic.domain.owner.model.Owner,org.springframework.validation.BindingResult,int): java.lang.String",
+                    "+ showOwner(int): org.springframework.web.servlet.ModelAndView"
+                ],
+                "name": "OwnerController",
+                "fields": [
+                    "- VIEWS_OWNER_CREATE_OR_UPDATE_FORM: java.lang.String",
+                    "- owners: petclinic.domain.owner.model.OwnerRepository"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "petclinic.domain.owner.model.OwnerRepository",
+                    "petclinic.domain.owner.model.Pet",
+                    "petclinic.application.owner.PetValidator",
+                    "petclinic.domain.owner.model.PetType",
+                    "petclinic.domain.owner.model.Owner",
+                    "petclinic.domain.owner.model.PetRepository"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(petclinic.domain.owner.model.PetRepository,petclinic.domain.owner.model.OwnerRepository): void",
+                    "+ populatePetTypes(): java.util.Collection",
+                    "+ findOwner(int): petclinic.domain.owner.model.Owner",
+                    "+ initOwnerBinder(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initPetBinder(org.springframework.web.bind.WebDataBinder): void",
+                    "+ initCreationForm(petclinic.domain.owner.model.Owner,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ processCreationForm(petclinic.domain.owner.model.Owner,petclinic.domain.owner.model.Pet,org.springframework.validation.BindingResult,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ initUpdateForm(int,org.springframework.ui.ModelMap): java.lang.String",
+                    "+ processUpdateForm(petclinic.domain.owner.model.Pet,org.springframework.validation.BindingResult,petclinic.domain.owner.model.Owner,org.springframework.ui.ModelMap): java.lang.String"
+                ],
+                "name": "PetController",
+                "fields": [
+                    "- VIEWS_PETS_CREATE_OR_UPDATE_FORM: java.lang.String",
+                    "- pets: petclinic.domain.owner.model.PetRepository",
+                    "- owners: petclinic.domain.owner.model.OwnerRepository"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "petclinic.infrastructure.Vets",
+                    "petclinic.domain.vet.model.VetRepository"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(petclinic.domain.vet.model.VetRepository): void",
+                    "+ showVetList(java.util.Map): java.lang.String",
+                    "+ showResourcesVetList(): petclinic.infrastructure.Vets"
+                ],
+                "name": "VetController",
+                "fields": [
+                    "- vets: petclinic.domain.vet.model.VetRepository"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "petclinic.domain.vet.model.Vet"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ getVetList(): java.util.List"
+                ],
+                "name": "Vets",
+                "fields": [
+                    "- vets: java.util.List"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "infrastructure"
+    },
+    {
+        "contains": [
+            {
+                "contains": [
+                    {
+                        "contains": [
+                            {
+                                "contains": [
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.owner.model.VisitRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ save(petclinic.domain.owner.model.Visit): void",
+                                            "+ findByPetId(java.lang.Integer): java.util.List",
+                                            "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                            "+ delete(petclinic.domain.owner.model.Visit): void",
+                                            "+ contains(petclinic.domain.owner.model.Visit): java.lang.Boolean",
+                                            "+ update(petclinic.domain.owner.model.Visit): void"
+                                        ],
+                                        "name": "VisitRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.owner.model.PetRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ findPetTypes(): java.util.List",
+                                            "+ findById(java.lang.Integer): petclinic.domain.owner.model.Pet",
+                                            "+ save(petclinic.domain.owner.model.Pet): void",
+                                            "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                            "+ delete(petclinic.domain.owner.model.Pet): void",
+                                            "+ contains(petclinic.domain.owner.model.Pet): java.lang.Boolean",
+                                            "+ update(petclinic.domain.owner.model.Pet): void"
+                                        ],
+                                        "name": "PetRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.owner.model.OwnerRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ findByLastName(java.lang.String): java.util.Collection",
+                                            "+ findById(java.lang.Integer): petclinic.domain.owner.model.Owner",
+                                            "+ save(petclinic.domain.owner.model.Owner): void",
+                                            "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                            "+ delete(petclinic.domain.owner.model.Owner): void",
+                                            "+ contains(petclinic.domain.owner.model.Owner): java.lang.Boolean",
+                                            "+ update(petclinic.domain.owner.model.Owner): void"
+                                        ],
+                                        "name": "OwnerRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.owner.model.OwnerFactory"
+                                        ],
+                                        "DDD": "FACTORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ create(...): petclinic.domain.owner.model.Owner"
+                                        ],
+                                        "name": "OwnerFactoryImpl",
+                                        "fields": [
+                                            "- repository: petclinic.domain.owner.model.OwnerRepository"
+                                        ]
+                                    }
+                                ],
+                                "DDD": "MODULE",
+                                "fitness": 100,
+                                "name": "impl"
+                            },
+                            {
+                                "extends": "petclinic.domain.model.Person",
+                                "DDD": "AGGREGATE_ROOT",
+                                "depends": [
+                                    "petclinic.domain.owner.model.Pet",
+                                    "petclinic.domain.owner.model.OwnerAddress",
+                                    "petclinic.domain.owner.model.OwnerCity",
+                                    "petclinic.domain.owner.model.OwnerTelephone"
+                                ],
+                                "fitness": 93.18,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "+ getAddress(): petclinic.domain.owner.model.OwnerAddress",
+                                    "+ setAddress(petclinic.domain.owner.model.OwnerAddress): void",
+                                    "+ getCity(): petclinic.domain.owner.model.OwnerCity",
+                                    "+ setCity(petclinic.domain.owner.model.OwnerCity): void",
+                                    "+ getTelephone(): petclinic.domain.owner.model.OwnerTelephone",
+                                    "+ setTelephone(petclinic.domain.owner.model.OwnerTelephone): void",
+                                    "# getPetsInternal(): java.util.Set",
+                                    "# setPetsInternal(java.util.Set): void",
+                                    "+ getPets(): java.util.Set",
+                                    "+ addPet(petclinic.domain.owner.model.Pet): void",
+                                    "+ getPet(java.lang.String): petclinic.domain.owner.model.Pet",
+                                    "+ getPet(java.lang.String,boolean): petclinic.domain.owner.model.Pet",
+                                    "+ toString(): java.lang.String",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ setPets(java.util.Set): void"
+                                ],
+                                "name": "Owner",
+                                "fields": [
+                                    "- address: petclinic.domain.owner.model.OwnerAddress",
+                                    "- city: petclinic.domain.owner.model.OwnerCity",
+                                    "- telephone: petclinic.domain.owner.model.OwnerTelephone",
+                                    "- pets: java.util.Set"
+                                ]
+                            },
+                            {
+                                "extends": "petclinic.domain.model.BaseEntity",
+                                "DDD": "DOMAIN_EVENT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "+ getDate(): java.time.LocalDate",
+                                    "- setDate(java.time.LocalDate): void",
+                                    "+ getDescription(): java.lang.String",
+                                    "- setDescription(java.lang.String): void",
+                                    "+ getPetId(): petclinic.domain.model.BaseEntityId",
+                                    "- setPetId(petclinic.domain.model.BaseEntityId): void"
+                                ],
+                                "name": "Visit",
+                                "fields": [
+                                    "- date: java.time.LocalDate",
+                                    "- description: java.lang.String",
+                                    "- petId: petclinic.domain.model.BaseEntityId"
+                                ]
+                            },
+                            {
+                                "extends": "petclinic.domain.model.NamedEntity",
+                                "DDD": "ENTITY",
+                                "depends": [
+                                    "petclinic.domain.owner.model.Owner",
+                                    "petclinic.domain.owner.model.Visit",
+                                    "petclinic.domain.owner.model.PetType",
+                                    "petclinic.domain.owner.model.PetBirthDate"
+                                ],
+                                "fitness": 100,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "+ setBirthDate(petclinic.domain.owner.model.PetBirthDate): void",
+                                    "+ getBirthDate(): petclinic.domain.owner.model.PetBirthDate",
+                                    "+ getType(): petclinic.domain.owner.model.PetType",
+                                    "+ setType(petclinic.domain.owner.model.PetType): void",
+                                    "+ getOwner(): petclinic.domain.owner.model.Owner",
+                                    "# setOwner(petclinic.domain.owner.model.Owner): void",
+                                    "# getVisitsInternal(): java.util.Set",
+                                    "# setVisitsInternal(java.util.Set): void",
+                                    "+ getVisits(): java.util.Set",
+                                    "+ addVisit(petclinic.domain.owner.model.Visit): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ setVisits(java.util.Set): void"
+                                ],
+                                "name": "Pet",
+                                "fields": [
+                                    "- birthDate: petclinic.domain.owner.model.PetBirthDate",
+                                    "- type: petclinic.domain.owner.model.PetType",
+                                    "- owner: petclinic.domain.owner.model.Owner",
+                                    "- visits: java.util.Set"
+                                ]
+                            },
+                            {
+                                "extends": "petclinic.domain.model.NamedEntity",
+                                "DDD": "ENTITY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer"
+                                ],
+                                "name": "PetType"
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ save(petclinic.domain.owner.model.Visit): void",
+                                    "+ findByPetId(java.lang.Integer): java.util.List",
+                                    "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                    "+ delete(petclinic.domain.owner.model.Visit): void",
+                                    "+ contains(petclinic.domain.owner.model.Visit): java.lang.Boolean",
+                                    "+ update(petclinic.domain.owner.model.Visit): void"
+                                ],
+                                "name": "VisitRepository"
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ findPetTypes(): java.util.List",
+                                    "+ findById(java.lang.Integer): petclinic.domain.owner.model.Pet",
+                                    "+ save(petclinic.domain.owner.model.Pet): void",
+                                    "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                    "+ delete(petclinic.domain.owner.model.Pet): void",
+                                    "+ contains(petclinic.domain.owner.model.Pet): java.lang.Boolean",
+                                    "+ update(petclinic.domain.owner.model.Pet): void"
+                                ],
+                                "name": "PetRepository"
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ findByLastName(java.lang.String): java.util.Collection",
+                                    "+ findById(java.lang.Integer): petclinic.domain.owner.model.Owner",
+                                    "+ save(petclinic.domain.owner.model.Owner): void",
+                                    "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                    "+ delete(petclinic.domain.owner.model.Owner): void",
+                                    "+ contains(petclinic.domain.owner.model.Owner): java.lang.Boolean",
+                                    "+ update(petclinic.domain.owner.model.Owner): void"
+                                ],
+                                "name": "OwnerRepository"
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ address(): java.lang.String",
+                                    "- setAddress(java.lang.String): void"
+                                ],
+                                "name": "OwnerAddress",
+                                "fields": [
+                                    "- address: java.lang.String"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ city(): java.lang.String",
+                                    "- setCity(java.lang.String): void"
+                                ],
+                                "name": "OwnerCity",
+                                "fields": [
+                                    "- city: java.lang.String"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ telephone(): java.lang.String",
+                                    "- setTelephone(java.lang.String): void"
+                                ],
+                                "name": "OwnerTelephone",
+                                "fields": [
+                                    "- telephone: java.lang.String"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ birthDate(): java.time.LocalDate",
+                                    "- setBirthDate(java.time.LocalDate): void"
+                                ],
+                                "name": "PetBirthDate",
+                                "fields": [
+                                    "- birthDate: java.time.LocalDate"
+                                ]
+                            },
+                            {
+                                "DDD": "FACTORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ create(...): petclinic.domain.owner.model.Owner"
+                                ],
+                                "name": "OwnerFactory"
+                            }
+                        ],
+                        "DDD": "MODULE",
+                        "fitness": 100,
+                        "name": "model"
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "owner"
+            },
+            {
+                "contains": [
+                    {
+                        "contains": [
+                            {
+                                "contains": [
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.vet.model.VetRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ findAll(): java.util.Collection",
+                                            "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                            "+ findById(petclinic.domain.model.BaseEntityId): petclinic.domain.vet.model.Vet",
+                                            "+ save(petclinic.domain.vet.model.Vet): void",
+                                            "+ delete(petclinic.domain.vet.model.Vet): void",
+                                            "+ contains(petclinic.domain.vet.model.Vet): java.lang.Boolean",
+                                            "+ update(petclinic.domain.vet.model.Vet): void"
+                                        ],
+                                        "name": "VetRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "petclinic.domain.vet.model.VetFactory"
+                                        ],
+                                        "DDD": "FACTORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ create(...): petclinic.domain.vet.model.Vet"
+                                        ],
+                                        "name": "VetFactoryImpl",
+                                        "fields": [
+                                            "- repository: petclinic.domain.vet.model.VetRepository"
+                                        ]
+                                    }
+                                ],
+                                "DDD": "MODULE",
+                                "fitness": 100,
+                                "name": "impl"
+                            },
+                            {
+                                "extends": "petclinic.domain.model.Person",
+                                "DDD": "AGGREGATE_ROOT",
+                                "depends": [
+                                    "petclinic.domain.vet.model.Specialty"
+                                ],
+                                "fitness": 89.66,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "# getSpecialtiesInternal(): java.util.Set",
+                                    "# setSpecialtiesInternal(java.util.Set): void",
+                                    "+ getSpecialties(): java.util.Set",
+                                    "+ getNrOfSpecialties(): int",
+                                    "+ addSpecialty(petclinic.domain.vet.model.Specialty): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ setSpecialties(java.util.Set): void"
+                                ],
+                                "name": "Vet",
+                                "fields": [
+                                    "- specialties: java.util.Set"
+                                ]
+                            },
+                            {
+                                "extends": "petclinic.domain.model.NamedEntity",
+                                "DDD": "ENTITY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ <init>(): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer"
+                                ],
+                                "name": "Specialty"
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ findAll(): java.util.Collection",
+                                    "+ nextIdentity(): petclinic.domain.model.BaseEntityId",
+                                    "+ findById(petclinic.domain.model.BaseEntityId): petclinic.domain.vet.model.Vet",
+                                    "+ save(petclinic.domain.vet.model.Vet): void",
+                                    "+ delete(petclinic.domain.vet.model.Vet): void",
+                                    "+ contains(petclinic.domain.vet.model.Vet): java.lang.Boolean",
+                                    "+ update(petclinic.domain.vet.model.Vet): void"
+                                ],
+                                "name": "VetRepository"
+                            },
+                            {
+                                "DDD": "FACTORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ create(...): petclinic.domain.vet.model.Vet"
+                                ],
+                                "name": "VetFactory"
+                            }
+                        ],
+                        "DDD": "MODULE",
+                        "fitness": 100,
+                        "name": "model"
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "vet"
+            },
+            {
+                "contains": [
+                    {
+                        "extends": "petclinic.domain.model.BaseEntity",
+                        "DDD": "ENTITY",
+                        "depends": [
+                            "petclinic.domain.model.PersonFirstName",
+                            "petclinic.domain.model.PersonLastName"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ <init>(): void",
+                            "+ getFirstName(): petclinic.domain.model.PersonFirstName",
+                            "+ setFirstName(petclinic.domain.model.PersonFirstName): void",
+                            "+ getLastName(): petclinic.domain.model.PersonLastName",
+                            "+ setLastName(petclinic.domain.model.PersonLastName): void",
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer"
+                        ],
+                        "name": "Person",
+                        "fields": [
+                            "- firstName: petclinic.domain.model.PersonFirstName",
+                            "- lastName: petclinic.domain.model.PersonLastName"
+                        ]
+                    },
+                    {
+                        "extends": "petclinic.domain.model.BaseEntity",
+                        "DDD": "ENTITY",
+                        "depends": [
+                            "petclinic.domain.model.NamedEntityName"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ <init>(): void",
+                            "+ getName(): petclinic.domain.model.NamedEntityName",
+                            "+ setName(petclinic.domain.model.NamedEntityName): void",
+                            "+ toString(): java.lang.String",
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer"
+                        ],
+                        "name": "NamedEntity",
+                        "fields": [
+                            "- name: petclinic.domain.model.NamedEntityName"
+                        ]
+                    },
+                    {
+                        "DDD": "ENTITY",
+                        "depends": [
+                            "petclinic.domain.model.BaseEntityId"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ <init>(): void",
+                            "+ getId(): petclinic.domain.model.BaseEntityId",
+                            "+ setId(petclinic.domain.model.BaseEntityId): void",
+                            "+ isNew(): boolean",
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer"
+                        ],
+                        "name": "BaseEntity",
+                        "fields": [
+                            "- id: petclinic.domain.model.BaseEntityId"
+                        ]
+                    },
+                    {
+                        "DDD": "VALUE_OBJECT",
+                        "fitness": 100,
+                        "methods": [
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer",
+                            "+ firstName(): java.lang.String",
+                            "- setFirstName(java.lang.String): void"
+                        ],
+                        "name": "PersonFirstName",
+                        "fields": [
+                            "- firstName: java.lang.String"
+                        ]
+                    },
+                    {
+                        "DDD": "VALUE_OBJECT",
+                        "fitness": 100,
+                        "methods": [
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer",
+                            "+ lastName(): java.lang.String",
+                            "- setLastName(java.lang.String): void"
+                        ],
+                        "name": "PersonLastName",
+                        "fields": [
+                            "- lastName: java.lang.String"
+                        ]
+                    },
+                    {
+                        "DDD": "VALUE_OBJECT",
+                        "fitness": 100,
+                        "methods": [
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer",
+                            "+ name(): java.lang.String",
+                            "- setName(java.lang.String): void"
+                        ],
+                        "name": "NamedEntityName",
+                        "fields": [
+                            "- name: java.lang.String"
+                        ]
+                    },
+                    {
+                        "DDD": "VALUE_OBJECT",
+                        "fitness": 100,
+                        "methods": [
+                            "+ equals(Object): java.lang.Boolean",
+                            "+ hashCode(): java.lang.Integer",
+                            "+ id(): java.lang.Integer",
+                            "- setId(java.lang.Integer): void"
+                        ],
+                        "name": "BaseEntityId",
+                        "fields": [
+                            "- id: java.lang.Integer"
+                        ]
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "model"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "domain"
+    }
+]

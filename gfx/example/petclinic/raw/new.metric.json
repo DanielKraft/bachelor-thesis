@@ -1,0 +1,98 @@
+{
+    "DDD": {
+        "artifact": {
+            "#APPLICATION_SERVICE": 1,
+            "#VALUE_OBJECT": 8,
+            "#MODULE": 13,
+            "#FACTORY": 4,
+            "#REPOSITORY": 8,
+            "#INFRASTRUCTUR": 8,
+            "#SERVICE": 2,
+            "#ENTITY": 6,
+            "#AGGREGATE_ROOT": 2
+        },
+        "metric": {
+            "score": "A",
+            "statistic": {
+                "avg": 99.68,
+                "min": 89.66,
+                "median": 100,
+                "max": 100,
+                "standard deviation": 1.69
+            },
+            "fitness": 98.98,
+            "#Issues": 2
+        },
+        "hotspot": [
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 89.66,
+                "domain": "vet",
+                "name": "Vet",
+                "issues": [
+                    "[MAJOR] No service of the aggregate root 'Vet' is available"
+                ]
+            },
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 93.18,
+                "domain": "owner",
+                "name": "Owner",
+                "issues": [
+                    "[MAJOR] No service of the aggregate root 'Owner' is available"
+                ]
+            }
+        ]
+    },
+    "OOD": {
+        "distance": {
+            "avg": 0.42,
+            "min": 0,
+            "median": 0.42,
+            "max": 1,
+            "standard deviation": 0.4
+        },
+        "module": {
+            "petclinic.application.owner": {
+                "distance": 0.71,
+                "instability": 0.29,
+                "abstractness": 0
+            },
+            "petclinic.application": {
+                "distance": 1,
+                "instability": 0,
+                "abstractness": 0
+            },
+            "petclinic.domain.owner.model.impl": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            },
+            "petclinic.domain.model": {
+                "distance": 0.81,
+                "instability": 0.19,
+                "abstractness": 0
+            },
+            "petclinic.infrastructure": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            },
+            "petclinic.domain.vet.model": {
+                "distance": 0.38,
+                "instability": 0.13,
+                "abstractness": 0.5
+            },
+            "petclinic.domain.vet.model.impl": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            },
+            "petclinic.domain.owner.model": {
+                "distance": 0.46,
+                "instability": 0.21,
+                "abstractness": 0.33
+            }
+        }
+    }
+}

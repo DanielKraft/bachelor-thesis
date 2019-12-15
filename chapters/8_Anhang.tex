@@ -1,20 +1,25 @@
 \chapter{Refactoring Beispiele}
+\label{ch:anhang:beispiel}
+
 \section{Petclinic}
+\label{sec:anhang:beispiel:petclinic}
+Das erste Beispielsystem ist das Projekt Petclinic\footnote{\url{https://github.com/spring-projects/spring-petclinic/tree/master} (besucht am 13.12.2019)}.
 
 \subsection{Uhrsprüngliche Systemarchitektur}
+\label{sec:anhang:beispiel:petclinic:old}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{gfx/example/petclinic/uml-petclinic-old.pdf}
+    \includegraphics[width=0.95\textwidth]{gfx/example/petclinic/uml-petclinic-old.pdf}
     \caption{UML Klassendiagram der Petclinic-Systemarchitektur}
     \label{fig:anhang:petclinic:old}
 \end{figure}
 
 
 \subsection{Verbesserte Systemarchitektur}
-
+\label{sec:anhang:beispiel:petclinic:new}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{gfx/example/petclinic/uml-petclinic-new-domain-owner.pdf}
+    \includegraphics[width=0.95\textwidth]{gfx/example/petclinic/uml-petclinic-new-domain-owner.pdf}
     \caption{Domain \glqq owner\grqq{} der verbesserten Petclinic-Systemarchitektur}
     \label{fig:anhang:petclinic:new:domain:owner}
 \end{figure}
@@ -47,20 +52,45 @@
     \label{fig:anhang:petclinic:new:infrastructure}
 \end{figure}
 
-
-\section{Issue}
+\newpage
+\section{Issue auf Basis von Anemic Domain Model}
+\label{sec:anhang:beispiel:adm}
+Für das zweite Beispiel wurde ein System\footnote{\url{https://github.com/Pragmatists/DDD-ADM/tree/anemic-model} (besucht am 13.12.2019)} zum erstellen eines Issues verwendet. Die uhrsprüngliche Systemarchitektur basiert auf dem Anemic Domain Model.
 
 \subsection{Uhrsprüngliche Systemarchitektur}
+\label{sec:anhang:beispiel:adm:old}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1.0\textwidth]{gfx/example/ddd/uml-ddd-old.pdf}
+    \includegraphics[width=0.95\textwidth]{gfx/example/adm/uml-adm-old.pdf}
+    \caption{UML Klassendiagram der Issue-Systemarchitekturl}
+    \label{fig:anhang:adm:old}
+\end{figure}
+
+\subsection{Verbesserte Systemarchitektur}
+\label{sec:anhang:beispiel:adm:new}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{gfx/example/adm/uml-adm-new.pdf}
+    \caption{UML Klassendiagram der verbesserten Issue-Systemarchitekturl}
+    \label{fig:anhang:adm:new}
+\end{figure}
+
+\newpage
+\section{Issue auf Basis von Domain-Driven Design}
+\label{sec:anhang:beispiel:ddd}
+Das letzte Beispielsystem\footnote{\url{https://github.com/Pragmatists/DDD-ADM/tree/master} (besucht am 13.12.2019)} entspricht dem System aus Abschnitt \ref{sec:anhang:beispiel:adm}, allerdings im Domain-Driven Design.
+
+\subsection{Uhrsprüngliche Systemarchitektur}
+\label{sec:anhang:beispiel:ddd:old}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{gfx/example/ddd/uml-ddd-old.pdf}
     \caption{UML Klassendiagram der Issue-Systemarchitekturl}
     \label{fig:anhang:ddd:old}
 \end{figure}
 
-
 \subsection{Verbesserte Systemarchitektur}
-
+\label{sec:anhang:beispiel:ddd:new}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{gfx/example/ddd/uml-ddd-new-domain.pdf}

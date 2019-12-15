@@ -1,0 +1,228 @@
+{
+    "DDD": {
+        "artifact": {
+            "#APPLICATION_SERVICE": 1,
+            "#VALUE_OBJECT": 1,
+            "#MODULE": 5,
+            "#REPOSITORY": 2,
+            "#INFRASTRUCTUR": 6,
+            "#SERVICE": 1,
+            "#ENTITY": 1,
+            "#AGGREGATE_ROOT": 1
+        },
+        "metric": {
+            "score": "E",
+            "statistic": {
+                "avg": 26.94,
+                "min": 0,
+                "median": 5,
+                "max": 100,
+                "standard deviation": 36.99
+            },
+            "fitness": 38.52,
+            "#Issues": 43
+        },
+        "hotspot": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "name": "IssueController",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueController' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "json",
+                "name": "NewIssueCommentJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'NewIssueCommentJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "json",
+                "name": "UpdateIssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'UpdateIssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "json",
+                "name": "IssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "json",
+                "name": "NewIssueJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'NewIssueJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 0,
+                "domain": "json",
+                "name": "IssueCommentJson",
+                "issues": [
+                    "[MINOR] The infrastructure service 'IssueCommentJson' is not part of an infrastructure module"
+                ]
+            },
+            {
+                "DDD": "APPLICATION_SERVICE",
+                "fitness": 0,
+                "name": "Application",
+                "issues": [
+                    "[MINOR] The application service 'Application' is not part of an application module"
+                ]
+            },
+            {
+                "DDD": "SERVICE",
+                "fitness": 0,
+                "name": "IssueService",
+                "issues": [
+                    "[MINOR] The service 'IssueService' should be placed at 'application.null'"
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 0,
+                "domain": "repository",
+                "name": "IssueRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'IssueRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'IssueRepository' has no findBy/get method.",
+                    "[MAJOR] The Repository 'IssueRepository' has no save/add/insert/put method.",
+                    "[MAJOR] The Repository 'IssueRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'IssueRepository' should be placed in 'domain.repository.model'",
+                    "[MINOR] The Repository 'IssueRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'IssueRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 10,
+                "name": "json",
+                "issues": [
+                    "[CRITICAL] The module 'json' does not contain an Aggregate Root.",
+                    "[MAJOR] The module 'json' dose not only contains domain artifacts.",
+                    "[MINOR] The module 'json' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 20,
+                "name": "controller",
+                "issues": [
+                    "[MAJOR] The module 'controller' dose not only contains infrastructure artifacts.",
+                    "[MINOR] The module 'controller' is not an infrastructure module."
+                ]
+            },
+            {
+                "DDD": "REPOSITORY",
+                "fitness": 20,
+                "domain": "repository",
+                "name": "IssueCommentRepository",
+                "issues": [
+                    "[MAJOR] The Repository 'IssueCommentRepository' has no nextIdentity method.",
+                    "[MAJOR] The Repository 'IssueCommentRepository' has no save/add/insert/put method.",
+                    "[MAJOR] The Repository 'IssueCommentRepository' has no delete/remove method.",
+                    "[MINOR] The interface 'IssueCommentRepository' should be placed in 'domain.repository.model'",
+                    "[MINOR] The Repository 'IssueCommentRepository' has no contains/exists method.",
+                    "[MINOR] The Repository 'IssueCommentRepository' has no update method."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 40,
+                "name": "repository",
+                "issues": [
+                    "[CRITICAL] The module 'repository' does not contain an Aggregate Root.",
+                    "[MINOR] The module 'repository' is not a submodule of the module 'domain'."
+                ]
+            },
+            {
+                "DDD": "ENTITY",
+                "fitness": 41.67,
+                "domain": "model",
+                "name": "IssueComment",
+                "issues": [
+                    "[MAJOR] The Field 'id' of the Entity 'IssueComment' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'comment' of the Entity 'IssueComment' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'IssueComment' does not contains all needed methods (equals/hashCode).",
+                    "[MINOR] The Entity 'IssueComment' is not placed at 'domain.model.model'",
+                    "[MINOR] The field 'id' of the Entity 'IssueComment' has no setter.",
+                    "[MINOR] The field 'comment' of the Entity 'IssueComment' has no setter.",
+                    "[MINOR] The field 'issue' of the Entity 'IssueComment' has no Getter.",
+                    "[MINOR] The field 'issue' of the Entity 'IssueComment' has no setter."
+                ]
+            },
+            {
+                "DDD": "AGGREGATE_ROOT",
+                "fitness": 63.16,
+                "domain": "model",
+                "name": "Issue",
+                "issues": [
+                    "[MAJOR] The Field 'id' of the Entity 'Issue' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Field 'name' of the Entity 'Issue' is not a type of an Entity or a Value Object",
+                    "[MAJOR] The Entity 'Issue' does not contains all needed methods (equals/hashCode).",
+                    "[MAJOR] No factory of the aggregate root 'Issue' is available",
+                    "[MINOR] The Entity 'Issue' is not placed at 'domain.model.model'",
+                    "[MINOR] The field 'id' of the Entity 'Issue' has no setter."
+                ]
+            },
+            {
+                "DDD": "MODULE",
+                "fitness": 90,
+                "name": "model",
+                "issues": [
+                    "[MINOR] The module 'model' is not a submodule of the module 'domain'."
+                ]
+            }
+        ]
+    },
+    "OOD": {
+        "distance": {
+            "avg": 0.44,
+            "min": 0,
+            "median": 0.5,
+            "max": 1,
+            "standard deviation": 0.38
+        },
+        "module": {
+            "pl.pragmatists.ddd.adm.repository": {
+                "distance": 0,
+                "instability": 0,
+                "abstractness": 1
+            },
+            "pl.pragmatists.ddd.adm.model": {
+                "distance": 1,
+                "instability": 0,
+                "abstractness": 0
+            },
+            "pl.pragmatists.ddd.adm.service": {
+                "distance": 0.5,
+                "instability": 0.5,
+                "abstractness": 0
+            },
+            "pl.pragmatists.ddd.adm.controller": {
+                "distance": 0.5,
+                "instability": 0.5,
+                "abstractness": 0
+            },
+            "pl.pragmatists.ddd.adm.controller.json": {
+                "distance": 0.2,
+                "instability": 0.8,
+                "abstractness": 0
+            }
+        }
+    }
+}

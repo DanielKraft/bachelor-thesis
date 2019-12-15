@@ -1,0 +1,379 @@
+[
+    {
+        "contains": [
+            {
+                "contains": [
+                    {
+                        "DDD": "SERVICE",
+                        "depends": [
+                            "adm.domain.issue.model.Issue",
+                            "adm.domain.issue.model.IssueComment",
+                            "adm.domain.issue.model.IssueStatus",
+                            "adm.domain.issue.model.IssueCommentRepository",
+                            "adm.domain.issue.model.IssueRepository"
+                        ],
+                        "fitness": 100,
+                        "methods": [
+                            "+ get(java.lang.String): adm.domain.issue.model.Issue",
+                            "+ all(): java.util.List",
+                            "+ create(java.lang.String): adm.domain.issue.model.Issue",
+                            "+ update(java.lang.Long,adm.domain.issue.model.IssueStatus): void",
+                            "+ addComment(java.lang.String,java.lang.String): java.util.Optional",
+                            "+ <init>(adm.domain.issue.model.IssueRepository,adm.domain.issue.model.IssueCommentRepository): void"
+                        ],
+                        "name": "IssueService",
+                        "fields": [
+                            "- issueRepository: adm.domain.issue.model.IssueRepository",
+                            "- issueCommentRepository: adm.domain.issue.model.IssueCommentRepository"
+                        ]
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "issue"
+            },
+            {
+                "DDD": "APPLICATION_SERVICE",
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ main(java.lang.String[]): void"
+                ],
+                "name": "Application"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "application"
+    },
+    {
+        "contains": [
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "adm.application.issue.IssueService",
+                    "adm.infrastructure.IssueJson",
+                    "adm.domain.issue.model.Issue",
+                    "adm.infrastructure.NewIssueJson",
+                    "adm.infrastructure.UpdateIssueJson",
+                    "adm.infrastructure.NewIssueCommentJson",
+                    "adm.domain.issue.model.IssueComment"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(adm.application.issue.IssueService): void",
+                    "+ get(java.lang.String): adm.infrastructure.IssueJson",
+                    "+ all(): java.util.List",
+                    "+ newIssue(adm.infrastructure.NewIssueJson): java.lang.Long",
+                    "+ update(java.lang.Long,adm.infrastructure.UpdateIssueJson): org.springframework.http.ResponseEntity",
+                    "+ newIssueComment(java.lang.String,adm.infrastructure.NewIssueCommentJson): org.springframework.http.ResponseEntity",
+                    "- lambda$newIssueComment$1(adm.domain.issue.model.IssueComment): org.springframework.http.ResponseEntity",
+                    "- lambda$all$0(adm.domain.issue.model.Issue): adm.infrastructure.IssueJson"
+                ],
+                "name": "IssueController",
+                "fields": [
+                    "- issueService: adm.application.issue.IssueService"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void"
+                ],
+                "name": "NewIssueCommentJson",
+                "fields": [
+                    "+ comment: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "adm.domain.issue.model.IssueStatus"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(adm.domain.issue.model.IssueStatus): void"
+                ],
+                "name": "UpdateIssueJson",
+                "fields": [
+                    "+ status: adm.domain.issue.model.IssueStatus"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "adm.domain.issue.model.Issue",
+                    "adm.domain.issue.model.IssueComment",
+                    "adm.infrastructure.IssueCommentJson",
+                    "adm.domain.issue.model.IssueStatus"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ fromModel(adm.domain.issue.model.Issue): adm.infrastructure.IssueJson",
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String,adm.domain.issue.model.IssueStatus,java.util.List): void",
+                    "+ <init>(java.lang.String): void",
+                    "+ getComments(): java.util.List",
+                    "+ equals(java.lang.Object): boolean",
+                    "+ hashCode(): int",
+                    "- lambda$new$0(adm.domain.issue.model.IssueComment): adm.infrastructure.IssueCommentJson"
+                ],
+                "name": "IssueJson",
+                "fields": [
+                    "+ name: java.lang.String",
+                    "+ comments: java.util.List",
+                    "+ status: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "adm.domain.issue.model.Issue"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void",
+                    "+ asModel(): adm.domain.issue.model.Issue"
+                ],
+                "name": "NewIssueJson",
+                "fields": [
+                    "+ name: java.lang.String"
+                ]
+            },
+            {
+                "DDD": "INFRASTRUCTURE",
+                "depends": [
+                    "adm.domain.issue.model.IssueComment"
+                ],
+                "fitness": 100,
+                "methods": [
+                    "+ <init>(): void",
+                    "+ <init>(java.lang.String): void",
+                    "+ fromModel(adm.domain.issue.model.IssueComment): adm.infrastructure.IssueCommentJson",
+                    "+ equals(java.lang.Object): boolean",
+                    "+ hashCode(): int"
+                ],
+                "name": "IssueCommentJson",
+                "fields": [
+                    "+ comment: java.lang.String"
+                ]
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "infrastructure"
+    },
+    {
+        "contains": [
+            {
+                "contains": [
+                    {
+                        "contains": [
+                            {
+                                "contains": [
+                                    {
+                                        "implements": [
+                                            "adm.domain.issue.model.IssueRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ findAll(): java.util.List",
+                                            "+ findAll(): java.lang.Iterable",
+                                            "+ nextIdentity(): adm.domain.issue.model.IssueId",
+                                            "+ findById(adm.domain.issue.model.IssueId): adm.domain.issue.model.Issue",
+                                            "+ save(adm.domain.issue.model.Issue): void",
+                                            "+ delete(adm.domain.issue.model.Issue): void",
+                                            "+ contains(adm.domain.issue.model.Issue): java.lang.Boolean",
+                                            "+ update(adm.domain.issue.model.Issue): void"
+                                        ],
+                                        "name": "IssueRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "adm.domain.issue.model.IssueCommentRepository"
+                                        ],
+                                        "DDD": "REPOSITORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ findByIssue_Id(java.lang.Long): java.util.List",
+                                            "+ nextIdentity(): adm.domain.issue.model.IssueId",
+                                            "+ save(adm.domain.issue.model.Issue): void",
+                                            "+ delete(adm.domain.issue.model.Issue): void",
+                                            "+ contains(adm.domain.issue.model.Issue): java.lang.Boolean",
+                                            "+ update(adm.domain.issue.model.Issue): void"
+                                        ],
+                                        "name": "IssueCommentRepositoryImpl"
+                                    },
+                                    {
+                                        "implements": [
+                                            "adm.domain.issue.model.IssueFactory"
+                                        ],
+                                        "DDD": "FACTORY",
+                                        "fitness": 100,
+                                        "methods": [
+                                            "+ create(...): adm.domain.issue.model.Issue"
+                                        ],
+                                        "name": "IssueFactoryImpl",
+                                        "fields": [
+                                            "- repository: adm.domain.issue.model.IssueRepository"
+                                        ]
+                                    }
+                                ],
+                                "DDD": "MODULE",
+                                "fitness": 100,
+                                "name": "impl"
+                            },
+                            {
+                                "DDD": "AGGREGATE_ROOT",
+                                "depends": [
+                                    "adm.domain.issue.model.IssueComment",
+                                    "adm.domain.issue.model.IssueStatus",
+                                    "adm.domain.issue.model.IssueId",
+                                    "adm.domain.issue.model.IssueName"
+                                ],
+                                "fitness": 100,
+                                "methods": [
+                                    "+ getId(): adm.domain.issue.model.IssueId",
+                                    "+ getName(): adm.domain.issue.model.IssueName",
+                                    "+ getStatus(): adm.domain.issue.model.IssueStatus",
+                                    "+ getComments(): java.util.List",
+                                    "+ <init>(): void",
+                                    "+ setName(adm.domain.issue.model.IssueName): void",
+                                    "+ setComments(java.util.List): void",
+                                    "+ setStatus(adm.domain.issue.model.IssueStatus): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "- setId(adm.domain.issue.model.IssueId): void"
+                                ],
+                                "name": "Issue",
+                                "fields": [
+                                    "- id: adm.domain.issue.model.IssueId",
+                                    "- name: adm.domain.issue.model.IssueName",
+                                    "- status: adm.domain.issue.model.IssueStatus",
+                                    "- comments: java.util.List"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "depends": [
+                                    "adm.domain.issue.model.Issue"
+                                ],
+                                "fitness": 100,
+                                "methods": [
+                                    "+ comment(): java.lang.String",
+                                    "+ <init>(): void",
+                                    "+ <init>(java.lang.String,adm.domain.issue.model.Issue): void",
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "- setComment(java.lang.String): void",
+                                    "+ issue(): adm.domain.issue.model.Issue",
+                                    "- setIssue(adm.domain.issue.model.Issue): void"
+                                ],
+                                "name": "IssueComment",
+                                "fields": [
+                                    "- comment: java.lang.String",
+                                    "- issue: adm.domain.issue.model.Issue"
+                                ]
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ findAll(): java.util.List",
+                                    "+ findAll(): java.lang.Iterable",
+                                    "+ nextIdentity(): adm.domain.issue.model.IssueId",
+                                    "+ findById(adm.domain.issue.model.IssueId): adm.domain.issue.model.Issue",
+                                    "+ save(adm.domain.issue.model.Issue): void",
+                                    "+ delete(adm.domain.issue.model.Issue): void",
+                                    "+ contains(adm.domain.issue.model.Issue): java.lang.Boolean",
+                                    "+ update(adm.domain.issue.model.Issue): void"
+                                ],
+                                "name": "IssueRepository"
+                            },
+                            {
+                                "DDD": "REPOSITORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ findByIssue_Id(java.lang.Long): java.util.List",
+                                    "+ nextIdentity(): adm.domain.issue.model.IssueId",
+                                    "+ save(adm.domain.issue.model.Issue): void",
+                                    "+ delete(adm.domain.issue.model.Issue): void",
+                                    "+ contains(adm.domain.issue.model.Issue): java.lang.Boolean",
+                                    "+ update(adm.domain.issue.model.Issue): void"
+                                ],
+                                "name": "IssueCommentRepository"
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "name": "IssueStatus",
+                                "fields": [
+                                    "+ NEW: adm.domain.issue.model.IssueStatus",
+                                    "+ IN_PROGRESS: adm.domain.issue.model.IssueStatus",
+                                    "+ DONE: adm.domain.issue.model.IssueStatus",
+                                    "- $VALUES: adm.domain.issue.model.IssueStatus[]"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ id(): java.lang.Long",
+                                    "- setId(java.lang.Long): void"
+                                ],
+                                "name": "IssueId",
+                                "fields": [
+                                    "- id: java.lang.Long"
+                                ]
+                            },
+                            {
+                                "DDD": "VALUE_OBJECT",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ equals(Object): java.lang.Boolean",
+                                    "+ hashCode(): java.lang.Integer",
+                                    "+ name(): java.lang.String",
+                                    "- setName(java.lang.String): void"
+                                ],
+                                "name": "IssueName",
+                                "fields": [
+                                    "- name: java.lang.String"
+                                ]
+                            },
+                            {
+                                "DDD": "FACTORY",
+                                "fitness": 100,
+                                "methods": [
+                                    "+ create(...): adm.domain.issue.model.Issue"
+                                ],
+                                "name": "IssueFactory"
+                            }
+                        ],
+                        "DDD": "MODULE",
+                        "fitness": 100,
+                        "name": "model"
+                    }
+                ],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "issue"
+            },
+            {
+                "contains": [],
+                "DDD": "MODULE",
+                "fitness": 100,
+                "name": "model"
+            }
+        ],
+        "DDD": "MODULE",
+        "fitness": 100,
+        "name": "domain"
+    }
+]

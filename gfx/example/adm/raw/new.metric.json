@@ -1,0 +1,63 @@
+{
+    "DDD": {
+        "artifact": {
+            "#APPLICATION_SERVICE": 1,
+            "#VALUE_OBJECT": 4,
+            "#MODULE": 9,
+            "#FACTORY": 2,
+            "#REPOSITORY": 4,
+            "#INFRASTRUCTUR": 6,
+            "#SERVICE": 1,
+            "#AGGREGATE_ROOT": 1
+        },
+        "metric": {
+            "score": "A",
+            "statistic": {
+                "avg": 100,
+                "min": 100,
+                "median": 100,
+                "max": 100,
+                "standard deviation": 0
+            },
+            "fitness": 100,
+            "#Issues": 0
+        },
+        "hotspot": []
+    },
+    "OOD": {
+        "distance": {
+            "avg": 0.46,
+            "min": 0,
+            "median": 0.44,
+            "max": 1,
+            "standard deviation": 0.47
+        },
+        "module": {
+            "adm.domain.issue.model": {
+                "distance": 0.44,
+                "instability": 0.18,
+                "abstractness": 0.38
+            },
+            "adm.domain.issue.model.impl": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            },
+            "adm.application": {
+                "distance": 1,
+                "instability": 0,
+                "abstractness": 0
+            },
+            "adm.infrastructure": {
+                "distance": 0,
+                "instability": 1,
+                "abstractness": 0
+            },
+            "adm.application.issue": {
+                "distance": 0.88,
+                "instability": 0.13,
+                "abstractness": 0
+            }
+        }
+    }
+}

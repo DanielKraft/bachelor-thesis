@@ -95,7 +95,7 @@ Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein s
 Das Hinzufügen von neuen Artefakten kann verschiedenen Gründe haben. Zum Beispiel sollte es zu jedem Repository Interface eine Implementierung geben, wenn diese nicht vorhanden ist muss sie erzeugt werden.
 
 \begin{lstlisting}[caption={Finden einer Interface-Implementierung}, captionpos=b, label=lst:suggestion:impl:refactor:insert:impl, language=my_java]
-Class getImpl(Package impl, Interface anInterface, DDDType dddType) {
+private Class getImpl(Package impl, Interface anInterface, DDDType dddType) {
   for (Artifact item : impl.getContains()) {
     if (item instanceof Class
           && item.isTypeOf(dddType)

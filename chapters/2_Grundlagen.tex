@@ -6,9 +6,9 @@ In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssista
 \label{sec:basics:ddd}
 Das Domain-Driven Design besteht zu einem großen Teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
 
-\begin{figure}[htbp] 
+\begin{figure}[H] 
   \centering
-     \includegraphics[width=0.8\textwidth]{gfx/Simple_Overview.png}
+     \includegraphics[width=0.95\textwidth]{gfx/Simple_Overview.png}
   \caption{Vereinfachter Überblick über die Muster-Sprache von Domain-Driven Design}
   \label{fig:basics:ddd:pattern}
 \end{figure}
@@ -95,11 +95,11 @@ Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte di
 \section{Einführung in jQAssistant}
 \label{sec:basics:jqa}
 
-Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Analyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
+Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
 
 \begin{figure}[htbp] 
     \centering
-    \includegraphics[width=0.6\textwidth]{gfx/jQAssistant-Workflow.pdf}
+    \includegraphics[width=0.85\textwidth]{gfx/jQAssistant-Workflow.pdf}
     \caption{Arbeitsablauf von jQAssistant}
     \label{fig:basics:jqa:workflow}
 \end{figure}
@@ -110,7 +110,7 @@ In der Abbildung \ref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der A
 \label{sec:basics:jqa:neo4j}
 Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
-\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher]
+\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher, language=my_cypher]
 MATCH (package:Package)-[:CONTAINS]->(file:File) 
 WHERE package.fqn = 'org.junit' AND file:Class
 RETURN file as Klassen

@@ -60,7 +60,7 @@
     frame=lines
 }
 
-\lstdefinelanguage{json}{
+\lstdefinelanguage{my_json}{
     basicstyle=\normalfont\ttfamily,
     numbers=left,
     numberstyle=\scriptsize,
@@ -86,6 +86,22 @@
       {\}}{{{\color{delim}{\}}}}}{1}
       {[}{{{\color{delim}{[}}}}{1}
       {]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinelanguage{my_cypher}{
+    language=SQL,
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    literate=
+     *{MATCH}{{{\color{delim}MATCH}}}{6}
+      {WHERE}{{{\color{delim}WHERE}}}{6}
+      {RETURN}{{{ \color{delim}RETURN}}}{6}
 }
 
 %*************************************************************************

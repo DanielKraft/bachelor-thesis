@@ -38,32 +38,123 @@ In manchen Fällen können Artefakte keinem Domain Module eindeutig zugeordnet w
 \label{sec:suggestion:impl:refactor}
 Die Überarbeitung der Artefakte wird für jeden Artefakttype separat durchgeführt. Der Aufgabenbereich der letzten Phase reicht von der Überarbeitung von Attributen sowie Methoden bis zum Erstellen von neuen Artefakten.
 
+\subsubsection{Überarbeiten der Interne Struktur von Artefakten}
+\label{sec:suggestion:impl:refactor:update}
 \begin{figure}[ht]
     \centering
     \subfloat[Subfigure 1][ursprüngliches \\ Artefakt]{
-        \includegraphics[width=0.25\textwidth]{gfx/example/adm/uml-adm-IssueRepository-old.pdf}
-        \label{fig:suggestion:impl:refactor:issuerepository:old}}
+        \includegraphics[width=0.2\textwidth]{gfx/example/adm/uml-adm-IssueRepository-old.pdf}
+        \label{fig:suggestion:impl:refactor:update:issuerepository:old}}
+    \qquad \qquad
     \subfloat[Subfigure 2][verbessertes \\ Artefakt]{
-        \includegraphics[width=0.25\textwidth]{gfx/example/adm/uml-adm-IssueRepository-new.pdf}
-        \label{fig:suggestion:impl:refactor:issuerepository:new}}
+        \includegraphics[width=0.2\textwidth]{gfx/example/adm/uml-adm-IssueRepository-new.pdf}
+        \label{fig:suggestion:impl:refactor:update:issuerepository:new}}
     \caption{Refactoring eines Repository Interfaces}
-    \label{fig:suggestion:impl:refactor:issuerepository}
+    \label{fig:suggestion:impl:refactor:update:issuerepository}
 \end{figure}
 
-Am bessten lässt sich das Überarbeiten von Methoden eines Artefakts an dem Beispiel aus der Abbildung \ref{fig:suggestion:impl:refactor:issuerepository} zeigen. Die beiden Artefakte sind Ausschnitte aus den Abbildungen im Abschnitt \ref{sec:anhang:beispiel:adm} des Anhangs. Die Abbildung \ref{fig:suggestion:impl:refactor:issuerepository:old} zeigt die ursprüngliche Definition des Artefakts \texttt{IssueRepository}. Ursprünglich besaß dieses Artefakt nur zwei Methoden. Durch den Umwandlungsalgorithmus wurden dem Artefakt, aus der Abbildung \ref{fig:suggestion:impl:refactor:issuerepository:new}, sechs weitere Methoden hinzugefügt welche als Kriterien in der Tabelle \ref{tab:analyse:rating:artifakt:repository:criteria} aufgeführt sind. 
+Am bessten lässt sich das Überarbeiten von Methoden eines Artefakts an dem Beispiel aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository} zeigen. Die beiden Artefakte sind Ausschnitte aus den Abbildungen im Abschnitt \ref{sec:anhang:beispiel:adm} des Anhangs. Die Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:old} zeigt die ursprüngliche Definition des Artefakts \texttt{IssueRepository}. Ursprünglich besaß dieses Artefakt nur zwei Methoden. Durch den Umwandlungsalgorithmus wurden dem Artefakt, aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:new}, sechs weitere Methoden hinzugefügt welche als Kriterien in der Tabelle \ref{tab:analyse:rating:artifakt:repository:criteria} aufgeführt sind. 
 
+\subsubsection{Verändern des Artefakttypes}
+\label{sec:suggestion:impl:refactor:change}
 In speziellen Fällen kann es von Vorteil sein, dass eine Entity zu einem Value Object umgewandelt werden sollte. Dies bietet sich an wenn die Entity abgesehen von ihrer Identität nur ein Attribut enthält. 
 
+\begin{lstlisting}[caption={Überprüfung einer Entity}, captionpos=b, label=lst:suggestion:impl:refactor:change, language=my_java]
+private boolean isValueObject(Class artifact) {
+  if (artifact.getSuperClass() == null) {
+    for (Field field : artifact.getFields()) {
+      if (artifact.getName().toLowerCase().contains(field.getName())
+            && field.getType().startsWith("java.lang.")) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+\end{lstlisting}
+
+Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:change} zeigt den Quellcode welcher überprüft ob es sich bei der übergebenen Entity um ein mögliches Value Object handelt. Dabei sind drei Kriterien zu erfüllen. In der zweiten Zeile wird überprüft ob die Entity von einer anderen Entity erbt. Nur wenn die Entity keine Superklasse besitzt kann es sich um ein mögliches Value Object handeln. Das zweit Kriterium welches erfüllt sein muss steht in der vierten Zeile. Der Name des eines Attributs der Entity muss in dem Namen der Entity enthalten sein. Zusätzlich zu den bereits genannten Kriterien muss der Typ des Attributs ein Java Standardtyp sein. Dieses Kriterium wurde in der fünften Zeile realisiert.  
+
 \begin{figure}[ht]
     \centering
     \subfloat[Subfigure 1][ursprüngliches \\ Artefakt]{
-        \includegraphics[width=0.25\textwidth]{gfx/example/ddd/uml-ddd-IssueComment-old.pdf}
-        \label{fig:suggestion:impl:refactor:issuecomment:old}}
+        \includegraphics[width=0.2\textwidth]{gfx/example/ddd/uml-ddd-IssueComment-old.pdf}
+        \label{fig:suggestion:impl:refactor:change:issuecomment:old}}
+    \qquad \qquad
     \subfloat[Subfigure 2][verbessertes \\ Artefakt]{
-        \includegraphics[width=0.25\textwidth]{gfx/example/ddd/uml-ddd-IssueComment-new.pdf}
-        \label{fig:suggestion:impl:refactor:issuecomment:new}}
+        \includegraphics[width=0.2\textwidth]{gfx/example/ddd/uml-ddd-IssueComment-new.pdf}
+        \label{fig:suggestion:impl:refactor:change:issuecomment:new}}
     \caption{Refactoring einer Entity zu einem Value Object}
-    \label{fig:suggestion:impl:refactor:issuecomment}
+    \label{fig:suggestion:impl:refactor:change:issuecomment}
 \end{figure}
 
-In der Abbildung \ref{fig:suggestion:impl:refactor:issuecomment} ist ein solches Beispiel aufgeführt. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:issuecomment:old} verfügt nur über eine Identität und einem weiteren Attribut, daher ist es nicht notwendig dieses Artefakt als Entity zu modellieren. Die Abbildung \ref{fig:suggestion:impl:refactor:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:analyse:rating:artifakt:value_object:criteria} angepasst. 
+Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein solches Beispiel. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:old} verfügt nur über eine Identität und einem weiteren Attribut. Da alle, in Listing \ref{lst:suggestion:impl:refactor:change} beschriebenen Kriterien, erfüllt sind, sollte diese Entity als Value Object modelliert werden. Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:analyse:rating:artifakt:value_object:criteria} angepasst. 
+
+\subsubsection{Erzeugung neuer Artefakte}
+\label{sec:suggestion:impl:refactor:insert}
+Das Hinzufügen von neuen Artefakten kann verschiedenen Gründe haben. Zum Beispiel sollte es zu jedem Repository Interface eine Implementierung geben, wenn diese nicht vorhanden ist muss sie erzeugt werden.
+
+\begin{lstlisting}[caption={Finden einer Interface-Implementierung}, captionpos=b, label=lst:suggestion:impl:refactor:insert:impl, language=my_java]
+Class getImpl(Package impl, Interface anInterface, DDDType dddType) {
+  for (Artifact item : impl.getContains()) {
+    if (item instanceof Class
+          && item.isTypeOf(dddType)
+          && ((Class) item).getImplInterfaces().contains(anInterface)) {
+      return (Class) item;
+    }
+  }
+  return null;
+}
+\end{lstlisting}
+
+Mithilfe von der Methode \texttt{getImpl} aus Listing \ref{lst:suggestion:impl:refactor:insert:impl} findet der Umwandlungsalgorithmus Implementierungen eines Interfaces. Wenn eine passende Klasse gefunden wurde, wird diese zurückgegeben, andernfalls wird \texttt{null} zurückgegeben. Wenn es eine Implementierung gibt wird diese wie in Abschnitt \ref{sec:suggestion:impl:refactor:update} beschrieben überarbeitet. Ist das allerdings nicht der Fall muss eine Klasse generiert werden.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[Subfigure 1][ursprüngliches \\ Artefakt]{
+        \includegraphics[width=0.22\textwidth]{gfx/example/petclinic/uml-petclinic-PetRepository-old.pdf}
+        \label{fig:suggestion:impl:refactor:insert:petrepository:old}}
+    \qquad \qquad
+    \subfloat[Subfigure 2][verbesserte \\ Artefakte]{
+        \includegraphics[width=0.46\textwidth]{gfx/example/petclinic/uml-petclinic-PetRepository-new.pdf}
+        \label{fig:suggestion:impl:refactor:insert:petrepository:new}}
+    \caption{Erzeugung einer Interface-Implementierung}
+    \label{fig:suggestion:impl:refactor:insert:petrepository}
+\end{figure}
+
+Die Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:old} zeigt ein Repository-Interface. Allerdings verfügt das System über keine Implementierung des Interfaces, daher muss der Umwandlungsalgorithmus diese erzeugen. In Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:new} ist das Ergebnis der Umwandlung zu sehen. Nachdem der Umwandlungsalgorithmus dem Repository-Interface notwendige Methoden hinzugefügt hat, wurde ein Klasse erzeugt welche das Interface implementieren soll.
+
+Auch bei der Überarbeitung einer Entity kann es passieren, dass ein neues Artefakt erzeugt werden muss. Da Entities keine Attribute eines Standardtypes besitzen sollten, müssen diese Attribute als Value Object repräsentiert werden. Dafür ist es erforderlich, dass der Umwandlungsalgorithmus die Möglichkeit besitzt neue Value Objects zu erzeugen, wenn sie benötigt werden.
+
+\begin{lstlisting}[caption={Auslagern von Entity-Attributen in Value Objects}, captionpos=b, label=lst:suggestion:impl:refactor:insert:valueObject, language=my_java]
+private void refactorFields(Package model, Class artifact) {
+  for (Field field : artifact.getFields()) {
+    if (!field.getType().contains("java.util.")) {
+      File type = getTypeOfField(model, field);
+      if (type != null) {
+        field.setType(type.getPath());
+      } else {
+        Class newValueObject = createValueObjectByField(model, artifact, field);
+        refactorField(artifact, field, newValueObject);
+      }
+    }
+  }
+}
+\end{lstlisting}
+
+Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refactor:insert:valueObject} überarbeitet die Attribute einer Entity. Wenn der Datentype eines Attributs ein Java Standardtyp ist, wird das Attribut angepasst. In der vierten Zeile wird nach einem vorhandenen Artefakt gesucht welches das Attribut repräsentiert. Wenn ein Artefakt gefunden wurde wird dieses als Datentyp übernommen. Andernfalls muss ein neues Artefakt erzeugt werden. Dies geschieht in der Methode welche in der achten Zeile aufgerufen wird. Mithilfe des neuen Value Objects wird das Attribut und alle Methoden welche es verwenden überarbeitet.
+
+\begin{figure}[H]
+    \centering
+    \subfloat[Subfigure 1][ursprüngliches \\ Artefakt]{
+        \includegraphics[width=0.19\textwidth]{gfx/example/petclinic/uml-petclinic-BaseEntity-old.pdf}
+        \label{fig:suggestion:impl:refactor:insert:baseentity:old}}
+    \qquad \qquad
+    \subfloat[Subfigure 2][verbesserte \\ Artefakte]{
+        \includegraphics[width=0.46\textwidth]{gfx/example/petclinic/uml-petclinic-BaseEntity-new.pdf}
+        \label{fig:suggestion:impl:refactor:insert:baseentity:new}}
+    \caption{Attrribute einer Entity als Value Object auslagern}
+    \label{fig:suggestion:impl:refactor:insert:baseentity}
+\end{figure}
+
+Die Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity} zeigt eine Ausschnitt der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 

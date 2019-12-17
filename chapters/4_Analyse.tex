@@ -366,7 +366,7 @@ Die Domain Services erfüllen alle Kriterien wenn, sie in dem Modul \texttt{appl
 \label{sec:analyse:rating:issue}
 Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachvollzogen werden kann, werden die nicht erfüllten Kriterien, mit einer Beschreibung des Problems, zurückgegeben.
 
-\begin{lstlisting}[caption={Ausschnitt der Bewertung eines Artefakts},captionpos=b,label=lst:analyse:rating:issue:output]
+\begin{lstlisting}[caption={Ausschnitt der Bewertung eines Artefakts},captionpos=b,label=lst:analyse:rating:issue:output, language=json]
 {
     "DDD": "VALUE_OBJECT",
     "fitness": 50,
@@ -420,7 +420,7 @@ Laut \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eine
 
 Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden.
 
-\begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output]
+\begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output, language=json]
 "OOD": {
     "distance": {
         "avg": 0.39,
@@ -481,7 +481,7 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
 
 Um die Metrik aus \ref{align:analyse:metric:ddd} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric:ddd} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an dem Maintainability Rating \cite{Metric:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt. 
 
-\begin{lstlisting}[caption={Ausschnitt der Domain-Driven Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ddd:output]
+\begin{lstlisting}[caption={Ausschnitt der Domain-Driven Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ddd:output, language=json]
 "DDD": {
     "artifact": {
         "#APPLICATION_SERVICE": 1,

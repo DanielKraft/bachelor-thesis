@@ -4,11 +4,11 @@ In diesem Kapitel wird die automatische Generierung eines Verbesserungsvorschlag
 
 \section{Beschreibung der Umwandlungskriterien}
 \label{sec:suggestion:criteria}
-Der Umwandlungsalgorithmus hat das Ziel die Architektur eines Systems auf Basis von Domain-Driven Design zu verbessern. Im vorherigen Kapitel \ref{sec:analyse:metric:ddd} wurde eine Metrik entwickelt, welche zum Bewerten des Zustands eines Systems verwendet werden kann. Daher werden die Bewertungskriterien aus dem Abschnitt \ref{sec:analyse:rating} auch als Umwandlungskriterien für den Umwandlungsalgorithmus verwendet. Durch die Nutzung der gleichen Kriterien kann die Metrik zur späteren Bewertung des Umwandlungsalgorithmus verwendet werden.
+Der Umwandlungsalgorithmus hat das Ziel die Architektur eines Systems auf Basis von Domain-Driven Design zu verbessern. Im vorherigen Kapitel \ref{sec:analyse:metric:ddd} wurde eine Metrik entwickelt, welche zum Bewerten des Zustands eines Systems verwendet werden kann. Daher werden die Bewertungskriterien aus dem Abschnitt \ref{sec:rating} auch als Umwandlungskriterien für den Umwandlungsalgorithmus verwendet. Durch die Nutzung der gleichen Kriterien kann die Metrik zur späteren Bewertung des Umwandlungsalgorithmus verwendet werden.
 
 \section{Implementierung des Umwandlungsalgorithmus}
 \label{sec:suggestion:impl}
-Der Umwandlungsalgorithmus besteht aus drei Phasen. In der ersten Phase wird die Module initialisiert. Anschließend werden die vorhandenen Artefakte den richtigen Modulen zugeordnet. In der letzten und wichtigsten Phase werden alle Artefakte, auf Basis der Umwandlungskriterien, überarbeitet.
+Der Umwandlungsalgorithmus besteht aus vier Phasen. In der ersten Phase wird die Module initialisiert. Anschließend werden die vorhandenen Artefakte den richtigen Modulen zugeordnet. In der dritten und wichtigsten Phase werden alle Artefakte, auf Basis der Umwandlungskriterien, überarbeitet. Am Ende wird die überarbeitete Architektur aufgeräumt.
 
 \subsection{Initialisieren der Module}
 \label{sec:suggestion:impl:init}
@@ -76,7 +76,7 @@ Die Überarbeitung der Artefakte wird für jeden Artefakttyp separat durchgefüh
     \label{fig:suggestion:impl:refactor:update:issuerepository}
 \end{figure}
 
-Am besten lässt sich das Überarbeiten von Methoden eines Artefakts an dem Beispiel aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository} zeigen. Die beiden Artefakte sind Ausschnitte aus den Abbildungen im Abschnitt \ref{sec:anhang:beispiel:adm} des Anhangs. Die Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:old} zeigt die ursprüngliche Definition des Artefakts \texttt{IssueRepository}. Ursprünglich besaß dieses Artefakt nur zwei Methoden. Durch den Umwandlungsalgorithmus wurden dem Artefakt, aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:new}, sechs weitere Methoden hinzugefügt welche als Kriterien in der Tabelle \ref{tab:analyse:rating:artifakt:repository:criteria} aufgeführt sind.
+Am besten lässt sich das Überarbeiten von Methoden eines Artefakts an dem Beispiel aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository} zeigen. Die beiden Artefakte sind Ausschnitte aus den Abbildungen im Abschnitt \ref{sec:anhang:beispiel:adm} des Anhangs. Die Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:old} zeigt die ursprüngliche Definition des Artefakts \texttt{IssueRepository}. Ursprünglich besaß dieses Artefakt nur zwei Methoden. Durch den Umwandlungsalgorithmus wurden dem Artefakt, aus der Abbildung \ref{fig:suggestion:impl:refactor:update:issuerepository:new}, sechs weitere Methoden hinzugefügt welche als Kriterien in der Tabelle \ref{tab:rating:artifakt:repository:criteria} aufgeführt sind.
 
 \subsubsection{Verändern des Artefakttypes}
 \label{sec:suggestion:impl:refactor:change}
@@ -111,7 +111,7 @@ Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:
     \label{fig:suggestion:impl:refactor:change:issuecomment}
 \end{figure}
 
-Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein solches Beispiel. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:old} verfügt nur über eine Identität und einem weiteren Attribut. Da alle, in Listing \ref{lst:suggestion:impl:refactor:change} beschriebenen Kriterien, erfüllt sind, wurde diese Entity als Value Object modelliert. Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:analyse:rating:artifakt:value_object:criteria} angepasst.
+Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein solches Beispiel. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:old} verfügt nur über eine Identität und einem weiteren Attribut. Da alle, in Listing \ref{lst:suggestion:impl:refactor:change} beschriebenen Kriterien, erfüllt sind, wurde diese Entity als Value Object modelliert. Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:rating:artifakt:value_object:criteria} angepasst.
 
 \subsubsection{Erzeugung neuer Artefakte}
 \label{sec:suggestion:impl:refactor:insert}
@@ -181,3 +181,29 @@ Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refacto
 \end{figure}
 
 Die Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity} zeigt eine Ausschnitt der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 
+
+\subsection{Aufräumen der neuen Architektur}
+\label{sec:suggestion:impl:finalize}
+Nachdem alle Artefakte verbessert wurden, werden verschiedenen Abschlussarbeiten ausgeführt. Dazu gehört zum Beispiel das Entfernen von leeren Modulen, welche in der ersten Phase, siehe Abschnitt \ref{sec:suggestion:impl:init}, erstellt aber nicht gefüllt wurden.
+
+Außerdem werden die alten Abhängigkeiten an die neue Architektur angepasst. Das heißt, dass die Pfade, welche die Abhängigkeiten repräsentieren, mit den neuen Pfaden ersetzt werden.
+
+\begin{lstlisting}[caption={Ersetzen der alten Abhängigkeiten durch die Neuen}, captionpos=b, label=lst:suggestion:impl:finalize:dependency, language=my_java]
+private void refactorDependencies() {
+  refactorData.getNewStructure().getClasses().stream()
+    .parallel()
+    .forEachOrdered(artifact -> {
+      for (String dependency : new ArrayList<>(artifact.getDependencies())) {
+        String[] split = dependency.split("[.]");
+        String name = split[split.length - 1];
+        String newPath = findNewPath(name);
+        if (newPath != null) {
+          artifact.getDependencies().remove(dependency);
+          artifact.addDependencies(newPath);
+        }
+      }
+    });
+}
+\end{lstlisting}
+
+Die Methode in Listing \ref{lst:suggestion:impl:finalize:dependency} zeigt die Implementierung dieses Vorgangs. Diese Methode durchläuft alle Abhängigkeiten aller Klassen und ersetzt den alten Pfad mit einem Neuen. Um den neuen Pfad zu finden, wird aus dem alten Pfad, in der sechsten und siebten Zeile, der Name des Artefakts extrahiert. Anschließend wird mit diesem Namen der neue Pfad gesucht und der Alte ersetzt.

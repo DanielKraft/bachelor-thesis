@@ -9,9 +9,9 @@ In diesem Abschnitt wird darauf eingegangen anhand von welchen Bewertungskriteri
 
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|l||c|c|c|c|c|}   \hline
-        \textbf{Einstufungen}   & \texttt{INFO} & \texttt{MINOR}    & \texttt{MAJOR}    & \texttt{CRITICAL}     & \texttt{BLOCKER}  \\ \hline
-        \textbf{Gewichtung}     & 0             & 1                 & 3                 & 5                     & 10                \\ \hline
+    \begin{tabular}{l|ccccc}   \noalign{\hrule height 2pt}
+        \textbf{Einstufungen}   & \texttt{INFO} & \texttt{MINOR}    & \texttt{MAJOR}    & \texttt{CRITICAL}     & \texttt{BLOCKER}  \\
+        \textbf{Gewichtung}     & 0             & 1                 & 3                 & 5                     & 10                \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Einstufungen der Relevanz eines Kriteriums}
     \label{tab:rating:criteria}
@@ -29,11 +29,11 @@ Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unte
 
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain}                                              & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Domain-Artifakte                                     & \texttt{MAJOR}    \\ \hline
-        Beinhaltet Aggregate Root                                           & \texttt{CRITICAL} \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{domain}                                              & \texttt{MINOR}    \\ 
+        Beinhaltet nur Domain-Artifakte                                     & \texttt{MAJOR}    \\ 
+        Beinhaltet Aggregate Root                                           & \texttt{CRITICAL} \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Domain-Modulen}
     \label{tab:rating:modul:domain:criteria}
@@ -47,10 +47,10 @@ Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:rating:modul:do
 
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{application}                                         & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Application-Artifakte                                & \texttt{MAJOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{application}                                         & \texttt{MINOR}    \\ 
+        Beinhaltet nur Application-Artifakte                                & \texttt{MAJOR}    \\\noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Applikation-Modulen}
     \label{tab:rating:modul:applictaion:criteria}
@@ -58,10 +58,10 @@ Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:rating:modul:do
 
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{infrastructure}                                      & \texttt{MINOR}    \\ \hline
-        Beinhaltet nur Infrastructure-Artifakte                             & \texttt{MAJOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{infrastructure}                                      & \texttt{MINOR}    \\
+        Beinhaltet nur Infrastructure-Artifakte                             & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Infrastruktur-Modulen}
     \label{tab:rating:modul:infrastructure:criteria}
@@ -77,14 +77,14 @@ Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain
 \label{sec:rating:artifakt:entity}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: Entities oder Value Objects                         & \texttt{MAJOR}    \\ \hline
-        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}  \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ 
+        Attribut-Typen: Entities oder Value Objects                         & \texttt{MAJOR}    \\
+        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Entities}
     \label{tab:rating:artifakt:entity:criteria}
@@ -102,16 +102,16 @@ Als letztes werden notwendige Methoden aufgeführt welche implementiert sein mü
 \label{sec:rating:artifakt:value_object}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: Value Objects oder Standard Datentypen              & \texttt{MAJOR}    \\ \hline
-        Kein Attribut für eigenen Identität                                 & \texttt{BLOCKER}  \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Getter heißen so wie das zugehörige Attribut                        & \texttt{INFO}     \\ \hline
-        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ 
+        Attribut-Typen: Value Objects oder Standard Datentypen              & \texttt{MAJOR}    \\ 
+        Kein Attribut für eigenen Identität                                 & \texttt{BLOCKER}  \\ 
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Getter heißen so wie das zugehörige Attribut                        & \texttt{INFO}     \\ 
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\
+        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Value Objects}
     \label{tab:rating:artifakt:value_object:criteria}
@@ -129,17 +129,17 @@ Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte habe
 \label{sec:rating:artifakt:aggregate}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
-        Attribut-Typen: andere Entities oder Value Objects                  & \texttt{MAJOR}    \\ \hline
-        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ \hline
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Repository für die Aggregate Root existiert                         & \texttt{MAJOR}    \\ \hline
-        Factory für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \hline
-        Service für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}  \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\
+        Attribut-Typen: andere Entities oder Value Objects                  & \texttt{MAJOR}    \\ 
+        Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ 
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ 
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Repository für die Aggregate Root existiert                         & \texttt{MAJOR}    \\
+        Factory für die Aggregate Root existiert                            & \texttt{MAJOR}    \\
+        Service für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Aggregate Roots}
     \label{tab:rating:artifakt:aggregate:criteria}
@@ -153,15 +153,15 @@ Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weiter
 \label{sec:rating:artifakt:factory}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Interface-Namenssuffix: \glqq Factory\grqq{}                        & \texttt{INFO}     \\ \hline 
-        Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}                      & \texttt{INFO}     \\ \hline
-        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ \hline
-        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ \hline
-        Factory-Klasse implementiert Factory-Interface                      & \texttt{MINOR}    \\ \hline
-        Enthält eine Instanz eines Repositories	                            & \texttt{MAJOR}    \\ \hline
-        Methode zum Erzeugen (\texttt{create})                              & \texttt{MAJOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Interface-Namenssuffix: \glqq Factory\grqq{}                        & \texttt{INFO}     \\ 
+        Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}                      & \texttt{INFO}     \\ 
+        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ 
+        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\
+        Factory-Klasse implementiert Factory-Interface                      & \texttt{MINOR}    \\
+        Enthält eine Instanz eines Repositories	                            & \texttt{MAJOR}    \\
+        Methode zum Erzeugen (\texttt{create})                              & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Factories}
     \label{tab:rating:artifakt:factory:criteria}
@@ -177,19 +177,19 @@ Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, 
 \label{sec:rating:artifakt:repository}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Interface-Namenssuffix: \glqq Repository\grqq{}                     & \texttt{INFO}     \\ \hline 
-        Klassen-Namenssuffix: \glqq RepositoryImpl\grqq{}                   & \texttt{INFO}     \\ \hline
-        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ \hline
-        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ \hline
-        Repository-Klasse implementiert Repository-Interface                & \texttt{MINOR}    \\ \hline
-        Methode zum Erzeugen einer neuen Identität (\texttt{nextIdentity})  & \texttt{MAJOR}    \\ \hline
-        Methode zum Finden (\texttt{findBy/get})                            & \texttt{MAJOR}    \\ \hline
-        Methode zum Speichern (\texttt{save/add/insert/put})                & \texttt{MAJOR}    \\ \hline
-        Methode zum Löschen (\texttt{delete/remove})                        & \texttt{MAJOR}    \\ \hline
-        Methode zum Überprüfen der Existenz (\texttt{contains/exists})      & \texttt{MINOR}    \\ \hline
-        Methode zum Aktualisieren (\texttt{update})                         & \texttt{MINOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Interface-Namenssuffix: \glqq Repository\grqq{}                     & \texttt{INFO}     \\ 
+        Klassen-Namenssuffix: \glqq RepositoryImpl\grqq{}                   & \texttt{INFO}     \\ 
+        Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ 
+        Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ 
+        Repository-Klasse implementiert Repository-Interface                & \texttt{MINOR}    \\ 
+        Methode zum Erzeugen einer neuen Identität (\texttt{nextIdentity})  & \texttt{MAJOR}    \\ 
+        Methode zum Finden (\texttt{findBy/get})                            & \texttt{MAJOR}    \\ 
+        Methode zum Speichern (\texttt{save/add/insert/put})                & \texttt{MAJOR}    \\ 
+        Methode zum Löschen (\texttt{delete/remove})                        & \texttt{MAJOR}    \\ 
+        Methode zum Überprüfen der Existenz (\texttt{contains/exists})      & \texttt{MINOR}    \\ 
+        Methode zum Aktualisieren (\texttt{update})                         & \texttt{MINOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Repositories}
     \label{tab:rating:artifakt:repository:criteria}
@@ -207,13 +207,13 @@ In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so rele
 \label{sec:rating:artifakt:event}
 \begin{table}[htbp]
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ \hline
-        Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ \hline
-        Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ \hline
-        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ \hline
-        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ 
+        Attribut für Zeitstempel                                            & \texttt{MAJOR}    \\ 
+        Attribut für die ID einer Entity                                    & \texttt{MAJOR}    \\ 
+        Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Domain Events}
     \label{tab:rating:artifakt:event:criteria}
@@ -229,11 +229,11 @@ Das wichtigste Bewertungskriterium ist die Unveränderlichkeit von Domain Events
 \label{sec:rating:artifakt:service}
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|m{0.8\textwidth}|c|}   \hline
-        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline\hline
-        Application Service Name beinhaltet \glqq Application\grqq{}        & \texttt{INFO}     \\ \hline
-        Application Service Modul: \texttt{application}                     & \texttt{MINOR}    \\ \hline
-        Domain Service Modul: \texttt{application.<domain>}                 & \texttt{MINOR}    \\ \hline
+    \begin{tabular}{m{0.8\textwidth}c}   \noalign{\hrule height 2pt}
+        \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
+        Application Service Name beinhaltet \glqq Application\grqq{}        & \texttt{INFO}     \\ 
+        Application Service Modul: \texttt{application}                     & \texttt{MINOR}    \\ 
+        Domain Service Modul: \texttt{application.<domain>}                 & \texttt{MINOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Services}
     \label{tab:rating:artifakt:service:criteria}
@@ -251,17 +251,14 @@ Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachv
 
 \begin{lstlisting}[caption={Ausschnitt der Bewertung eines Artefakts},captionpos=b,label=lst:rating:issue:output, language=my_json]
 {
-    "DDD": "VALUE_OBJECT",
-    "fitness": 50,
-    "domain": "issue",
-    "name": "IssueId",
-    "issues": [
-        {
-            "description": "The Value Object 'IssueId' is not placed at 'domain.issue.model'",
-            "type": "MINOR"
-        },
-        ...
-    ]
+  "DDD": "ENTITY",
+  "fitness": 55.56,
+  "domain": "owner",
+  "name": "PetType",
+  "issues": [
+    "[MAJOR] The Entity 'BaseEntity' does not contains all needed methods (equals/hashCode).",
+    ...
+  ]
 }
 \end{lstlisting}
 
@@ -349,14 +346,14 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
 
 \begin{table}[htbp] 
     \centering
-    \begin{tabular}{|c|l|l|}   \hline
-        \textbf{Note}   & \textbf{Beschreibung} & \textbf{Wertebereich}                 \\ \hline\hline
-        \texttt{A}      & sehr gut              & $\text{Metrik } \geq 95.0$            \\ \hline
-        \texttt{B}      & gut                   & $95.0 > \text{ Metrik } \geq 90.0$    \\ \hline
-        \texttt{C}      & befriedigend          & $90.0 > \text{ Metrik } \geq 80.0$    \\ \hline
-        \texttt{D}      & ausreichend           & $80.0 > \text{ Metrik } \geq 50.0$    \\ \hline
-        \texttt{E}      & mangelhaft            & $50.0 > \text{ Metrik } \geq 20.0$    \\ \hline
-        \texttt{F}      & ungenügend            & $20.0 > \text{ Metrik } \geq 0.0$     \\ \hline
+    \begin{tabular}{cll}   \noalign{\hrule height 2pt}
+        \textbf{Note}   & \textbf{Beschreibung} & \textbf{Wertebereich}                 \\ \hline
+        \texttt{A}      & sehr gut              & $\text{Metrik } \geq 95.0$            \\ 
+        \texttt{B}      & gut                   & $95.0 > \text{ Metrik } \geq 90.0$    \\ 
+        \texttt{C}      & befriedigend          & $90.0 > \text{ Metrik } \geq 80.0$    \\ 
+        \texttt{D}      & ausreichend           & $80.0 > \text{ Metrik } \geq 50.0$    \\ 
+        \texttt{E}      & mangelhaft            & $50.0 > \text{ Metrik } \geq 20.0$    \\ 
+        \texttt{F}      & ungenügend            & $20.0 > \text{ Metrik } \geq 0.0$     \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Benotung der Domain-Driven Design Metrik}
     \label{tab:analyse:metric:ddd}
@@ -364,7 +361,7 @@ Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Form
 
 Um die Metrik aus \ref{align:analyse:metric:ddd} besser einzuordnen, wird dem System anhand der Tabelle \ref{tab:analyse:metric:ddd} eine Note gegeben. Die Grenzwerte der einzelnen Noten sind von SonarQube inspiriert und orientieren sich an dem Maintainability Rating \cite{Metric:SonarSource:2019}. Es wurde diese Metrik ausgewählt da sie einen ähnlichen Sachverhalt beschreibt. 
 
-\begin{lstlisting}[caption={Ausschnitt der Domain-Driven Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ddd:output, language=my_json]
+\begin{lstlisting}[float, caption={Ausschnitt der Domain-Driven Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ddd:output, language=my_json]
 "DDD": {
     "artifact": {
         "#APPLICATION_SERVICE": 1,

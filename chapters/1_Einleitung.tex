@@ -14,7 +14,7 @@ Aufgrund dieser Vorteile kann es nützlich sein die Architektur eines vorhandene
 \label{sec:intro:problem}
 Bei dem Vorhaben ein vorhandenes System, auf Basis von Domain-Driven Design, abzuändern, müssen folgende Problemstellungen beachtet werden. 
 
-Zuerst stellt sich die Frage, wie man die Architektur eines Java-Systems analysieren kann. Hierfür bietet sich das Analysewerkzeug jQAssistant an, da es dem Nutzer ermöglicht eine Strukturanalyse von Java-Artefakten durchzuführen. Allerdings eignet sich jQAssistant nicht für alle Anwendungsfälle. Deshalb müssen die Grenzen von jQAssistant bei der Analyse von Java-Artefakten herausgearbeitet werden.
+Zuerst stellt sich die Frage, wie man die Architektur eines Java-Systems analysieren kann. Hierfür bietet sich das Analysewerkzeug jQAssistant an, da es dem Nutzer das Durchführen einer Strukturanalyse von Java Artefakten ermöglicht. Allerdings eignet sich jQAssistant nicht für alle Anwendungsfälle. Deshalb müssen die Grenzen von jQAssistant bei der Analyse von Java-Artefakten herausgearbeitet werden.
 
 Abgesehen von der Auswahl eines Analysewerkzeugs muss geklärt werden anhand von welchen Merkmalen Domain-Driven Design erkannt werden kann und zudem müssen die Grenzen des erzeugten Verbesserungsvorschlags definiert werden.
 
@@ -28,7 +28,7 @@ Abgesehen von der Auswahl eines Analysewerkzeugs muss geklärt werden anhand von
     \label{fig:intro:goal:Workflow}
 \end{figure}
 
-Mit der Arbeit soll ein Konzept entwickelt werden, mit Hilfe dessen überprüft werden kann, ob ein bestehendes Java-System die Prinzipien von Domain-Driven Design einhält. 
+Mit der Arbeit soll ein Konzept entwickelt werden, mit Hilfe dessen überprüft werden kann, ob ein bestehendes Java-System die Prinzipien von Do\-main-Driven Design einhält. 
 
 Wie man in der Abbildung \ref{fig:intro:goal:Workflow} erkennen kann, soll zunächst ein bestehendes Java-System mit jQAssistant analysiert werden und anschließend anhand einer Kennzahl, zum Beispiel die prozentuale Einhaltung der Prinzipien, bewertet werden. Außerdem soll ein Algorithmus entwickelt werden, welcher die nicht eingehaltenen Prinzipien, nach Möglichkeit, verbessert. Dabei liegt der Schwerpunkt auf der Verbesserung der Architektur. Anschließend soll der Verbesserungsvorschlag erneut bewertet werden. Der Algorithmus gilt als erfolgreich, wenn die Bewertung des verbesserten Systems besser geworden ist oder sich nicht verschlechtert hat.
 
@@ -36,4 +36,4 @@ Wie man in der Abbildung \ref{fig:intro:goal:Workflow} erkennen kann, soll zunä
 \label{sec:intro:structure}
 Die Arbeit ist wie folgt aufgebaut. Nach dieser Einleitung wird ausführlich auf die Grundlagen dieser Arbeit eingegangen. Dieser Teil unterteilt sich in eine Einführung in Domain-Driven Design und in das Analysewerkzeug jQAssistant. Anschließend werden verwandte Arbeiten und der aktuelle Stand der Technik betrachtet. Darauf folgt der Hauptteil dieser Arbeit. Der Hauptteil gliedert sich in zwei Kapitel. Im ersten Kapitel wird die Analyse des Java-Systems betrachtet. Dabei wird besonders ein Schwerpunkt auf die Erkennung der Merkmale von Domain-Driven Design gelegt. Das zweite Kapitel des Hauptteils beschäftigt sich mit der Umsetzung des Umwandlungsalgorithmus. Die Arbeit endet mit einer Diskussion der Ergebnisse sowie einer Zusammenfassung und einem kurzen Ausblick auf zukünftige Forschung in diesem Bereich.
 
-Der zugehörige Quellcode dieser Arbeit sowie eine Bedienungsanleitung ist als Repository\footnote{\url{https://github.com/DanielKraft/illumi-code-ddd} (besucht am 16.12.2019)} auf GitHub zu finden.
+Der zugehörige Quellcode dieser Arbeit sowie eine Bedienungsanleitung ist als Repository\footnote{\url{https://github.com/DanielKraft/illumi-code-ddd} (besucht am 20.12.2019)} auf GitHub zu finden.

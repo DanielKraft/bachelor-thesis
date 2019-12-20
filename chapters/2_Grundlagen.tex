@@ -7,10 +7,10 @@ In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssista
 Das Domain-Driven Design besteht zu einem großen Teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
 
 \begin{figure}[H] 
-  \centering
-     \includegraphics[width=0.95\textwidth]{gfx/Simple_Overview.png}
-  \caption{Vereinfachter Überblick über die Muster-Sprache von Domain-Driven Design}
-  \label{fig:basics:ddd:pattern}
+    \centering
+    \includegraphics[width=0.95\textwidth]{gfx/Simple_Overview.png}
+    \caption{Vereinfachter Überblick über die Muster-Sprache von \\Domain-Driven Design}
+    \label{fig:basics:ddd:pattern}
 \end{figure}
 
 In der Abbildung \ref{fig:basics:ddd:pattern} \cite{DDD:Plod:2019} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt. Diese Komponenten werden nun näher erläutert. 
@@ -82,7 +82,7 @@ Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Ident
 
 \subsubsection{Domain Event}
 \label{sec:basics:ddd:mdd:event}
-Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Sie modellieren wichtige Zustandsänderungen von Entities, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}

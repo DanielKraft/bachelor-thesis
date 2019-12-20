@@ -159,7 +159,7 @@ Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weiter
         Klassen-Namenssuffix: \glqq FactoryImpl\grqq{}                      & \texttt{INFO}     \\ 
         Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ 
         Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\
-        Factory-Klasse implementiert Factory-Interface                      & \texttt{MINOR}    \\
+        Factory Klasse implementiert Factory Interface                      & \texttt{MINOR}    \\
         Enthält eine Instanz eines Repositories	                            & \texttt{MAJOR}    \\
         Methode zum Erzeugen (\texttt{create})                              & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
@@ -167,9 +167,9 @@ Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weiter
     \label{tab:rating:artifakt:factory:criteria}
 \end{table}
 
-Bei der Bewertung von Factories muss zunächst zwischen Factory-Interfaces und Factory-Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet, da es eine Java-Konvention ist Klassen welche ein Interface implementieren mit dem Suffix \glqq Impl\grqq{} zu benennen \cite{DDD:Vernon:2013}.
+Bei der Bewertung von Factories muss zunächst zwischen Factory Interfaces und Factory Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet, da es eine Java-Konvention ist Klassen welche ein Interface implementieren mit dem Suffix \glqq Impl\grqq{} zu benennen \cite{DDD:Vernon:2013}.
 
-Die Factory-Interfaces und Factory-Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \texttt{domain.<domain>.model} sind, sollten die Klassen in dem untergeordneten Modul \texttt{impl} zu finden sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
+Die Factory Interfaces und Factory Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \texttt{domain.<domain>.model} sind, sollten die Klassen in dem untergeordneten Modul \texttt{impl} zu finden sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
 
 Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Diese beiden Kriterien wurden mit einer Relevanz von \texttt{MAJOR} bewertet.
 
@@ -183,7 +183,7 @@ Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, 
         Klassen-Namenssuffix: \glqq RepositoryImpl\grqq{}                   & \texttt{INFO}     \\ 
         Interface-Modul: \texttt{domain.<domain>.model}                     & \texttt{MINOR}    \\ 
         Klassen-Modul: \texttt{domain.<domain>.model.impl}                  & \texttt{MINOR}    \\ 
-        Repository-Klasse implementiert Repository-Interface                & \texttt{MINOR}    \\ 
+        Repository Klasse implementiert Repository Interface                & \texttt{MINOR}    \\ 
         Methode zum Erzeugen einer neuen Identität (\texttt{nextIdentity})  & \texttt{MAJOR}    \\ 
         Methode zum Finden (\texttt{findBy/get})                            & \texttt{MAJOR}    \\ 
         Methode zum Speichern (\texttt{save/add/insert/put})                & \texttt{MAJOR}    \\ 
@@ -269,7 +269,7 @@ Listing \ref{lst:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes
 
 \subsection{Object-Oriented Design Metriken}
 \label{sec:analyse:metric:ood}
-In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Object-Oriented Design behandelt. Die verwendeten Metriken stammen aus dem Artikel \glqq OO Design Quality Metrics\grqq{} \cite{Metric:Martin:1994}. Die Metriken beschreiben die Zustände der einzelnen Module eines Systems. Dabei wird die Abstraktheit sowie die Stabilität der Module gemessen.
+In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Ob\-ject-Oriented Design behandelt. Die verwendeten Metriken stammen aus dem Artikel \glqq OO Design Quality Metrics\grqq{} \cite{Metric:Martin:1994}. Die Metriken beschreiben die Zustände der einzelnen Module eines Systems. Dabei wird die Abstraktheit sowie die Stabilität der Module gemessen.
 
 \begin{equation}
     \text{Abstractness} = \frac{\text{Anzahl abstrakter Artefakte}}{\text{Gesamt Anzahl aller Artefakte}} \label{align:analyse:metric:ood:abstractness}
@@ -277,7 +277,7 @@ In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Object-Orient
 
 Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0,1].
 
-Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Packages, welche von diesem Package abhängig sind \cite{Metric:Martin:1994}. Efferent Couplings ist das Gegenteil von Afferent Couplings. Efferent Couplings ist die Anzahl der Klassen innerhalb dieses Packages, welche von einem anderem Package abhängen.
+Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Moduls, welche von diesem Modul abhängig sind \cite{Metric:Martin:1994}. Efferent Couplings ist das Gegenteil von Afferent Couplings. Efferent Couplings ist die Anzahl der Klassen innerhalb dieses Moduls, welche von einem anderem Modul abhängen.
 
 \begin{equation}
     \text{Instability} = \frac{\text{Efferent Couplings}}{\text{Afferent Couplings} + \text{Efferent Couplings}} \label{align:analyse:metric:ood:instability}
@@ -292,13 +292,13 @@ Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitz
     \label{fig:analyse:metric:ood}
 \end{figure}
 
-Laut \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Packages auf der Main Sequence liegen.
+Laut \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
 
 \begin{equation}
     \text{Distanz} = | \text{Abstractness} + \text{Instability} - 1 | \label{align:analyse:metric:ood:distance}
 \end{equation}
 
-Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden.
+Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden. Da die ein Modul im besten Fall keine Abweichung von der Main Sequence haben sollte, ist der bestmögliche Wert für die Distanz \texttt{0}.
 
 \begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output, language=my_json]
 "OOD": {

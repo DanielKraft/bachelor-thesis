@@ -1,4 +1,4 @@
-\chapter{Generierung eines Architekturvorschlags auf Basis von Domain-Driven Design}
+\chapter{Generierung eines Architekturvorschlags}
 \label{ch:suggestion}
 In diesem Kapitel wird die automatische Generierung eines Verbesserungsvorschlags erläutert. Zu Beginn wird auf die Umwandlungskriterien eingegangen und im Anschluss wird die Implementierung des Umwandlungsalgorithmus beschrieben.
 
@@ -184,7 +184,7 @@ Die Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity} zeigt eine Au
 
 \subsection{Aufräumen der neuen Architektur}
 \label{sec:suggestion:impl:finalize}
-Nachdem alle Artefakte verbessert wurden, werden verschiedenen Abschlussarbeiten ausgeführt. Dazu gehört zum Beispiel das Entfernen von leeren Modulen, welche in der ersten Phase, siehe Abschnitt \ref{sec:suggestion:impl:init}, erstellt aber nicht gefüllt wurden.
+Nach dem Verbessern aller Artefakte, werden verschiedenen Abschlussarbeiten ausgeführt. Dazu gehört zum Beispiel das Entfernen von leeren Modulen, welche in der ersten Phase, siehe Abschnitt \ref{sec:suggestion:impl:init}, erstellt aber nicht gefüllt wurden.
 
 Außerdem werden die alten Abhängigkeiten an die neue Architektur angepasst. Das heißt, dass die Pfade, welche die Abhängigkeiten repräsentieren, mit den neuen Pfaden ersetzt werden.
 

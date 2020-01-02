@@ -1,10 +1,10 @@
 \chapter{Grundlagen}
 \label{ch:basics}
-In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssistant eingegangen. Dabei wird der Schwerpunkt auf die Definition der Domain-Driven Design Prinzipien gelegt. Anschließend wird die Funktionsweise und die Bedienung von jQAssistant erläutert.
+In diesem Kapitel wird auf die Grundlagen von Domain-Driven Design und jQAssistant eingegangen. Dabei liegt der Schwerpunkt auf der Definition der Domain-Driven Design Prinzipien. Anschließend wird die Funktionsweise und die Bedienung von jQAssistant erläutert.
 
 \section{Einführung in Domain-Driven Design}
 \label{sec:basics:ddd}
-Das Domain-Driven Design besteht zu einem großen Teil aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
+Das Domain-Driven Design besteht aus dem Strategic Domain-Driven Design und dem Tactical Domain-Driven Design. Das Strategic Domain-Driven Design behandelt hauptsächlich die Methodik hinter dem Design- und Entwicklungsprozess. Das Tactical Domain-Driven Design hingegen erläutert Design Muster. Da für das Ziel dieser Arbeit hauptsächlich das Tactical Domain-Driven Design von Relevanz ist, wird in diesem Abschnitt darauf der Schwerpunkt gelegt.
 
 \begin{figure}[H] 
     \centering
@@ -48,24 +48,23 @@ Die Application Layer des Systems koordiniert Aufgaben und delegiert die Arbeit 
 
 Die Domain Layer beinhaltet die Geschäftskonzepte, Informationen über die Geschäftslage und Geschäftsregeln \cite{DDD:Evans:2003}. Zudem wird in dieser Schicht das Datenmodell des Systems definiert. Evans beschreibt diese Schicht als \glqq the heart of business software\grqq{}\cite{DDD:Evans:2003}.
 
-Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unterstützung der anderen Schichten benötigt und kann unter andrem das Persistieren der Domain oder das Versenden von Nachrichten beinhalten \cite{DDD:Evans:2003}.
+Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unterstützung der anderen Schichten benötigt und kann unter anderem das Persistieren der Domain oder das Versenden von Nachrichten beinhalten \cite{DDD:Evans:2003}.
 
 Die Bausteine des Model-Driven Design, in den nachfolgenden Abschnitten, sind jeweils einer der zuvor genannten Schicht zugeordnet.
 
 \subsubsection{Entities}
 \label{sec:basics:ddd:mdd:entity}
-Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, bieten sich daher die Attribute nicht an. Deshalb wird eine Identität des Objektes benötigt. Solche Identitäten von Objekten werden üblicherweise durch automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen von solchen Objekten werden Entities genannt. Der Vorteil von einer Entity ist, dass die Identität eines Objektes nicht von der Referenz abhängig ist \cite{DDD:Evans:2003}.
+Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, wird eine Identität des Objektes benötigt, dafür bieten sich die Attribute nicht an. Solche Identitäten von Objekten werden üblicherweise durch eine automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primär Schlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen solcher Objekte werden Entities genannt. Der Vorteil einer Entity ist, dass die Identität eines Objektes nicht von ihrer Referenz abhängt \cite{DDD:Evans:2003}.
 
 \subsubsection{Value Objects}
 \label{sec:basics:ddd:mdd:value_object}
-Nicht für alle Objekte kann es sinnvoll sein, wenn sie eine Identität haben. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte welche nur Eigenschaften beschreiben sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
+Nicht für alle Objekte kann es sinnvoll sein, eine Identität zu besitzen. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte, welche nur Eigenschaften beschreiben, sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
 
-Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen die Attribute unveränderlich sein \cite{DDD:Avram:2007}. Das bedeutet, dass bei Veränderungen des Objektes ein neues Value Object, mir dem neuen Wert, erzeugt werden muss \cite{DDD:Avram:2007}. Somit gibt eine seiteneffektfreie Methode eines Value Objects immer ein neues Objekt zurück.
-
+Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen die Attribute unveränderlich sein \cite{DDD:Avram:2007}. Das bedeutet, dass bei Veränderungen des Objektes ein neues Value Object, mit dem neuen Wert, erzeugt werden muss \cite{DDD:Avram:2007}. Somit gibt eine seiteneffektfreie Methode eines Value Objects immer ein neues Objekt zurück.
 
 \subsubsection{Aggregates}
 \label{sec:basics:ddd:mdd:aggregate}
-Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects heißen Aggregates.
+Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects nennt man Aggregates.
 
 Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
@@ -80,22 +79,22 @@ Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern mü
 
 Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandene Objekte mit Identitäten rekonstruiert werden \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
-\subsubsection{Domain Event}
+\subsubsection{Domain Events}
 \label{sec:basics:ddd:mdd:event}
 Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}
-Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt \grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Services sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
+Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt\grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Service sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
 \label{sec:basics:ddd:mdd:module}
-Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Module werden meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den vier Schichten aus der Layered Architecture in Abbildung \ref{fig:basics:ddd:mdd:layer}.
+Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte die Domain in Modules unterteilt werden \cite{DDD:Avram:2007}. Modules werden meistens durch unterschiedliche Packages realisiert. Das Ziel von Modules ist es, ein hohes Maß an Kohäsion und ein niedriges Maß an Kopplung zu erreichen \cite{DDD:Avram:2007}. Eine übliche Unterteilung in Modules orientiert sich an den vier Schichten aus der Layered Architecture in Abbildung \ref{fig:basics:ddd:mdd:layer}.
 
 \section{Einführung in jQAssistant}
 \label{sec:basics:jqa}
 
-Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, zu unterteilen. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
+Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, unterteilt. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
 
 \begin{figure}[htbp] 
     \centering
@@ -104,11 +103,11 @@ Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-W
     \label{fig:basics:jqa:workflow}
 \end{figure}
 
-In der Abbildung \ref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der Ablauf des Analysevorgangs dargestellt. Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speichert diese in der Neo4j Graphdatenbank. Anschließende werden auf diese Daten verschiedene Regeln zur Datenanreicherung ausgeführt.\cite{jQA:Muller:2018} So können zum Beispiel Abhängigkeiten erkannt und modelliert werden. 
+In der Abbildung \ref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der Ablauf des Analysevorgangs dargestellt. Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speichert diese in der Neo4j-Graphdatenbank. Anschließend werden auf diese Daten verschiedene Regeln zur Datenanreicherung angewendet \cite{jQA:Muller:2018}. So können zum Beispiel Abhängigkeiten erkannt und modelliert werden. 
 
-\subsection{Persistierung der Analysedaten in einer Neo4j-Datenbank}
+\subsection{Persistierung der Analysedaten in einer Neo4j-Graphdatenbank}
 \label{sec:basics:jqa:neo4j}
-Die Daten in der Neo4j-Datenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
+Die Daten in der Neo4j-Graphdatenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
 \begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher, language=my_cypher]
 MATCH (package:Package)-[:CONTAINS]->(file:File) 
@@ -116,14 +115,14 @@ WHERE package.fqn = 'org.junit' AND file:Class
 RETURN file as Klassen
 \end{lstlisting}
 
-Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:basics:jqa:neo4j:cypher} ist eine solche Abfrage zu sehen. Wie an dieser Anfrage zu sehen ist, besteht eine Cypher-Abfrage aus drei Bausteinen. In der ersten Zeile wird definiert welchen Knoten, mit welcher Beziehungen, berücksichtigt werden sollen. In diesem Fall sind alle Packages interessant welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt anschließend an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
+Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:basics:jqa:neo4j:cypher} ist eine solche Abfrage zu sehen. Wie an dieser Abfrage zu sehen ist, besteht eine Cypher-Abfrage aus drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welchen Beziehungen, berücksichtigt werden sollen. In diesem Beispiel werden alle Packages betrachtet welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
 
-Für die Verwendung von Cypher-Abfrage aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
+Für die Verwendung von Cypher-Abfragen aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
 
 \subsection{Verwendung von jQAssistant}
 \label{sec:basics:jqa:usage}
-jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung. Die erste Variante ist die Verwendung eins Maven Plugins, dabei kann der Scan des Projekts direkt aus dem Projekt heraus ausgeführt werden. Dafür ist es allerdings notwendig, dass das Projekt mit Maven verwaltet wird.
+jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung. Die erste Variante ist die Verwendung eines Maven Plugins, dabei kann der Scan des Projekts direkt aus dem Projekt heraus ausgeführt werden. Dafür ist es allerdings notwendig, dass das Projekt mit Maven verwaltet wird.
 
-Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Es bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
+Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
 
-Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image zur Verfügung gestellt. Dieser Docker-Container beinhaltet Command Line Tool, allerdings muss dafür dieses nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.

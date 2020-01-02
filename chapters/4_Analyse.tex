@@ -4,11 +4,11 @@ Diese Kapitel behandelt die Umsetzung der Architekturanalyse. Es wird darauf ein
 
 \section{Erkennung von Domain-Driven Design Artefakten}
 \label{sec:analyse:characteristics}
-Sobald ein Java-System mit jQAssistant analysiert wurde, müssen die einzelnen Java-Artefakte analysiert werden. Dabei müssen die Artefakte den richtigen Domain-Driven Design Bausteinen zugeordnet werden. In diesem Abschnitt wird erläutert anhand von welchen Merkmalen die Domain-Driven Design Bausteine erkannt werden können und wie .
+Sobald ein Java-System mit jQAssistant analysiert wurde, müssen die einzelnen Java-Artefakte analysiert werden. Dabei müssen die Artefakte den richtigen Domain-Driven Design Bausteinen zugeordnet werden. In diesem Abschnitt wird erläutert anhand welcher Merkmalen die Domain-Driven Design Bausteine erkannt werden können und wie dies umgesetzt wird.
 
 \subsection{Entities}
 \label{sec:analyse:characteristics:entity}
-Bei dem Auffinden von Entities muss darauf Wert gelegt werden, ob es sich, bei dem Artefakt, um ein Bestandteil des Datenmodells handelt. 
+Bei dem Auffinden von Entities muss darauf geachtet werden, ob es sich, bei dem Artefakt, um ein Bestandteil des Datenmodells handelt. 
 
 \begin{figure}[H] 
     \centering
@@ -17,7 +17,7 @@ Bei dem Auffinden von Entities muss darauf Wert gelegt werden, ob es sich, bei d
     \label{fig:analyse:characteristics:entity}
 \end{figure}
 
-In der Abbildung \ref{fig:analyse:characteristics:entity} ist ein möglicher Kandidat für eine Entity zusehen. Anhand dieses Beispiels werden die Merkmale von Entities veranschaulicht.
+In der Abbildung \ref{fig:analyse:characteristics:entity} ist ein möglicher Kandidat für eine Entity zu sehen. Anhand dieses Beispiels werden die Merkmale von Entities veranschaulicht.
 
 Wie bereits in dem Abschnitt \ref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte welche eine eigene Identität besitzen. Daher kann das in Abbildung \ref{fig:analyse:characteristics:entity} gezeigte Beispiel, ohne weitere Einwende, als Entity klassifiziert werden. Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden, ob es sich um eine Entity handelt. 
 
@@ -45,15 +45,15 @@ private boolean containsModelMethods() {
     || constructors == artifact.getMethods().size()
     || containsEqualsOrHashCode()
     || containsGetterOrSetter();
-  }
+}
 \end{lstlisting}
 Die Methode \texttt{isEntity} aus Listing \ref{lst:analyse:characteristics:entity} wird zur Analyse von Artefakten basierend der Merkmale von Entities verwendet. Von der zweiten bis zur achten Zeile werden die Attribute des Artefakts analysiert. 
 
-Nachdem die Attribute analysiert wurden, werden die Methoden untersucht. Dies geshieht in der zweiten Methode \texttt{containsModelMethods}. Die Methode überprüft, wie bereits beschrieben, das Vorhandensein von Gettern und Settern sowie weitere Merkmale. Ein weiteres Merkmal von Entities ist es wenn sie keine Methoden oder nur Konstruktoren besitzen. Diese Merkmale wurden in den Zeilen 15 bis 19 realisiert. Außerdem wird in der 20. Zeile das Artefakt überprüft, ob es die beiden, für Entities typischen, Methoden \texttt{equalsh} und \texttt{hashCode} besitzt.
+Nachdem die Attribute analysiert wurden, werden die Methoden untersucht. Dies geschieht in der zweiten Methode \texttt{containsModelMethods}. Die Methode überprüft, wie bereits beschrieben, das Vorhandensein von Gettern und Settern sowie weitere Merkmale. Das Fehlen von Methoden oder der ausschließliche Besitz von Konstruktoren ist ein weiteres Merkmal von Entities. Diese Merkmale wurden in den Zeilen 15 bis 19 realisiert. Außerdem wird in der 20. Zeile das Artefakt überprüft, ob es die beiden, für Entities typischen, Methoden \texttt{equalsh} und \texttt{hashCode} besitzt.
 
 \subsection{Value Objects}
 \label{sec:analyse:characteristics:value_object}
-Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unterscheiden sich allerdings in zwei entscheiden Punkten. Diese beiden Unterscheide können anhand der Klasse \texttt{Adresse} aus der Abbildung \ref{fig:analyse:characteristics:value_object} näher aufgezeigt werden.
+Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unterscheiden sich allerdings in zwei entscheiden Punkten. Diese beiden Unterschiede können anhand der Klasse \texttt{Adresse} aus der Abbildung \ref{fig:analyse:characteristics:value_object} näher aufgezeigt werden.
 
 \begin{figure}[H] 
     \centering
@@ -64,7 +64,7 @@ Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unters
 
 Wenn man die Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale überprüft, fällt direkt auf, dass sie keine Identität besitzt aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um Value Object handeln.
 
-Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity ist und nur Attribute vom Typ eines Standard Datentyp oder anderer Value Objects besitzen, handelt es sich sehr wahrscheinlich um ein Value Object.
+Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity darstellt und nur Attribute vom Typ eines Standard Datentyp oder anderer Value Objects besitzt, handelt es sich sehr wahrscheinlich um ein Value Object.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um ein Value Object handelt}, captionpos=b, label=lst:analyse:characteristics:value_object, language=my_java]
 private boolean isValueObject() {
@@ -164,7 +164,7 @@ Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen si
     \label{fig:analyse:characteristics:event}
 \end{figure}
 
-Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristics:event} weißt die beiden oben genannten Merkmale auf. In selten Fällen in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity welcher das Domain Event zugeordnet ist.
+Die Klasse \texttt{HausVerkauf} aus der Abbildung \ref{fig:analyse:characteristics:event} weist die beiden oben genannten Merkmale auf. In seltenen Fällen, in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity welcher das Domain Event zugeordnet ist.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um ein Domain Event handelt}, captionpos=b, label=lst:analyse:characteristics:event, language=my_java]
 private boolean isDomainEvent() {
@@ -189,7 +189,7 @@ Die Methode \texttt{isDomainEvent} aus Listing \ref{lst:analyse:characteristics:
 
 \subsection{Services}
 \label{sec:analyse:characteristics:service}
-Um eine Service zu erkennen muss zwischen Domain und Application Services unterschieden werden, da sie unterschiedliche Merkmale aufweisen.
+Um einen Service zu erkennen muss zwischen Domain und Application Services unterschieden werden, da sie unterschiedliche Merkmale aufweisen.
 
 \subsubsection{Domain Services}
 \label{sec:analyse:characteristics:service:domain}
@@ -200,7 +200,7 @@ Um eine Service zu erkennen muss zwischen Domain und Application Services unters
     \label{fig:analyse:characteristics:domain}
 \end{figure}
 
-Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist besitzen Domain Services meistens die Instanz eines Repositories als Attribut. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
+Wie in Abbildung \ref{fig:analyse:characteristics:domain} zu erkennen ist, besitzen Domain Services meistens die Instanz eines Repositories als Attribut. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um einen Service handelt}, captionpos=b, label=lst:analyse:characteristics:service, language=my_java]
 private boolean isService() {
@@ -225,7 +225,7 @@ Die Methode \texttt{isService} aus Listing \ref{lst:analyse:characteristics:serv
     \label{fig:analyse:characteristics:application}
 \end{figure}
 
-Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist erkennt man Application Services sehr leicht an der Methode \texttt{main(java.lang.String[])}. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus Listing \ref{lst:analyse:characteristics:service:application} realisiert.
+Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist, erkennt man Application Services sehr leicht an der Methode \texttt{main(java.lang.String[])}. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus Listing \ref{lst:analyse:characteristics:service:application} realisiert.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um einen Application Service handelt}, captionpos=b, label=lst:analyse:characteristics:service:application, language=my_java]
 private boolean isApplicationService() {

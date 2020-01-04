@@ -2,11 +2,11 @@
 \label{ch:discuss}
 In diesem Kapitel werden die Ergebnisse dieser Arbeit betrachtet und bewertet. Dabei wird besonders ein Schwerpunkt auf die Bewertung der verbesserten Architektur gelegt. 
 
-Im ersten Schritt werden die Ergebnisse der drei Beispielsysteme aus dem Anhang \ref{ch:anhang:beispiel} betrachtet. Anschließend wird erläutert, welche Grenzen der Umwandlungsalgorithmus besitzt.
+Im ersten Schritt werden die Ergebnisse der drei Beispielsysteme aus dem Anhang \ref{ch:anhang:beispiel} betrachtet. Anschließend wird erläutert, welche Grenzen der Umwandlungsalgorithmus aufweist.
 
 \section{Ergebnisse des Umwandlungsalgorithmus}
 \label{sec:discuss:results}
-In diesem Abschnitt wird auf die Ergebnisse des Umwandlungsalgorithmus eingegangen. Zur Evaluierung des Umwandlungsalgorithmus wurden drei unterschiedliche Beispiel System ausgewählt und mit Hilfe des Umwandlungsalgorithmus verbessert.
+In diesem Abschnitt wird auf die Ergebnisse des Umwandlungsalgorithmus eingegangen. Zur Evaluierung des Umwandlungsalgorithmus wurden drei unterschiedliche Beispielsysteme ausgewählt und mit Hilfe des Umwandlungsalgorithmus verbessert.
 
 \subsection{Beispielsystem Petclinic}
 \label{sec:discuss:results:petclinic}
@@ -31,7 +31,7 @@ Die Verteilung der verschiedenen Domain-Driven Design Bausteine wurde in der Abb
 
 \subsection{Beispielsystem Issue auf Basis vom Anemic Domain Model}
 \label{sec:discuss:results:adm}
-Als zweites Beispiel System wurde das System aus dem Anhang \ref{sec:anhang:beispiel:adm} ausgewählt, da es auf dem Anemic Domain Model basiert und daher sehr unterschiedlich zum Domain-Driven Design aufgebaut ist.
+Als zweites Beispielsystem wurde das System aus dem Anhang \ref{sec:anhang:beispiel:adm} ausgewählt, da es auf dem Anemic Domain Model basiert und vom Domain-Driven Design abweicht.
 
 \begin{figure}[H]
     \centering
@@ -48,7 +48,7 @@ Als zweites Beispiel System wurde das System aus dem Anhang \ref{sec:anhang:beis
 
 Die Abbildung \ref{fig:discuss:adm:ddd} zeigt das auch dieses System einen deutlichen Zuwachs an Value Objects erfahren hat. Da das ursprüngliche System aus verhältnismäßig wenigen Artefakten bestand, nahm die Anzahl von Modulen nicht so deutlich zu wie im vorherigen Beispiel.
 
-Die Bewertung des Object-Oriented Design, aus Abbildung \ref{fig:discuss:adm:ood} zeigt, dass verbesserte System ähnlich verteilt ist wie das ursprüngliche System.
+Die Bewertung des Object-Oriented Design, aus Abbildung \ref{fig:discuss:adm:ood} zeigt, dass das verbesserte System ähnlich verteilt ist wie das Ursprüngliche.
 
 \subsection{Beispielsystem Issue auf Basis vom Domain-Driven Design}
 \label{sec:discuss:results:ddd}
@@ -67,9 +67,9 @@ Das dritte und letzte Beispielsystem aus dem Anhang \ref{sec:anhang:beispiel:ddd
     \label{fig:discuss:ddd}
 \end{figure}
 
-Anhand der Abbildung \ref{fig:discuss:ddd:ddd} lässt sich erkennen, dass dieses System bereits in das Domain-Driven Design überführt wurde. Denn außer den Modulen nahm die Anzahl von Artefakten nur wenig zu. Die Anzahl der Module nahm zu, da das ursprüngliche System mit einer minimalen Anzahl von Modulen designt wurde.
+Anhand der Abbildung \ref{fig:discuss:ddd:ddd} lässt sich erkennen, dass dieses System bereits in das Domain-Driven Design überführt wurde. Denn abgesehen von den Modulen stieg die Anzahl der restlichen Artefakte nur geringfügig an. Die Anzahl der Module nahm zu, da das ursprüngliche System mit einer minimalen Anzahl von Modulen designt wurde.
 
-Die Abbildung \ref{fig:discuss:ddd:ood} zeigt, dass sich durch das Hinzufügen neuer Module die Bewertung des Object-Oriented Design geringfügig verschoben hat aber im Größen und Ganzen ist das Ergebnis gleich geblieben.
+Die Abbildung \ref{fig:discuss:ddd:ood} zeigt, dass sich durch das Hinzufügen neuer Module die Bewertung des Object-Oriented Design geringfügig verschoben hat, aber im Größen und Ganzen das Ergebnis gleich geblieben ist.
 
 \subsection{Bewertung des Umwandlungsalgorithmus anhand der Beispielsysteme}
 \label{sec:discuss:results:metrics}
@@ -88,7 +88,7 @@ In diesem Abschnitt wird, anhand der Metriken aus dem Abschnitt \ref{sec:analyse
     \label{fig:discuss:metric}
 \end{figure}
 
-Zuerst wird die durchschnittliche Object-Oriented Design Distanz der Beispielsysteme betrachtet. Wie bereits in Abschnitt \ref{sec:analyse:metric:ood} beschrieben sollte die Distanz der Module möglichst gering sein. Die Ergebnisse in der Abbildung \ref{fig:discuss:metric:ood} zeigen, dass der Umwandlungsalgorithmus die Object-Oriented Design Distanz ein wenig verschlechtert hat. Daraus lässt sich schließen, dass der Umwandlungsalgorithmus die Qualität des Object-Oriented Design nur geringfügig beeinflusst.
+Zu Beginn wird die durchschnittliche Object-Oriented Design Distanz der Beispielsysteme betrachtet. Wie bereits in Abschnitt \ref{sec:analyse:metric:ood} beschrieben, sollte die Distanz der Module möglichst gering sein. Die Ergebnisse in der Abbildung \ref{fig:discuss:metric:ood} zeigen, dass der Umwandlungsalgorithmus die Object-Oriented Design Distanz geringfügig verschlechtert hat. Daraus lässt sich schließen, dass der Umwandlungsalgorithmus die Qualität des Object-Oriented Design nur geringfügig beeinflusst.
 
 Die Abbildung \ref{fig:discuss:metric:ddd} zeigt die Ergebnisse der in Abschnitt \ref{sec:analyse:metric:ddd} entwickelten Metrik zur Bewertung eines Systems auf Basis von Domain-Driven Design. Auch diese Metrik zeigt für alle Beispielsysteme das gleiche Verhalten. Im Gegensatz zur Metrik aus Abbildung \ref{fig:discuss:metric:ood} verbessert der Umwandlungsalgorithmus diese Metrik. Das Ergebnis zeigt, dass der Umwandlungsalgorithmus ein System, auf Basis der in Abschnitt \ref{sec:analyse:characteristics} definierten Kriterien, verbessern und somit ein System in das Domain-Driven Design überführen kann.
 
@@ -99,7 +99,7 @@ In diesem Abschnitt werden drei Szenarien vorgestellt, um die verschiedenen Gren
 \subsection{Erkennen von Zusammenhängen zwischen Value Objects}
 \label{sec:discuss:limits:value_objects}
 
-Das erste Szenario kann auftreten, wenn der Umwandlungsalgorithmus Attribute von Entities als Value Object auslagert. Dabei kann es passieren, dass Attribut welche zusammengehören in mehrere Value Objects aufgeteilt werden.
+Das erste Szenario kann auftreten, wenn der Umwandlungsalgorithmus Attribute von Entities als Value Object auslagert. Dabei kann es passieren, dass Attribut welche zusammengehören, in mehrere Value Objects aufgeteilt werden.
 
 \begin{figure}[H]
     \centering
@@ -114,7 +114,7 @@ Das erste Szenario kann auftreten, wenn der Umwandlungsalgorithmus Attribute von
     \label{fig:discuss:limits:value_objects}
 \end{figure}
 
-Das Beispiel aus der Abbildung \ref{fig:discuss:limits:value_objects} verdeutlicht dieses Szenario. Die beiden Value Objects in der Abbildung \ref{fig:discuss:limits:value_objects:new} stammen aus dem verbesserten Petclinic System im Anhang \ref{fig:anhang:petclinic:new:domain:owner}. Der Umwandlungsalgorithmus hat bei der Generierung der beiden Value Objects nicht erkannt, dass die beiden Attribute \texttt{address} und \texttt{city} zusammengehören. In der Abbildung \ref{fig:discuss:limits:value_objects:suggestion} ist eine Möglichkeit aufgeführt wie dieses Problem gelöst werden könnte. Es besteht nämlich die Möglichkeit beide Value Objects zu einem Value Object zusammenzufassen.
+Das Beispiel aus der Abbildung \ref{fig:discuss:limits:value_objects} verdeutlicht dieses Szenario. Die beiden Value Objects in der Abbildung \ref{fig:discuss:limits:value_objects:new} stammen aus dem verbesserten Petclinic System im Anhang \ref{fig:anhang:petclinic:new:domain:owner}. Der Umwandlungsalgorithmus hat bei der Generierung der beiden Value Objects nicht erkannt, dass die beiden Attribute \texttt{address} und \texttt{city} zusammengehören. In der Abbildung \ref{fig:discuss:limits:value_objects:suggestion} ist eine Möglichkeit aufgeführt wie dieses Problem gelöst werden könnte. Es besteht die Möglichkeit beide Value Objects zu einem Value Object zusammenzufassen.
 
 Der Umwandlungsalgorithmus kann dieses Szenario nicht beheben, da er keine sinngemäßen Zusammenhänge erkennen kann.
 
@@ -135,7 +135,7 @@ Wenn der Umwandlungsalgorithmus Attribut von Entities als Value Object auslagert
     \label{fig:discuss:limits:duplicate}
 \end{figure}
 
-Dieses Szenario tritt zum Beispiel bei dem Petclinic System auf. Die Abbildung \ref{fig:discuss:limits:duplicate:new} zeigt dieses Szenario. Es wurden unabhängig voneinander zwei Value Objects erzeugt, welche beide einen Namen modellieren. Eine Möglichkeit dieses duplizierte Modell zu überarbeiten ist in der Abbildung \ref{fig:discuss:limits:duplicate:suggestion} zu sehen. Es wurde ein Value Object entfernt und der Name des anderen Value Objects verallgemeinernd.
+Dieses Szenario tritt zum Beispiel bei dem Petclinic System auf. Die Abbildung \ref{fig:discuss:limits:duplicate:new} zeigt dieses Szenario. Es wurden unabhängig voneinander zwei Value Objects erzeugt, welche beide einen Namen modellieren. Eine Möglichkeit dieses duplizierte Modell zu überarbeiten ist in der Abbildung \ref{fig:discuss:limits:duplicate:suggestion} zu sehen. Es wurde ein Value Object entfernt und der Name des anderen Value Objects verallgemeinert.
 
 Bei diesem Szenario stößt der Umwandlungsalgorithmus an seine Grenzen, da er nicht in der Lage ist Artefakte mit ähnlicher Bedeutung zu erkennen.
 

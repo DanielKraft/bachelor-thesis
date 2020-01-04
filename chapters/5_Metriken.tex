@@ -1,11 +1,10 @@
-\chapter{Architekturbewertung von Java Systemen}
+\chapter{Architekturbewertung von Java-Systemen}
 \label{ch:rating}
-Diese Kapitel erläutert die Architekturbewertung eines Java Systems. Zuerst werden die Bewertungskriterien für die eingelesenen Bausteine vorgestellt. Anschießend werden die einzelnen Bewertungen zu einer Metrik zusammengefasst, um den Zustand des eingelesenen Systems zu bewerten.
-
+Diese Kapitel erläutert die Architekturbewertung eines Java-Systems. Zu Beginn werden die Bewertungskriterien für die eingelesenen Bausteine vorgestellt. Anschließend werden zwei Metriken vorgestellt, mit deren Hilfe der Zustand eines Java-Systems bewertet werden kann.
 
 \section{Bewertung der Domain-Driven Design Artefakte}
 \label{sec:rating}
-In diesem Abschnitt wird darauf eingegangen anhand von welchen Bewertungskriterium die Artefakte bewertet werden. Ein Bewertungskriterium besteht einer Beschreibung was erfüllt sein muss, um das Kriterium zu erfüllen und der Relevanz des Kriteriums. Die Relevanz spiegelt die Gewichtung des Bewertungskriteriums wieder.
+In diesem Abschnitt wird darauf eingegangen anhand welcher Bewertungskriterien die Artefakte bewertet werden. Ein Bewertungskriterium besteht aus einer Beschreibung und der Relevanz des jeweiligen Kriteriums. Die Relevanz spiegelt die Gewichtung des Bewertungskriteriums wieder.
 
 \begin{table}[htbp] 
     \centering
@@ -19,13 +18,13 @@ In diesem Abschnitt wird darauf eingegangen anhand von welchen Bewertungskriteri
 
 In der Tabelle \ref{tab:rating:criteria} sind die fünf Einstufungen der Relevanz aufgeführt. Jeder Einstufung ist eine Gewichtung zugeordnet. Zum Beispiel sind Kriterien die als \texttt{INFO} gekennzeichnet sind nicht relevant für die Bewertung. Diese Kriterien beschreiben häufig die Benennung von Komponenten. 
 
-Als \texttt{MINOR} oder \texttt{MAJOR} eingestufte Kriterien sollten eingehalten werden, aber von ihrer Einhaltung hängt nicht die komplette Architektur ab. Dies betrifft zum Beispiel das implementieren von vorgegebenen Methoden.
+Als \texttt{MINOR} oder \texttt{MAJOR} eingestufte Kriterien sollten eingehalten werden, aber von ihrer Einhaltung hängt nicht die komplette Architektur ab. Dies betrifft zum Beispiel das Implementieren von vorgegebenen Methoden.
 
-Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeichnet wurden, sollten zwingend erfüllt sein, da sonst Grundprinzipien vom Domain-Driven Design verletzt werden. Deshalb werden diese Kriterien besonders stark gewichtet.
+Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeichnet wurden, müssen zwingend erfüllt sein, da sonst Grundprinzipien vom Domain-Driven Design verletzt werden. Deshalb werden diese Kriterien besonders stark gewichtet.
 
 \subsection{Bewertung von Modulen}
 \label{sec:rating:modul}
-Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unterscheiden. Das wichtigste Modul im Domain-Driven Design ist das Domain-Modul. Denn im Domain-Modul sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Dieses Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Das dritte Modul ist das Infrastruktur-Modul. In diesem Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
+Bei der Bewertung von Modulen muss zwischen drei Kategorien von Modulen unterscheiden werden. Im Domain-Modul, dem wichtigsten Modul im Domain-Driven Design, sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Dieses Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Im Infrastruktur-Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
 
 \begin{table}[htbp] 
     \centering
@@ -41,7 +40,7 @@ Bei der Bewertung von Modulen muss man zwischen drei Kategorien von Modulen unte
 
 In der Tabelle \ref{tab:rating:modul:domain:criteria} sind die Kriterien von Domain-Modulen aufgelistet. Das erste Kriterium beschreibt, dass jedes Domain-Modul dem Modul \texttt{domain} untergeordnet sein sollte. Dieses Kriterium wurde als \texttt{MINOR} eingestuft, da es als Best Practice gilt, aber nicht zwingend notwendig ist.
 
-Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäftslogik oder Infrastrukturlogik. Da dieses Kriterium wichtiger ist, als das erste wurde es als \texttt{MAJOR} gekennzeichnet.
+Das zweite Kriterium betrachtet den Inhalt des Moduls, denn in einem Domain-Modul sollten nur Domain-Artefakte enthalten sein und keine Geschäftslogik oder Infrastrukturlogik. Da dieses Kriterium wichtiger ist, als das Erste, wurde es als \texttt{MAJOR} gekennzeichnet.
 
 Das letzte Kriterium des Domain-Moduls, aus der Tabelle \ref{tab:rating:modul:domain:criteria}, ist gleichzeitig das wichtigste. Denn jedes Domain-Modul symbolisiert eine Domain und muss daher genau eine Aggregate Root beinhalten. Da dieses Kriterium für die korrekte Umsetzung von Domain-Driven Design notwendig ist, wurde es als \texttt{CRITICAL} eingestuft.
 
@@ -71,7 +70,7 @@ Die Kriterien für Applikation- und Infrastruktur-Module, aus den Tabellen \ref{
 
 \subsection{Bewertung von Domain Artefakten}
 \label{sec:analyse:artifakt}
-Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain-Driven Design liegt darin, die einzelnen Domain Artefakte zu bewerten. Da die Domain Artefakte komplexer aufgebaut sind als Module, müssen sie auch anhand von mehr Kriterien bewertet werden.
+Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain-Driven Design liegt darin, die einzelnen Domain Artefakte zu bewerten. Da die Domain Artefakte komplexer aufgebaut sind als Module, müssen sie auch anhand mehrerer Kriterien bewertet werden.
 
 \subsubsection{Bewertungskriterien von Entities}
 \label{sec:rating:artifakt:entity}
@@ -82,9 +81,9 @@ Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain
         Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ 
         Attribut-Typen: Entities oder Value Objects                         & \texttt{MAJOR}    \\
         Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\
         Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
-        Setter für jedes Attribut                                           & \texttt{MINOR}    \\ \noalign{\hrule height 2pt}
+        Setter für jedes Attribut                                           & \texttt{MINOR}    \\
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Entities}
     \label{tab:rating:artifakt:entity:criteria}
@@ -92,11 +91,11 @@ Der Schwerpunkt bei der Bewertung einer Softwarearchitektur auf Basis von Domain
 
 Die Tabelle \ref{tab:rating:artifakt:entity:criteria} zeigt die Kriterien, welche von allen Entities eingehalten werden müssen. Das erste Kriterium beschreibt welchem Modul Entities zugeordnet sind. Da Entities zur Modellierung von Domains eingesetzt werden, sollten sie sich in dem Modul \texttt{domain.<domain>.model} befinden \cite{DDD:Vernon:2013}.
 
-Die Attribute von Entities sollten immer Instanzen von anderen Entities oder Value Objects sein. Zum Beispiel werden zum Modellieren von Identitäten Value Objects verwendet \cite{DDD:Vernon:2013}. Da dieses Kriterium einen wichtigen Bestandteil von Entities einnimmt, wurde es als \texttt{MAJOR} eingestuft.
+Die Attribute von Entities müssen Instanzen von anderen Entities oder Value Objects sein. Zum Beispiel werden zum Modellieren von Identitäten Value Objects verwendet \cite{DDD:Vernon:2013}. Da dieses Kriterium einen wichtigen Bestandteil von Entities einnimmt, wurde es als \texttt{MAJOR} eingestuft.
 
 In der dritten Zeile der Tabelle \ref{tab:rating:artifakt:entity:criteria} ist das wichtigste Kriterium einer Entity aufgeführt. Dieses Kriterium sagt aus, dass jede Entity, wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:entity} beschrieben, eine Identität besitzen muss. Für dieses Kriterium ist die Art und Weise der Modellierung nicht relevant. Da dieses Kriterium der hauptsächliche Unterschied zu Value Objects ist \cite{DDD:Vernon:2013}, wurde es als \texttt{CRITICAL} gekennzeichnet.
 
-Als letztes werden notwendige Methoden aufgeführt welche implementiert sein müssen. Dazu zählen Getter und Setter \cite{DDD:Vernon:2013}. Die Existenz von Gettern und Settern wird mit \texttt{MINOR} gewichtet, da von ihrer Existenz. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
+Als Letztes werden notwendige Methoden aufgeführt, welche implementiert sein müssen. Dazu zählen Getter und Setter \cite{DDD:Vernon:2013}. Ihre Existenz wird mit \texttt{MINOR} gewichtet, da sie benötigt werden um auf die Attribute zuzugreifen. Wichtiger für Entities ist die Existenz von den Methoden \texttt{equals()} und \texttt{hashCode()}. Die Implementierung dieser Methoden ermöglicht es Entities anhand ihrer Identität und nicht ihrer sonstigen Attribute zu unterscheiden \cite{DDD:Vernon:2013}. Da die Methoden \texttt{equals()} und \texttt{hashCode()} für die Funktionsweise von Entities wichtig sind, wurde dieses Kriterium als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Value Objects}
 \label{sec:rating:artifakt:value_object}
@@ -106,24 +105,24 @@ Als letztes werden notwendige Methoden aufgeführt welche implementiert sein mü
         \textbf{Kriterien}                                                  & \textbf{Relevanz} \\ \hline
         Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\ 
         Attribut-Typen: Value Objects oder Standard Datentypen              & \texttt{MAJOR}    \\ 
-        Kein Attribut für eigenen Identität                                 & \texttt{BLOCKER}  \\ 
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\
+        Kein Attribut für eigenen Identität                                 & \texttt{BLOCKER}  \\
         Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
         Getter heißen so wie das zugehörige Attribut                        & \texttt{INFO}     \\ 
         Setter für jedes Attribut                                           & \texttt{MINOR}    \\
-        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ \noalign{\hrule height 2pt}
+        Setter sind frei von Seiteneffekten                                  & \texttt{CRITICAL} \\ 
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
     \end{tabular}
     \caption{Kriterien zur Bewertung von Value Objects}
     \label{tab:rating:artifakt:value_object:criteria}
 \end{table}
 
-Die Kriterien von Value Objects aus Tabelle \ref{tab:rating:artifakt:value_object:criteria} sind den Kriterien der Entities sehr ähnlich, unterscheiden sich aber teilweise deutlich. Das erste unterschiedliche Kriterium steht in der zweiten Zeile. Das Kriterium sagt aus, dass Value Objects nur Attribute von anderen Value Objects oder Java Standard Datentypen besitzen darf.
+Die Kriterien von Value Objects aus Tabelle \ref{tab:rating:artifakt:value_object:criteria} sind den Kriterien der Entities sehr ähnlich, unterscheiden sich aber teilweise deutlich. In der zweiten Zeile befindet sich eines der abweichenden Kriterien. Das Kriterium sagt aus, dass Value Objects nur Attribute von anderen Value Objects oder Java Standard Datentypen besitzen darf.
 
-Das erste Kriterium, von Value Objects, welches sich grundlegend unterscheidet, steht in der dritten Zeile der Tabelle \ref{tab:rating:artifakt:value_object:criteria}. Wie bereits in Abschnitte \ref{sec:basics:ddd:mdd:value_object} beschrieben, stellt die Existenz einer Identität eine Architekturverletzung dar. Deshalb wurde dieses Kriterium als \texttt{BLOCKER} eingestuft.
+Das zweite Kriterium, von Value Objects, welches sich grundlegend unterscheidet, steht in der dritten Zeile der Tabelle \ref{tab:rating:artifakt:value_object:criteria}. Wie bereits in Abschnitte \ref{sec:basics:ddd:mdd:value_object} beschrieben, stellt die Existenz einer Identität eine Architekturverletzung dar. Deshalb wurde dieses Kriterium als \texttt{BLOCKER} eingestuft.
 
 Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \texttt{get} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
 
-Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückliefert. In beiden Fällen wird gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist dieses Kriterium \texttt{CRITICAL}.
+Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurück gibt. In beiden Fällen ist gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist, wird dieses Kriterium als \texttt{CRITICAL} eingestuft.
 
 \subsubsection{Bewertungskriterien von Aggregate Roots}
 \label{sec:rating:artifakt:aggregate}
@@ -134,9 +133,9 @@ Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte habe
         Modul: \texttt{domain.<domain>.model}                               & \texttt{MINOR}    \\
         Attribut-Typen: andere Entities oder Value Objects                  & \texttt{MAJOR}    \\ 
         Ein Attribut für die eigene Identität                               & \texttt{CRITICAL} \\ 
-        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ 
         Getter für jedes Attribut                                           & \texttt{MINOR}    \\ 
         Setter für jedes Attribut                                           & \texttt{MINOR}    \\ 
+        Methoden \texttt{equals()} und \texttt{hashCode()}                  & \texttt{MAJOR}    \\ 
         Repository für die Aggregate Root existiert                         & \texttt{MAJOR}    \\
         Factory für die Aggregate Root existiert                            & \texttt{MAJOR}    \\
         Service für die Aggregate Root existiert                            & \texttt{MAJOR}    \\ \noalign{\hrule height 2pt}
@@ -147,7 +146,7 @@ Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte habe
 
 Auch die Kriterien von Aggregate Roots, in der Tabelle \ref{tab:rating:artifakt:aggregate:criteria}, sind den Kriterien von Entities sehr ähnlich. Da Aggregate Roots, wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:aggregate} beschrieben, nur spezielle Entities sind, sind die ersten sechs Kriterien identisch.
 
-Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens einen Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien wurden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
+Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens einen Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien werden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Factories}
 \label{sec:rating:artifakt:factory}
@@ -167,11 +166,11 @@ Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weiter
     \label{tab:rating:artifakt:factory:criteria}
 \end{table}
 
-Bei der Bewertung von Factories muss zunächst zwischen Factory Interfaces und Factory Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet, da es eine Java-Konvention ist Klassen welche ein Interface implementieren mit dem Suffix \glqq Impl\grqq{} zu benennen \cite{DDD:Vernon:2013}.
+Bei der Bewertung von Factories muss zunächst zwischen Factory Interfaces und Factory Klassen unterschieden werden. Denn es gibt für sie unterschiedliche Namenskonventionen und sie sollten in unterschiedlichen Modulen untergebracht sein. Die Namenskonventionen in den zwei ersten Zeilen der Tabelle \ref{tab:rating:artifakt:factory:criteria} sind als \texttt{INFO} gekennzeichnet, da es sich um eine Java-Konvention handelt. Klassen, welche ein Interface implementieren, sollten mit dem Suffix \glqq Impl\grqq{} benannt werden \cite{DDD:Vernon:2013}.
 
-Die Factory Interfaces und Factory Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonventionen, sondern auch bei den Modulen denen sie zugeordnet sind. Während nämlich die Interfaces ein Bestandteil des Moduls \texttt{domain.<domain>.model} sind, sollten die Klassen in dem untergeordneten Modul \texttt{impl} zu finden sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
+Die Factory Interfaces und Factory Klassen unterscheiden sich aber nicht nur bei ihrer Namenskonvention, sondern auch bei den Modulen denen sie zugeordnet sind. Während die Interfaces Bestandteile des Moduls \texttt{domain.<domain>.model} sind, sollten die Klassen in dem untergeordneten Modul \texttt{impl} zu finden sein \cite{DDD:Vernon:2013}. Ähnlich wie bei den vorherigen Artefakten ist die Zuordnung zu Modulen als \texttt{MINOR} eingestuft.
 
-Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Diese beiden Kriterien wurden mit einer Relevanz von \texttt{MAJOR} bewertet.
+Da eine Factory, wie im Abschnitt \ref{sec:basics:ddd:mdd:factory} beschrieben, für die Erzeugung von Entities zuständig ist, benötigt sie eine Instanz des dazugehörigen Repositories, um die neue Entity zu persistieren. Das Erzeugen der Entity sollte, wie in der letzten Zeile der Tabelle \ref{tab:rating:artifakt:factory:criteria} beschrieben, mit der Methode \texttt{create()} geschehen. Die beiden letzten Kriterien werden mit einer Relevanz von \texttt{MAJOR} bewertet.
 
 \subsubsection{Bewertungskriterien von Repositories}
 \label{sec:rating:artifakt:repository}
@@ -201,7 +200,7 @@ Bei den notwendigen Methoden unterscheiden sich allerdings die Bewertungskriteri
 
 Die erste Kategorie enthält Methoden, welche unverzichtbar für ein Repository sind. Zu den Methoden der ersten Kategorie gehören Methoden zum Erzeugen einer neuen Identität sowie zum Finden, Speichern und Löschen einer Entity. Die Methoden dieser Kategorie wurden als \texttt{MAJOR} eingestuft.
 
-In der zweiten Kategorie sind Methoden, welche nützlich sind aber nicht so relevant wie die Methoden aus der ersten Kategorie. Dazu gehören Methoden zum Aktualisieren und Überprüfen der Existenz einer Entity. Aufgrund ihrer geringeren Relevanz wurden diese Methoden als \texttt{MINOR} bewertet.
+In der zweiten Kategorie sind Methoden aufgelistet, welche nützlich sind aber nicht so relevant wie die Methoden aus der ersten Kategorie. Dazu gehören Methoden zum Aktualisieren und Überprüfen der Existenz einer Entity. Aufgrund ihrer geringeren Relevanz wurden diese Methoden als \texttt{MINOR} bewertet.
 
 \subsubsection{Bewertungskriterien von Domain Events}
 \label{sec:rating:artifakt:event}
@@ -243,7 +242,7 @@ Bei der Bewertung von Services muss zwischen zwei Services unterschieden werden,
 
 Die Application Services werden anhand von zwei Kriterien bewertet, siehe Tabelle \ref{tab:rating:artifakt:service:criteria}. Der Name des Application Service sollte das Wort \glqq Application\grqq{} beinhalten. Dieses Kriterium ist mit \texttt{INFO} gewichtet. Außerdem muss der Application Service dem Modul \texttt{application} zugeordnet sein. Die Zuordnung zu dem speziellen Modul ist als \texttt{MINOR} eingestuft.
 
-Die Domain Services erfüllen alle Kriterien wenn, sie in dem Modul \texttt{appli\-cation.\-<domain>} enthalten sind. Auch dieses Kriterium besitzt eine Relevanz von \texttt{MINOR}.
+Die Domain Services erfüllen alle Kriterien, wenn sie in dem Modul \texttt{appli\-cation.\-<domain>} enthalten sind. Auch dieses Kriterium besitzt eine Relevanz von \texttt{MINOR}.
 
 \subsection{Dokumentation der nicht erfüllten Kriterien}
 \label{sec:rating:issue}
@@ -275,7 +274,7 @@ In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Ob\-ject-Orie
     \text{Abstractness} = \frac{\text{Anzahl abstrakter Artefakte}}{\text{Gesamt Anzahl aller Artefakte}} \label{align:analyse:metric:ood:abstractness}
 \end{equation}
 
-Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0,1].
+Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0;1].
 
 Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Moduls, welche von diesem Modul abhängig sind \cite{Metric:Martin:1994}. Efferent Couplings ist das Gegenteil von Afferent Couplings. Efferent Couplings ist die Anzahl der Klassen innerhalb dieses Moduls, welche von einem anderem Modul abhängen.
 
@@ -283,7 +282,7 @@ Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Mo
     \text{Instability} = \frac{\text{Efferent Couplings}}{\text{Afferent Couplings} + \text{Efferent Couplings}} \label{align:analyse:metric:ood:instability}
 \end{equation}
 
-Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitzt \cite{Metric:Martin:1994}. Anhand der Formel \ref{align:analyse:metric:ood:instability} kann die Instabiliät berechnet werden. Auch hier ist der Wertebereich [0,1].
+Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitzt \cite{Metric:Martin:1994}. Anhand der Formel \ref{align:analyse:metric:ood:instability} kann die Instabiliät berechnet werden. Auch hier ist der Wertebereich [0;1].
 
 \begin{figure}
     \centering
@@ -292,13 +291,13 @@ Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitz
     \label{fig:analyse:metric:ood}
 \end{figure}
 
-Laut \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
+Laut Martin\cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
 
 \begin{equation}
     \text{Distanz} = | \text{Abstractness} + \text{Instability} - 1 | \label{align:analyse:metric:ood:distance}
 \end{equation}
 
-Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden. Da die ein Modul im besten Fall keine Abweichung von der Main Sequence haben sollte, ist der bestmögliche Wert für die Distanz \texttt{0}.
+Um die Abweichung von der Main Sequence zu ermitteln, kann die Distance zu der Main Sequence mit der Formel \ref{align:analyse:metric:ood:distance} ermittelt werden. Da ein Modul im besten Fall keine Abweichung von der Main Sequence haben sollte, ist der bestmögliche Wert für die Distanz \texttt{0}.
 
 \begin{lstlisting}[caption={Ausschnitt der Object-Oriented Design Bewertung eines Systems},captionpos=b,label=lst:analyse:metric:ood:output, language=my_json]
 "OOD": {
@@ -330,19 +329,19 @@ Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, is
     \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:ddd:total}
 \end{equation}
 
-Im ersten Schritt wurde, anhand der Formel \ref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
+Im ersten Schritt wird, anhand der Formel \ref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
 
 \begin{equation}
     \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:ddd:fulfilled}
 \end{equation}
 
-Als Nächstes wurde die Formel \ref{align:analyse:metric:ddd:fulfilled} verwendet, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
+Als Nächstes wird die Formel \ref{align:analyse:metric:ddd:fulfilled} angewandt, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.
 
 \begin{equation}
     \text{Metrik} = \frac{\text{Erfüllte Kriterien} \cdot 100}{\text{Totale Kriterien}} \label{align:analyse:metric:ddd}
 \end{equation}
 
-Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse mit der Formel \ref{align:analyse:metric:ddd} miteinander verrechnet. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
+Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse in die Formel \ref{align:analyse:metric:ddd} eingesetzt. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
 
 \begin{table}[htbp] 
     \centering

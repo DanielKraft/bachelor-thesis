@@ -1,6 +1,6 @@
 \chapter{Generierung eines Architekturvorschlags}
 \label{ch:suggestion}
-In diesem Kapitel wird die automatische Generierung eines Verbesserungsvorschlags erläutert. Zu Beginn wird auf die Umwandlungskriterien eingegangen und im Anschluss wird die Implementierung des Umwandlungsalgorithmus beschrieben.
+In diesem Kapitel wird die automatische Generierung eines Verbesserungsvorschlags erläutert. Zu Beginn wird auf die Umwandlungskriterien eingegangen und im Anschluss die Implementierung des Umwandlungsalgorithmus beschrieben.
 
 \section{Beschreibung der Umwandlungskriterien}
 \label{sec:suggestion:criteria}
@@ -8,7 +8,7 @@ Der Umwandlungsalgorithmus hat das Ziel die Architektur eines Systems auf Basis 
 
 \section{Implementierung des Umwandlungsalgorithmus}
 \label{sec:suggestion:impl}
-Der Umwandlungsalgorithmus besteht aus vier Phasen. In der ersten Phase wird die Module initialisiert. Anschließend werden die vorhandenen Artefakte den richtigen Modulen zugeordnet. In der dritten und wichtigsten Phase werden alle Artefakte, auf Basis der Umwandlungskriterien, überarbeitet. Am Ende wird die überarbeitete Architektur aufgeräumt.
+Der Umwandlungsalgorithmus besteht aus vier Phasen. In der ersten Phase werden die Module initialisiert. Anschließend werden die vorhandenen Artefakte den richtigen Modulen zugeordnet. In der dritten und wichtigsten Phase werden alle Artefakte, auf Basis der Umwandlungskriterien, überarbeitet. Am Ende wird die überarbeitete Architektur aufgeräumt.
 
 \subsection{Initialisieren der Module}
 \label{sec:suggestion:impl:init}
@@ -27,7 +27,7 @@ In der Abbildung \ref{fig:suggestion:impl:module} ist die initiale Struktur der 
 \label{sec:suggestion:impl:assign}
 Nachdem die Struktur der Module initialisiert wurde, können die Artefakte des ursprünglichen Systems dem richtigen Modul zugeordnet werden. Dabei werden jegliche Infrastruktur Artefakte dem Module \texttt{infrastructure} zugeordnet, siehe Abbildung \ref{fig:anhang:petclinic:new:infrastructure} im Anhang. Service Artefakte werden dem zugehörigen Domain Module im Module \texttt{application} zugeteilt. Die Abbildung \ref{fig:anhang:petclinic:new:application} aus dem Anhang zeigt eine solche Zuordnung.
 
-Die Zuordnung von Aggregate Roots, Entities, Value Objects und Domain Events wird aufgrund ihrer zugehörigen Domain entschieden. Dabei ist es irrelevant, ob die Artefakte zuvor gemeinsam in einem Modul waren. Es können durch diesen Prozess jederzeit alte Module zusammengefasst oder zerteilt werden. 
+Die Zuordnung von Aggregate Roots, Entities, Value Objects und Domain Events wird aufgrund ihrer zugehörigen Domain entschieden. Dabei ist es irrelevant, ob die Artefakte zuvor gemeinsam in einem Modul waren. Es können durch diesen Prozess jederzeit alte Module zusammengefasst oder aufgeteilt werden. 
 
 \begin{lstlisting}[caption={Finden der passenden Domain}, captionpos=b, label=lst:suggestion:impl:assign, language=my_java]
 private String getDomainOf(Artifact artifact) {
@@ -48,9 +48,9 @@ private boolean isRootOf(Class root, Artifact artifact) {
 }
 \end{lstlisting}
 
-Die Methoden in Listing \ref{lst:suggestion:impl:assign} zeigen wie einem Artefakt eine Domain zugeordnet wird. Die Methode \texttt{getDomainOf} durchläuft alle Aggregate Roots und überprüft mit der zweiten Methode \texttt{isRootOf}, ob das Artefakt zur selben Domain gehört. Damit ein Artefakt einer Domain zugeordnet werden kann, muss mindestens ein Merkmal aus den folgende vier erfüllt sein. Die ersten beiden Merkmale aus der 11. und 12. Zeile betrifft den Namen des Artefakts. Der Name des Artefakts sollte den Namen oder die Domain der Aggregate Root enthalten. Das dritte Merkmal steht in der 13. Zeile und analysiert den Pfad des Artefakts. Das Artefakt gehört demzufolge zur gleichen Domain wie die Aggregate Root, wenn der Pfad des Artefakts den Domainnamen der Aggregate Root enthält. Das letzte Merkmal ist erfüllt, wenn das Artefakt und die Aggregate Root im ursprünglichen System der gleichen Domain zugeordnet waren.
+Die Methoden in Listing \ref{lst:suggestion:impl:assign} zeigen wie einem Artefakt eine Domain zugeordnet wird. Die Methode \texttt{getDomainOf} durchläuft alle Aggregate Roots und überprüft mit der zweiten Methode \texttt{isRootOf}, ob das Artefakt zur selben Domain gehört. Damit ein Artefakt einer Domain zugeordnet werden kann, muss mindestens ein Merkmal aus den folgende vier erfüllt sein. Die ersten beiden Merkmale aus der 11. und 12. Zeile betreffen den Namen des Artefakts. Der Name des Artefakts sollte den Namen oder die Domain der Aggregate Root enthalten. Das dritte Merkmal steht in der 13. Zeile und analysiert den Pfad des Artefakts. Das Artefakt gehört demzufolge zur gleichen Domain wie die Aggregate Root, wenn der Pfad des Artefakts den Domainnamen der Aggregate Root enthält. Das letzte Merkmal ist erfüllt, wenn das Artefakt und die Aggregate Root im ursprünglichen System der gleichen Domain zugeordnet waren.
 
-Dieser Prozess kann durch das Beispiel im Anhang \ref{sec:anhang:beispiel:petclinic} verdeutlicht werden. In der Abbildung \ref{fig:anhang:petclinic:old} befindet sich das Domain Event \texttt{Visit} in einem eigenen Modul und wird gleichzeitig von der Entity \texttt{Pet} als Attribut verwendet. Nachdem das System verbessert wurde befinden sich beide Artefakte im selbem Module, wie in Abbildung \ref{fig:anhang:petclinic:new:domain:owner} zu sehen ist.
+Dieser Prozess kann durch das Beispiel im Anhang \ref{sec:anhang:beispiel:petclinic} verdeutlicht werden. In der Abbildung \ref{fig:anhang:petclinic:old} befindet sich das Domain Event \texttt{Visit} in einem eigenen Modul und wird gleichzeitig von der Entity \texttt{Pet} als Attribut verwendet. Nachdem das System überarbeitet wurde, befinden sich beide Artefakte im selbem Module, wie in Abbildung \ref{fig:anhang:petclinic:new:domain:owner} zu sehen ist.
 
 Bei Repositories und Factories muss zwischen Interfaces und Klassen unterschieden werden. Inferfaces werden wie in Abbildung \ref{fig:anhang:petclinic:new:domain:vet} dem Domain Module zugeordnet. Klassen hingegen sind dem untergeordneten Module \texttt{impl} zugehörig.
 
@@ -58,7 +58,7 @@ In manchen Fällen können Artefakte keinem Domain Module eindeutig zugeordnet w
 
 \subsection{Überarbeitung der Artefakte}
 \label{sec:suggestion:impl:refactor}
-Die Überarbeitung der Artefakte wird für jeden Artefakttyp separat durchgeführt. Der Aufgabenbereich der letzten Phase reicht von der Überarbeitung von Attributen und Methoden bis zum Erstellen von neuen Artefakten.
+Die Überarbeitung der Artefakte wird für jeden Artefakttyp separat durchgeführt. Der Aufgabenbereich dieser Phase reicht von der Überarbeitung von Attributen und Methoden bis zum Erstellen von neuen Artefakten.
 
 \subsubsection{Überarbeiten der Interne Struktur von Artefakten}
 \label{sec:suggestion:impl:refactor:update}
@@ -80,7 +80,7 @@ Am besten lässt sich das Überarbeiten von Methoden eines Artefakts an dem Beis
 
 \subsubsection{Verändern des Artefakttypes}
 \label{sec:suggestion:impl:refactor:change}
-In speziellen Fällen kann es von Vorteil sein, dass eine Entity zu einem Value Object umgewandelt werden sollte. Dies bietet sich an, wenn die Entity ein Attribut enthält, welches des gleichen Namen besitzt wie die Entity.
+In speziellen Fällen kann es ein Vorteil sein, dass eine Entity zu einem Value Object umgewandelt wird. Dies bietet sich an, wenn die Entity ein Attribut enthält, welches den gleichen Namen besitzt wie die Entity.
 
 \begin{lstlisting}[caption={Überprüfung einer Entity}, captionpos=b, label=lst:suggestion:impl:refactor:change, language=my_java]
 private boolean isValueObject(Class artifact) {
@@ -96,7 +96,7 @@ private boolean isValueObject(Class artifact) {
 }
 \end{lstlisting}
 
-Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:change} zeigt den Quellcode welcher überprüft, ob es sich bei der übergebenen Entity um ein mögliches Value Object handelt. Dabei sind drei Kriterien zu erfüllen. In der zweiten Zeile wird überprüft, ob die Entity von einer anderen Entity erbt. Nur, wenn die Entity keine Superklasse besitzt kann es sich um ein mögliches Value Object handeln. Das zweite Kriterium welches erfüllt sein muss steht in der vierten Zeile. Der Name des eines Attributs der Entity muss in dem Namen der Entity enthalten sein. Zusätzlich zu den bereits genannten Kriterien muss der Typ des Attributs ein Java Standardtyp sein. Dieses Kriterium wurde in der fünften Zeile realisiert.
+Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:change} zeigt den Quellcode welcher überprüft, ob es sich bei der übergebenen Entity um ein mögliches Value Object handelt. Dabei sind drei Kriterien zu erfüllen. In der zweiten Zeile wird überprüft, ob die Entity von einer anderen Entity erbt. Nur, wenn die Entity keine Superklasse besitzt, kann es sich um ein mögliches Value Object handeln. Das zweite Kriterium, welches erfüllt sein muss, steht in der vierten Zeile. Der Name des eines Attributs der Entity muss in dem Namen der Entity enthalten sein. Zusätzlich zu den bereits genannten Kriterien muss der Typ des Attributs ein Java Standardtyp sein. Dieses Kriterium wurde in der fünften Zeile realisiert.
 
 \begin{figure}[ht]
     \centering
@@ -111,7 +111,7 @@ Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:
     \label{fig:suggestion:impl:refactor:change:issuecomment}
 \end{figure}
 
-Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein solches Beispiel. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:old} verfügt nur über eine Identität und einem weiteren Attribut. Da alle, in Listing \ref{lst:suggestion:impl:refactor:change} beschriebenen Kriterien, erfüllt sind, wurde diese Entity als Value Object modelliert. Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:rating:artifakt:value_object:criteria} angepasst.
+Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein solches Beispiel. Das Beispiel stammt aus dem Abschnitt \ref{sec:anhang:beispiel:ddd} im Anhang. Die Entity \texttt{IssueComment} aus der Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:old} verfügt nur über eine Identität und ein weiteres Attribut. Da alle, in Listing \ref{lst:suggestion:impl:refactor:change} beschriebenen Kriterien, erfüllt sind, wurde diese Entity als Value Object modelliert. Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment:new} zeigt das resultierende Value Object. Es verfügt nur noch über ein Attribut und auch die Methoden wurden an die Kriterien für Value Objects aus der Tabelle \ref{tab:rating:artifakt:value_object:criteria} angepasst.
 
 \subsubsection{Erzeugung neuer Artefakte}
 \label{sec:suggestion:impl:refactor:insert}
@@ -130,7 +130,7 @@ private Class getImpl(Package impl, Interface anInterface, DDDType dddType) {
 }
 \end{lstlisting}
 
-Mithilfe von der Methode \texttt{getImpl} aus Listing \ref{lst:suggestion:impl:refactor:insert:impl} findet der Umwandlungsalgorithmus Implementierungen eines Interfaces. Wenn eine passende Klasse gefunden wurde, wird diese zurückgegeben, andernfalls wird \texttt{null} zurückgegeben. Wenn es eine Implementierung gibt, wird diese, wie in Abschnitt \ref{sec:suggestion:impl:refactor:update} beschrieben, überarbeitet. Ist das nicht der Fall muss eine Klasse erzeugt werden.
+Mithilfe von der Methode \texttt{getImpl} aus Listing \ref{lst:suggestion:impl:refactor:insert:impl} findet der Umwandlungsalgorithmus Implementierungen eines Interfaces. Wenn eine passende Klasse gefunden wurde, wird diese zurückgegeben, andernfalls wird \texttt{null} zurückgegeben. Wenn es eine Implementierung gibt, wird diese, wie in Abschnitt \ref{sec:suggestion:impl:refactor:update} beschrieben, überarbeitet. Ist das nicht der Fall, muss eine Klasse erzeugt werden.
 
 \begin{figure}[ht]
     \centering
@@ -145,7 +145,7 @@ Mithilfe von der Methode \texttt{getImpl} aus Listing \ref{lst:suggestion:impl:r
     \label{fig:suggestion:impl:refactor:insert:petrepository}
 \end{figure}
 
-Die Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:old} zeigt ein Repository-Interface. Allerdings verfügt das System über keine Implementierung des Interfaces, daher muss der Umwandlungsalgorithmus diese erzeugen. In Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:new} ist das Ergebnis der Umwandlung zu sehen. Nachdem der Umwandlungsalgorithmus dem Repository-Interface notwendige Methoden hinzugefügt hat, wurde ein Klasse erzeugt welche das Interface implementieren soll.
+Die Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:old} zeigt ein Repository-Interface. Allerdings verfügt das System über keine Implementierung des Interfaces, daher müsse diese vom Umwandlungsalgorithmus erzeugt werden. In Abbildung \ref{fig:suggestion:impl:refactor:insert:petrepository:new} ist das Ergebnis der Umwandlung zu sehen. Nachdem der Umwandlungsalgorithmus dem Repository-Interface notwendige Methoden hinzugefügt hat, wurde ein Klasse erzeugt, welche das Interface implementieren soll.
 
 Auch bei der Überarbeitung einer Entity kann es passieren, dass ein neues Artefakt erzeugt werden muss. Da Entities keine Attribute eines Standardtyps besitzen sollten, müssen diese Attribute als Value Object repräsentiert werden. Dafür ist es erforderlich, dass der Umwandlungsalgorithmus die Möglichkeit besitzt neue Value Objects zu erzeugen, wenn sie benötigt werden.
 
@@ -165,7 +165,7 @@ private void refactorFields(Package model, Class artifact) {
 }
 \end{lstlisting}
 
-Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refactor:insert:valueObject} überarbeitet die Attribute einer Entity. Wenn der Datentype eines Attributs ein Java Standardtyp ist, wird das Attribut angepasst. In der vierten Zeile wird nach einem vorhandenen Artefakt gesucht welches das Attribut repräsentiert. Wenn ein Artefakt gefunden wurde, wird dieses als Datentyp übernommen. Andernfalls muss ein neues Artefakt erzeugt werden. Dies geschieht in der Methode, welche in der achten Zeile aufgerufen wird. Mithilfe des neuen Value Objects wird das Attribut und alle Methoden, welche das Attribut verwenden, überarbeitet.
+Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refactor:insert:valueObject} überarbeitet die Attribute einer Entity. Wenn der Datentype eines Attributs ein Java Standardtyp ist, wird das Attribut angepasst. In der vierten Zeile wird nach einem vorhandenen Artefakt gesucht, welches das Attribut repräsentiert. Wenn ein Artefakt gefunden wurde, wird dieses als Datentyp übernommen. Andernfalls muss ein neues Artefakt erzeugt werden. Dies geschieht in der Methode, welche in der achten Zeile aufgerufen wird. Mithilfe des neuen Value Objects wird das Attribut und alle Methoden, welche das Attribut verwenden, überarbeitet.
 
 \begin{figure}[H]
     \centering
@@ -180,13 +180,13 @@ Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refacto
     \label{fig:suggestion:impl:refactor:insert:baseentity}
 \end{figure}
 
-Die Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity} zeigt eine Ausschnitt der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 
+Die Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity} zeigt Ausschnitte der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in Abbildung \ref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 
 
 \subsection{Aufräumen der neuen Architektur}
 \label{sec:suggestion:impl:finalize}
 Nach dem Verbessern aller Artefakte, werden verschiedenen Abschlussarbeiten ausgeführt. Dazu gehört zum Beispiel das Entfernen von leeren Modulen, welche in der ersten Phase, siehe Abschnitt \ref{sec:suggestion:impl:init}, erstellt aber nicht gefüllt wurden.
 
-Außerdem werden die alten Abhängigkeiten an die neue Architektur angepasst. Das heißt, dass die Pfade, welche die Abhängigkeiten repräsentieren, mit den neuen Pfaden ersetzt werden.
+Außerdem werden die alten Abhängigkeiten an die neue Architektur angepasst. Das heißt, dass die Pfade, welche die Abhängigkeiten repräsentieren, durch die neuen Pfaden ersetzt werden.
 
 \begin{lstlisting}[caption={Ersetzen der alten Abhängigkeiten durch die Neuen}, captionpos=b, label=lst:suggestion:impl:finalize:dependency, language=my_java]
 private void refactorDependencies() {
@@ -206,4 +206,4 @@ private void refactorDependencies() {
 }
 \end{lstlisting}
 
-Die Methode in Listing \ref{lst:suggestion:impl:finalize:dependency} zeigt die Implementierung dieses Vorgangs. Diese Methode durchläuft alle Abhängigkeiten aller Klassen und ersetzt den alten Pfad mit einem Neuen. Um den neuen Pfad zu finden, wird aus dem alten Pfad, in der sechsten und siebten Zeile, der Name des Artefakts extrahiert. Anschließend wird mit diesem Namen der neue Pfad gesucht und der Alte ersetzt.
+Die Methode in Listing \ref{lst:suggestion:impl:finalize:dependency} zeigt die Implementierung dieses Vorgangs. Diese Methode durchläuft alle Abhängigkeiten aller Klassen und ersetzt den alten Pfad durch einem Neuen. Um den neuen Pfad zu finden, wird aus dem alten Pfad, in der sechsten und siebten Zeile, der Name des Artefakts extrahiert. Anschließend wird mit diesem Namen der neue Pfad gesucht und der Alte ersetzt.

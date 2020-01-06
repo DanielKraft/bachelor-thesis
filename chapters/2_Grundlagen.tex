@@ -37,7 +37,7 @@ In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Desi
 \label{sec:basics:ddd:mdd:layer}
 \begin{figure}[htbp] 
     \centering
-    \includegraphics[width=0.4\textwidth]{gfx/Layer.pdf}
+    \includegraphics[width=0.5\textwidth]{gfx/Layer.pdf}
     \caption{Darstellung der Layered Architecture des Model-Driven Design}
     \label{fig:basics:ddd:mdd:layer}
 \end{figure}
@@ -81,7 +81,7 @@ Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Ident
 
 \subsubsection{Domain Events}
 \label{sec:basics:ddd:mdd:event}
-Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{}\cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{} \cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}
@@ -98,7 +98,7 @@ Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-W
 
 \begin{figure}[htbp] 
     \centering
-    \includegraphics[width=0.85\textwidth]{gfx/jQAssistant-Workflow.pdf}
+    \includegraphics[width=0.9\textwidth]{gfx/jQAssistant-Workflow.pdf}
     \caption{Arbeitsablauf von jQAssistant}
     \label{fig:basics:jqa:workflow}
 \end{figure}
@@ -109,7 +109,7 @@ In der Abbildung \ref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der A
 \label{sec:basics:jqa:neo4j}
 Die Daten in der Neo4j-Graphdatenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
-\begin{lstlisting}[caption={Cypher-Abfrage zum filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher, language=my_cypher]
+\begin{lstlisting}[caption={Cypher-Abfrage zum Filtern aller Klassen in einem bestimmten Package},captionpos=b,label=lst:basics:jqa:neo4j:cypher, language=my_cypher]
 MATCH (package:Package)-[:CONTAINS]->(file:File) 
 WHERE package.fqn = 'org.junit' AND file:Class
 RETURN file as Klassen

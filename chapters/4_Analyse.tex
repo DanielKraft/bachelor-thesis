@@ -12,7 +12,7 @@ Bei dem Auffinden von Entities muss darauf geachtet werden, ob es sich, bei dem 
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Entity.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Entity.pdf}
     \caption{Beispiel für eine Entity}
     \label{fig:analyse:characteristics:entity}
 \end{figure}
@@ -99,7 +99,7 @@ Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Ob
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.7\textwidth]{gfx/characteristics/Aggregate_Root.pdf}
+    \includegraphics[width=0.55\textwidth]{gfx/characteristics/Aggregate_Root.pdf}
     \caption{Beispiel für eine Aggregate Root}
     \label{fig:analyse:characteristics:aggregate}
 \end{figure}
@@ -131,7 +131,7 @@ Die Methode \texttt{getEntityWithMinimalDependencies} aus Listing \ref{lst:analy
 \label{sec:analyse:characteristics:factory}
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Factory.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Factory.pdf}
     \caption{Beispiel für eine Factory}
     \label{fig:analyse:characteristics:factory}
 \end{figure}
@@ -144,7 +144,7 @@ An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Na
 \label{sec:analyse:characteristics:repository}
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Repository.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Repository.pdf}
     \caption{Beispiel für ein Repository}
     \label{fig:analyse:characteristics:repository}
 \end{figure}
@@ -159,7 +159,7 @@ Wie bereits in Abschnitt \ref{sec:basics:ddd:mdd:event} beschrieben, zeichnen si
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Domain_Event.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Domain_Event.pdf}
     \caption{Beispiel für ein Domain Event}
     \label{fig:analyse:characteristics:event}
 \end{figure}
@@ -195,7 +195,7 @@ Um einen Service zu erkennen muss zwischen Domain und Application Services unter
 \label{sec:analyse:characteristics:service:domain}
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Domain_Service.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Domain_Service.pdf}
     \caption{Beispiel für ein Domain Service}
     \label{fig:analyse:characteristics:domain}
 \end{figure}
@@ -220,12 +220,12 @@ Die Methode \texttt{isService} aus Listing \ref{lst:analyse:characteristics:serv
 
 \begin{figure}[H] 
     \centering
-    \includegraphics[width=0.3\textwidth]{gfx/characteristics/Application_Service.pdf}
+    \includegraphics[width=0.25\textwidth]{gfx/characteristics/Application_Service.pdf}
     \caption{Beispiel für ein Application Service}
     \label{fig:analyse:characteristics:application}
 \end{figure}
 
-Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist, erkennt man Application Services sehr leicht an der Methode \texttt{main(java.lang.String[])}. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus Listing \ref{lst:analyse:characteristics:service:application} realisiert.
+Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der Abbildung \ref{fig:analyse:characteristics:application}, \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist, erkennt man Application Services sehr leicht an der Methode \texttt{main(String[])}. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus Listing \ref{lst:analyse:characteristics:service:application} realisiert.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um einen Application Service handelt}, captionpos=b, label=lst:analyse:characteristics:service:application, language=my_java]
 private boolean isApplicationService() {

@@ -17,7 +17,7 @@ In der Abbildung \ref{fig:basics:ddd:pattern} \cite{DDD:Plod:2019} sind die Zusa
 
 \subsection{Domain}
 \label{sec:basics:ddd:domain}
-Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet \grqq{} \cite{DDD:Plod:2019}.
+Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet\grqq{} \cite{DDD:Plod:2019}.
 
 \subsection{Bounded Context}
 \label{sec:basics:ddd:context}
@@ -25,7 +25,7 @@ Es wird empfohlen für jede Domain ein separates Modell zu erstellen \cite{DDD:A
 
 \subsection{Ubiquitous Language}
 \label{sec:basics:ddd:language}
-Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist \grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
+Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die Abbildung \ref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist\grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
 
 \subsection{Model-Driven Design}
 \label{sec:basics:ddd:mdd}
@@ -42,11 +42,11 @@ In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Desi
     \label{fig:basics:ddd:mdd:layer}
 \end{figure}
 
-Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:basics:ddd:mdd:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
+Das Model-Driven Design unterteilt sich in die in Abbildung \ref{fig:basics:ddd:mdd:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für die Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
 
 Die Application Layer des Systems koordiniert Aufgaben und delegiert die Arbeit an Domain-Objekte der nächsten Ebene \cite{DDD:Evans:2003}. Somit enthält die Application Layer keine Geschäftslogik, außerdem hält sie nicht den Status der Domain-Objekte \cite{DDD:Avram:2007}.
 
-Die Domain Layer beinhaltet die Geschäftskonzepte, Informationen über die Geschäftslage und Geschäftsregeln \cite{DDD:Evans:2003}. Zudem wird in dieser Schicht das Datenmodell des Systems definiert. Evans beschreibt diese Schicht als \glqq the heart of business software\grqq{}\cite{DDD:Evans:2003}.
+Die Domain Layer beinhaltet die Geschäftskonzepte, Informationen über die Geschäftslage und Geschäftsregeln \cite{DDD:Evans:2003}. Zudem wird in dieser Schicht das Datenmodell des Systems definiert. Evans beschreibt diese Schicht als \glqq the heart of business software\grqq{} \cite{DDD:Evans:2003}.
 
 Die letzte Schicht beinhaltet die Infrastruktur des Systems. Sie wird zur Unterstützung der anderen Schichten benötigt und kann unter anderem das Persistieren der Domain oder das Versenden von Nachrichten beinhalten \cite{DDD:Evans:2003}.
 
@@ -64,7 +64,7 @@ Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen
 
 \subsubsection{Aggregates}
 \label{sec:basics:ddd:mdd:aggregate}
-Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects nennt man Aggregates.
+Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects nennt man Aggregates \cite{DDD:Evans:2003}.
 
 Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
@@ -85,7 +85,7 @@ Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Defin
 
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}
-Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt\grqq{}\cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Service sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
+Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt\grqq{} \cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Service sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
 \label{sec:basics:ddd:mdd:module}
@@ -94,7 +94,7 @@ Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte di
 \section{Einführung in jQAssistant}
 \label{sec:basics:jqa}
 
-Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{}\cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, unterteilt. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
+Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{} \cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, unterteilt. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
 
 \begin{figure}[htbp] 
     \centering
@@ -105,7 +105,7 @@ Zur Analyse des bestehenden Java-Systems wird, in dieser Arbeit, das Ana\-lyse-W
 
 In der Abbildung \ref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der Ablauf des Analysevorgangs dargestellt. Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speichert diese in der Neo4j-Graphdatenbank. Anschließend werden auf diese Daten verschiedene Regeln zur Datenanreicherung angewendet \cite{jQA:Muller:2018}. So können zum Beispiel Abhängigkeiten erkannt und modelliert werden. 
 
-\subsection{Persistierung der Analysedaten in einer Neo4j-Graphdatenbank}
+\subsection[Persistierung der Analysedaten in einer Neo4j-Graph\-datenbank]{Persistierung der Analysedaten in einer Neo4j-Graphdatenbank}
 \label{sec:basics:jqa:neo4j}
 Die Daten in der Neo4j-Graphdatenbank sind als Knoten modelliert. Jeder Knoten verfügt über Attribute, welche die Eigenschaften des Knotens beschreiben, zudem sind die einzelnen Konten mit Kanten verbunden welche die Beziehungen modellieren \cite{jQA:Muller:2018, jQA:Mahler:2015}.
 
@@ -117,7 +117,7 @@ RETURN file as Klassen
 
 Auf diese Analysedaten kann mithilfe der Abfragesprache Cypher zugegriffen werden \cite{jQA:Muller:2018}. In Listing \ref{lst:basics:jqa:neo4j:cypher} ist eine solche Abfrage zu sehen. Wie an dieser Abfrage zu sehen ist, besteht eine Cypher-Abfrage aus drei Bausteinen. In der ersten Zeile wird definiert welche Knoten, mit welchen Beziehungen, berücksichtigt werden sollen. In diesem Beispiel werden alle Packages betrachtet welche einen oder mehrere Dateien beinhalten. In der zweiten Zeile wird näher spezifiziert welche Packages und welche Dateien relevant sind. In diesem Beispiel soll nur das Package mit dem Fully Qualified Name \glqq org.junit\grqq{} in Verbindung mit Java-Klassen berücksichtigt werden. Die letzte Zeile der Abfrage gibt an, was zurückgegeben werden soll, in diesem Fall alle Klassen die im Package \glqq org.junit\grqq{} enthalten sind.
 
-Für die Verwendung von Cypher-Abfragen aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle allerdings hat den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
+Für die Verwendung von Cypher-Abfragen aus Java-Quellcode heraus kann eine Representational State Transfer Schnittstelle oder ein Java Database Connectivity Treiber verwendet werden. Die Representational State Transfer Schnittstelle hat allerdings den Nachteil, dass durch die Netzwerkkommunikation Zeit verloren geht. Mit dem Java Database Connectivity Treiber hingegen kann direkt auf der Datenbank eine Cypher-Abfrage ausgeführt werden. 
 
 \subsection{Verwendung von jQAssistant}
 \label{sec:basics:jqa:usage}

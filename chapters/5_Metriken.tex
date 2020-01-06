@@ -122,7 +122,7 @@ Das zweite Kriterium, von Value Objects, welches sich grundlegend unterscheidet,
 
 Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen Getter, ohne den Präfix \texttt{get} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
 
-Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurück gibt. In beiden Fällen ist gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist, wird dieses Kriterium als \texttt{CRITICAL} eingestuft.
+Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückgibt. In beiden Fällen ist gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist, wird dieses Kriterium als \texttt{CRITICAL} eingestuft.
 
 \subsubsection{Bewertungskriterien von Aggregate Roots}
 \label{sec:rating:artifakt:aggregate}
@@ -268,13 +268,13 @@ Listing \ref{lst:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes
 
 \subsection{Object-Oriented Design Metriken}
 \label{sec:analyse:metric:ood}
-In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Ob\-ject-Oriented Design behandelt. Die verwendeten Metriken stammen aus dem Artikel \glqq OO Design Quality Metrics\grqq{} \cite{Metric:Martin:1994}. Die Metriken beschreiben die Zustände der einzelnen Module eines Systems. Dabei wird die Abstraktheit sowie die Stabilität der Module gemessen.
+In diesem Abschnitt werden verschiedene Metriken zur Bewertung von Ob\-ject-Oriented Design behandelt. Die verwendeten Metriken stammen aus dem Artikel \glqq OO Design Quality Metrics\grqq{} \cite{Metric:Martin:1994}. Die Metriken beschreiben die Zustände der einzelnen Module eines Systems. Dabei werden die Abstraktheit sowie die Stabilität der Module gemessen.
 
 \begin{equation}
     \text{Abstractness} = \frac{\text{Anzahl abstrakter Artefakte}}{\text{Gesamt Anzahl aller Artefakte}} \label{align:analyse:metric:ood:abstractness}
 \end{equation}
 
-Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0;1].
+Die Abstraktheit eines Moduls ist das Verhältnis von abstrakten Artefakten und allen anderen Artefakten \cite{Metric:Martin:1994}. Sie kann durch die Formel \ref{align:analyse:metric:ood:abstractness} berechnet werden. Der Wertebereich der Abstraktheit beträgt [0; 1].
 
 Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Moduls betrachtet werden. Dabei muss zwischen Afferent und Efferent Couplings unterschieden werden. Unter Afferent Couplings versteht man die Anzahl der Artefakte außerhalb dieses Moduls, welche von diesem Modul abhängig sind \cite{Metric:Martin:1994}. Efferent Couplings ist das Gegenteil von Afferent Couplings. Efferent Couplings ist die Anzahl der Klassen innerhalb dieses Moduls, welche von einem anderem Modul abhängen.
 
@@ -282,7 +282,7 @@ Um die Stabilität eines Moduls zu bestimmen, müssen die Abhängigkeiten des Mo
     \text{Instability} = \frac{\text{Efferent Couplings}}{\text{Afferent Couplings} + \text{Efferent Couplings}} \label{align:analyse:metric:ood:instability}
 \end{equation}
 
-Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitzt \cite{Metric:Martin:1994}. Anhand der Formel \ref{align:analyse:metric:ood:instability} kann die Instabiliät berechnet werden. Auch hier ist der Wertebereich [0;1].
+Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitzt \cite{Metric:Martin:1994}. Anhand der Formel \ref{align:analyse:metric:ood:instability} kann die Instabiliät berechnet werden. Auch hier ist der Wertebereich [0; 1].
 
 \begin{figure}[H]
     \centering
@@ -291,7 +291,7 @@ Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitz
     \label{fig:analyse:metric:ood}
 \end{figure}
 
-Laut Martin \cite{Metric:Martin:1994} sollte die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
+Laut Martin \cite{Metric:Martin:1994} sollten die Abstraktheit und die Insabilität eines Moduls ausgeglichen sein. In der Abbildung \ref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence gennant. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
 
 \begin{equation}
     \text{Distanz} = | \text{Abstractness} + \text{Instability} - 1 | \label{align:analyse:metric:ood:distance}

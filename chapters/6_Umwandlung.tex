@@ -60,7 +60,7 @@ In manchen Fällen können Artefakte keinem Domain Module eindeutig zugeordnet w
 \label{sec:suggestion:impl:refactor}
 Die Überarbeitung der Artefakte wird für jeden Artefakttyp separat durchgeführt. Der Aufgabenbereich dieser Phase reicht von der Überarbeitung von Attributen und Methoden bis zum Erstellen von neuen Artefakten.
 
-\subsubsection{Überarbeiten der Interne Struktur von Artefakten}
+\subsubsection{Überarbeiten der internen Struktur von Artefakten}
 \label{sec:suggestion:impl:refactor:update}
 
 \begin{figure}[ht]
@@ -96,7 +96,7 @@ private boolean isValueObject(Class artifact) {
 }
 \end{lstlisting}
 
-Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:change} zeigt den Quellcode welcher überprüft, ob es sich bei der übergebenen Entity um ein mögliches Value Object handelt. Dabei sind drei Kriterien zu erfüllen. In der zweiten Zeile wird überprüft, ob die Entity von einer anderen Entity erbt. Nur, wenn die Entity keine Superklasse besitzt, kann es sich um ein mögliches Value Object handeln. Das zweite Kriterium, welches erfüllt sein muss, steht in der vierten Zeile. Der Name des eines Attributs der Entity muss in dem Namen der Entity enthalten sein. Zusätzlich zu den bereits genannten Kriterien muss der Typ des Attributs ein Java Standardtyp sein. Dieses Kriterium wurde in der fünften Zeile realisiert.
+Die Methode \texttt{isValueObject} in Listing \ref{lst:suggestion:impl:refactor:change} zeigt den Quellcode welcher überprüft, ob es sich bei der übergebenen Entity um ein mögliches Value Object handelt. Dabei sind drei Kriterien zu erfüllen. In der zweiten Zeile wird überprüft, ob die Entity von einer anderen Entity erbt. Nur, wenn die Entity keine Superklasse besitzt, kann es sich um ein mögliches Value Object handeln. Das zweite Kriterium, welches erfüllt sein muss, steht in der vierten Zeile. Der Name eines Attributs der Entity muss in dem Namen der Entity enthalten sein. Zusätzlich zu den bereits genannten Kriterien muss der Typ des Attributs ein Java Standardtyp sein. Dieses Kriterium wurde in der fünften Zeile realisiert.
 
 \begin{figure}[ht]
     \centering
@@ -115,7 +115,7 @@ Die Abbildung \ref{fig:suggestion:impl:refactor:change:issuecomment} zeigt ein s
 
 \subsubsection{Erzeugung neuer Artefakte}
 \label{sec:suggestion:impl:refactor:insert}
-Das Hinzufügen von neuen Artefakten kann verschiedenen Gründe haben. Zum Beispiel sollte es zu jedem Repository Interface eine Implementierung geben, wenn diese nicht vorhanden ist, muss sie erzeugt werden.
+Das Hinzufügen von neuen Artefakten kann verschiedene Gründe haben. Zum Beispiel sollte es zu jedem Repository Interface eine Implementierung geben, wenn diese nicht vorhanden ist, muss sie erzeugt werden.
 
 \begin{lstlisting}[caption={Finden einer Interface-Implementierung}, captionpos=b, label=lst:suggestion:impl:refactor:insert:impl, language=my_java]
 private Class getImpl(Package impl, Interface anInterface, DDDType dddType) {
@@ -165,7 +165,7 @@ private void refactorFields(Package model, Class artifact) {
 }
 \end{lstlisting}
 
-Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refactor:insert:valueObject} überarbeitet die Attribute einer Entity. Wenn der Datentype eines Attributs ein Java Standardtyp ist, wird das Attribut angepasst. In der vierten Zeile wird nach einem vorhandenen Artefakt gesucht, welches das Attribut repräsentiert. Wenn ein Artefakt gefunden wurde, wird dieses als Datentyp übernommen. Andernfalls muss ein neues Artefakt erzeugt werden. Dies geschieht in der Methode, welche in der achten Zeile aufgerufen wird. Mithilfe des neuen Value Objects wird das Attribut und alle Methoden, welche das Attribut verwenden, überarbeitet.
+Die Methode \texttt{refactorFields} aus Listing \ref{lst:suggestion:impl:refactor:insert:valueObject} überarbeitet die Attribute einer Entity. Wenn der Datentype eines Attributs ein Java Standardtyp ist, wird das Attribut angepasst. In der vierten Zeile wird nach einem vorhandenen Artefakt gesucht, welches das Attribut repräsentiert. Wenn ein Artefakt gefunden wurde, wird dieses als Datentyp übernommen. Andernfalls muss ein neues Artefakt erzeugt werden. Dies geschieht in der Methode, welche in der achten Zeile aufgerufen wird. Mithilfe des neuen Value Objects werden das Attribut und alle Methoden, welche das Attribut verwenden, überarbeitet.
 
 \begin{figure}[H]
     \centering

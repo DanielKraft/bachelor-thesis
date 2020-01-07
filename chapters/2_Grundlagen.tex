@@ -9,11 +9,11 @@ Das Domain-Driven Design besteht aus dem Strategic Domain-Driven Design und dem 
 \begin{figure}[H] 
     \centering
     \includegraphics[width=0.95\textwidth]{gfx/Simple_Overview.png}
-    \caption{Vereinfachter Überblick über die Pattern-Sprache des \\Domain-Driven Design}
+    \caption{Vereinfachter Überblick über die Pattern-Sprache des \\Domain-Driven Design \cite{DDD:Plod:2019}}
     \label{fig:basics:ddd:pattern}
 \end{figure}
 
-In der \autoref{fig:basics:ddd:pattern} \cite{DDD:Plod:2019} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt. Diese Komponenten werden nun näher erläutert. 
+In der \autoref{fig:basics:ddd:pattern} sind die Zusammenhänge der einzelnen Komponenten des Domain-Driven Design dargestellt. Diese Komponenten werden nun näher erläutert. 
 
 \subsection{Domain}
 \label{sec:basics:ddd:domain}
@@ -38,11 +38,11 @@ In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Desi
 \begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.5\textwidth]{gfx/Layer.pdf}
-    \caption{Darstellung der Layered Architecture des Model-Driven Design}
+    \caption{Darstellung der Layered Architecture des Model-Driven Design \cite{DDD:Evans:2003}}
     \label{fig:basics:ddd:mdd:layer}
 \end{figure}
 
-Das Model-Driven Design unterteilt sich in die in \autoref{fig:basics:ddd:mdd:layer} \cite{DDD:Evans:2003} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für die Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
+Das Model-Driven Design unterteilt sich in die in \autoref{fig:basics:ddd:mdd:layer} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für die Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
 
 Die Application Layer des Systems koordiniert Aufgaben und delegiert die Arbeit an Domain-Objekte der nächsten Ebene \cite{DDD:Evans:2003}. Somit enthält die Application Layer keine Geschäftslogik, außerdem hält sie nicht den Status der Domain-Objekte \cite{DDD:Avram:2007}.
 
@@ -99,11 +99,11 @@ Zur Analyse des bestehenden Java-Systems wird in dieser Arbeit das Ana\-lyse-Wer
 \begin{figure}[htbp] 
     \centering
     \includegraphics[width=0.9\textwidth]{gfx/jQAssistant-Workflow.pdf}
-    \caption{Arbeitsablauf von jQAssistant}
+    \caption{Arbeitsablauf von jQAssistant \cite{jQA:Muller:2018}}
     \label{fig:basics:jqa:workflow}
 \end{figure}
 
-In der \autoref{fig:basics:jqa:workflow} \cite{jQA:Muller:2018} wird der Ablauf des Analysevorgangs dargestellt. Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speichert diese in der Neo4j-Graphdatenbank. Anschließend werden auf diese Daten verschiedene Regeln zur Datenanreicherung angewendet \cite{jQA:Muller:2018}. So können zum Beispiel Abhängigkeiten erkannt und modelliert werden. 
+In der \autoref{fig:basics:jqa:workflow} wird der Ablauf des Analysevorgangs dargestellt. Beim Analysieren werden verschiedene jQAssistant Plugins ausgeführt. Jedes Plugin besteht aus zwei Teilen, dem Scanner und verschiedenen Regeln. Der Scanner extrahiert die Daten aus dem Java-Artefakt und speichert diese in der Neo4j-Graphdatenbank. Anschließend werden auf diese Daten verschiedene Regeln zur Datenanreicherung angewendet \cite{jQA:Muller:2018}. So können zum Beispiel Abhängigkeiten erkannt und modelliert werden. 
 
 \subsection[Persistierung der Analysedaten in einer Neo4j-Graph\-datenbank]{Persistierung der Analysedaten in einer Neo4j-Graphdatenbank}
 \label{sec:basics:jqa:neo4j}

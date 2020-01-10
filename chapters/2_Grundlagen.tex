@@ -94,7 +94,7 @@ Um eine bessere Codequalität durch Domain-Driven Design zu erreichen, sollte di
 \section{Einführung in jQAssistant}
 \label{sec:basics:jqa}
 
-Zur Analyse des bestehenden Java-Systems wird in dieser Arbeit das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen.\grqq{} \cite{jQA:Mahler:2015} jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, unterteilt. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
+Zur Analyse des bestehenden Java-Systems wird in dieser Arbeit das Ana\-lyse-Werkzeug jQAssistant verwendet. Das Ziel von jQAssistant ist \glqq die Zerlegung eines komplexen Ganzen in eine Menge beherrschbarer Einheiten und die Definition der Beziehungen zwischen diesen\grqq{} \cite{jQA:Mahler:2015}. jQAssistant bietet die Möglichkeit Java-Systeme auf struktureller Ebene, anhand von projektspezifischen Regeln, zu analysieren \cite{jQA:Buschmais:2019}. Dabei werden die Java-Artefakte in ihre kleinsten Elemente, wie Felder von Klassen sowie Methoden und ihre Parameter, unterteilt. Außerdem werden auch die Beziehungen und Abhängigkeiten zwischen den Elementen erfasst.
 
 \begin{figure}[htbp] 
     \centering
@@ -125,4 +125,4 @@ jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung.
 
 Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
 
-Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 10.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.

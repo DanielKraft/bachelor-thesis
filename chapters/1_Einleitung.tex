@@ -15,7 +15,7 @@ Aufgrund dieser Vorteile kann es nützlich sein die Architektur eines vorhandene
 \label{sec:intro:problem}
 Beim Überführen eines vorhandenen Systems in das Domain-Driven Design, müssen folgende Problemstellungen beachtet werden. 
 
-Zuerst stellt sich die Frage, wie man die Architektur eines Java-Systems analysieren kann. Hierfür bietet sich das Analysewerkzeug jQAssistant an, da es dem Nutzer das Durchführen einer Strukturanalyse von Java-Artefakten ermöglicht. Allerdings eignet sich jQAssistant nicht für alle Anwendungsfälle. Deshalb müssen die Grenzen von jQAssistant bei der Analyse von Java-Artefakten herausgearbeitet werden.
+Zuerst stellt sich die Frage, wie die Architektur eines Java-Systems analysiert werden kann. Hierfür bietet sich das Analysewerkzeug jQAssistant an, da es dem Nutzer das Durchführen einer Strukturanalyse von Java-Artefakten ermöglicht. Allerdings eignet sich jQAssistant nicht für alle Anwendungsfälle. Deshalb müssen die Grenzen von jQAssistant bei der Analyse von Java-Artefakten herausgearbeitet werden.
 
 Abgesehen von der Auswahl eines Analysewerkzeugs muss geklärt werden anhand welcher Merkmale Domain-Driven Design erkannt werden kann. Außerdem müssen die Grenzen des erzeugten Verbesserungsvorschlags definiert werden.
 
@@ -31,10 +31,10 @@ Abgesehen von der Auswahl eines Analysewerkzeugs muss geklärt werden anhand wel
 
 Mit der Arbeit soll ein Konzept entwickelt werden, mit dessen Hilfe überprüft werden kann, ob ein bestehendes Java-System die Prinzipien von Do\-main-Driven Design einhält. Außerdem soll mithilfe des Konzepts nicht eingehaltene Prinzipien überarbeitet werden. In diesem Abschnitt werden die Teilziele zur Erreichung dieses Konzepts, anhand der \autoref{fig:intro:goal:Workflow}, näher erläutert.
 
-Wie man in der \autoref{fig:intro:goal:Workflow} erkennen kann, soll zunächst ein bestehendes Java-System mit jQAssistant analysiert und anschließend anhand verschiedener Metriken bewertet werden. Außerdem wird ein Algorithmus entwickelt, welcher die nicht eingehaltenen Prinzipien nach Möglichkeit verbessert. Dabei liegt der Schwerpunkt auf der Verbesserung der Architektur. Daraufhin wird der Verbesserungsvorschlag bewertet und mit der ursprünglichen Architektur verglichen. Der Algorithmus gilt als erfolgreich, wenn die Bewertung des verbesserten Systems besser geworden ist oder sich nicht verschlechtert hat.
+Wie in der \autoref{fig:intro:goal:Workflow} zu erkennen ist, soll zunächst ein bestehendes Java-System mit jQAssistant analysiert und anschließend anhand verschiedener Metriken bewertet werden. Außerdem wird ein Algorithmus entwickelt, welcher die nicht eingehaltenen Prinzipien nach Möglichkeit verbessert. Dabei liegt der Schwerpunkt auf der Verbesserung der Architektur. Daraufhin wird der Verbesserungsvorschlag bewertet und mit der ursprünglichen Architektur verglichen. Der Algorithmus gilt als erfolgreich, wenn die Bewertung des verbesserten Systems besser geworden ist oder sich nicht verschlechtert hat.
 
 \section{Aufbau der Arbeit}
 \label{sec:intro:structure}
 Die Arbeit ist wie folgt aufgebaut. Nach dieser Einleitung wird ausführlich auf die Grundlagen dieser Arbeit eingegangen. Dieses Kapitel führt in das Domain-Driven Design und das Analysewerkzeug jQAssistant ein. Anschließend werden verwandte Arbeiten und der aktuelle Stand der Forschung betrachtet. Darauf folgt der dreigeteilte Hauptteil dieser Arbeit. Im \autoref{ch:analyse} wird die Analyse des Java-Systems betrachtet. Dabei wird ein besonderer Schwerpunkt auf die Erkennung der Merkmale von Domain-Driven Design gelegt. Im \autoref{ch:rating} werden die Bewertungskriterien und die daraus folgenden Metriken eingeführt. Das \autoref{ch:suggestion} beschäftigt sich mit der Umsetzung des Umwandlungsalgorithmus. Die Arbeit endet mit einer Diskussion der Ergebnisse, einer Zusammenfassung und einem kurzen Ausblick auf zukünftige Forschungen in diesem Bereich.
 
-Der zugehörige Quellcode dieser Arbeit sowie eine Bedienungsanleitung ist als Repository\footnote{\url{https://github.com/DanielKraft/illumi-code-ddd/tree/v1.1.3} (besucht am 10.01.2020)} auf GitHub zu finden.
+Der zugehörige Quellcode dieser Arbeit sowie eine Bedienungsanleitung ist als Repository\footnote{\url{https://github.com/DanielKraft/illumi-code-ddd/tree/v1.1.3} (besucht am 11.01.2020)} auf GitHub zu finden.

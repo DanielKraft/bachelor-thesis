@@ -19,7 +19,7 @@ Bei dem Auffinden von Entities muss darauf geachtet werden, ob es sich bei dem A
 
 In der \autoref{fig:analyse:characteristics:entity} ist ein möglicher Kandidat für eine Entity zu sehen. Anhand dieses Beispiels werden die Merkmale von Entities veranschaulicht.
 
-Wie bereits in dem \autoref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte welche eine eigene Identität besitzen. Daher kann das in \autoref{fig:analyse:characteristics:entity} gezeigte Beispiel, ohne weitere Einwände, als Entity klassifiziert werden. Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden, ob es sich um eine Entity handelt. 
+Wie bereits in dem \autoref{sec:basics:ddd:mdd} erläutert, sind Entities die einzigen Artefakte, welche eine eigene Identität besitzen. Daher kann das in \autoref{fig:analyse:characteristics:entity} gezeigte Beispiel, ohne weitere Einwände, als Entity klassifiziert werden. Wenn eine Klasse keine Identität besitzt, muss sie näher betrachtet werden um herauszufinden, ob es sich um eine Entity handelt. 
 
 Ein weiteres Merkmal ist das Vorhandensein von Gettern und Settern, also Methoden zum Lesen und Schreiben von Attributen. Typischerweise besitzt eine Entity für die meisten Attribut eine solche Methode. Auch dieses Merkmal ist bei dem Beispiel in der \autoref{fig:analyse:characteristics:entity} erfüllt.
 
@@ -62,9 +62,9 @@ Die Merkmale von Value Objects sind denen der Entities sehr ähnlich. Sie unters
     \label{fig:analyse:characteristics:value_object}
 \end{figure}
 
-Wenn man die Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale überprüft, fällt direkt auf, dass sie keine Identität besitzt aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um Value Object handeln.
+Bei der Überprüfung der Klasse \texttt{Adresse} auf die Erfüllung von Entity Merkmale, fällt direkt auf, dass sie keine Identität besitzt, aber trotzdem ein Datenmodell repräsentiert. In solchen Fällen kann es sich um ein Value Object handeln.
 
-Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity darstellt und nur Attribute vom Typ eines Standard Datentyp oder anderer Value Objects besitzt, handelt es sich sehr wahrscheinlich um ein Value Object.
+Damit die Klasse eindeutig als Value Object identifiziert werden kann, müssen die Attribute der Klasse näher betrachtet werden. Denn wenn eine Klasse keine Entity darstellt und nur Attribute vom Typ eines Standard Datentyps oder anderer Value Objects besitzt, handelt es sich sehr wahrscheinlich um ein Value Object.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um ein Value Object handelt}, captionpos=b, label=lst:analyse:characteristics:value_object, language=my_java]
 private boolean isValueObject() {
@@ -95,7 +95,7 @@ Für die Analyse der Methoden des Artefakts wird erneut die Methode \texttt{cont
 
 \subsection{Aggregate Roots}
 \label{sec:analyse:characteristics:aggregate}
-Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Objects unterteilt wurde, müssen den Domains Aggregate Roots zugeordnet werden \cite{DDD:Vernon:2013}. Wie bereits in \autoref{sec:basics:ddd:mdd:aggregate} erläutert, können nur Entities die Rolle als Aggregate Root einnehmen.
+Sobald das Datenmodell einer Domain identifiziert und in Entities sowie Value Objects unterteilt wurde, müssen sie den Domains Aggregate Roots zugeordnet werden \cite{DDD:Vernon:2013}. Wie bereits in \autoref{sec:basics:ddd:mdd:aggregate} erläutert, können nur Entities die Rolle als Aggregate Root einnehmen.
 
 \begin{figure}[H] 
     \centering
@@ -149,7 +149,7 @@ An oberster Stelle steht die Benennung des Artefakts. Denn meistens enden die Na
     \label{fig:analyse:characteristics:repository}
 \end{figure}
 
-Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories ab. Auch hier kann der Name des möglichen Repositories dabei helfen. Wie das Artefakt \texttt{HausRepository} aus der \autoref{fig:analyse:characteristics:repository} enden, wenn bei der Entwicklung Namenskonventionen eingehalten wurden, die Namen von Repositories mit \glqq Repository\grqq{}. 
+Bei Repositories läuft der Erkennungsprozess sehr ähnlich zu dem von Factories ab. Auch hier kann der Name des möglichen Repositories dabei helfen. Wie das Artefakt \texttt{HausRepository} aus der \autoref{fig:analyse:characteristics:repository}, enden, wenn bei der Entwicklung Namenskonventionen eingehalten wurden, die Namen von Repositories mit \glqq Repository\grqq{}. 
 
 Zusätzlich zum Namen des Repositories können die Methoden weiterhelfen. Grundsätzlich sollten Repositories die Hauptoperationen von Datenbanken realisieren. Zu diesen Operationen zählen das Erzeugen, Lesen, Aktualisieren und Löschen von Instanzen.
 
@@ -164,7 +164,7 @@ Wie bereits in \autoref{sec:basics:ddd:mdd:event} beschrieben, zeichnen sich Dom
     \label{fig:analyse:characteristics:event}
 \end{figure}
 
-Die Klasse \texttt{HausVerkauf} aus der \autoref{fig:analyse:characteristics:event} weist die beiden oben genannten Merkmale auf. In seltenen Fällen, in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity, welcher das Domain Event zugeordnet ist.
+Die Klasse \texttt{HausVerkauf} aus der \autoref{fig:analyse:characteristics:event} weist die beiden oben genannten Merkmale auf. In seltenen Fällen, in denen diese Merkmale nicht zur Erkennung eines Domain Events ausreichen, kann es hilfreich sein den Namen der Klasse näher zu betrachten. Denn meistens beinhaltet dieser den Namen der Entity, welcher dem Domain Event zugeordnet ist.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um ein Domain Event handelt}, captionpos=b, label=lst:analyse:characteristics:event, language=my_java]
 private boolean isDomainEvent() {
@@ -189,7 +189,7 @@ Die Methode \texttt{isDomainEvent} aus \autoref{lst:analyse:characteristics:even
 
 \subsection{Services}
 \label{sec:analyse:characteristics:service}
-Um einen Service zu erkennen muss zwischen Domain und Application Services unterschieden werden, da sie unterschiedliche Merkmale aufweisen.
+Um einen Service zu erkennen, muss zwischen Domain und Application Services unterschieden werden, da sie unterschiedliche Merkmale aufweisen.
 
 \subsubsection{Domain Services}
 \label{sec:analyse:characteristics:service:domain}
@@ -200,7 +200,7 @@ Um einen Service zu erkennen muss zwischen Domain und Application Services unter
     \label{fig:analyse:characteristics:domain}
 \end{figure}
 
-Wie in \autoref{fig:analyse:characteristics:domain} zu erkennen ist, besitzen Domain Services meistens die Instanz eines Repositories als Attribut. Ähnlich wie beim Domain Event beinhalten auch Domian Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden welche Geschäftslogik enthalten.
+Wie in \autoref{fig:analyse:characteristics:domain} zu erkennen ist, besitzen Domain Services meistens die Instanz eines Repositories als Attribut. Ähnlich wie beim Domain Event beinhalten auch Domain Servcies häufig den Namen der Entity in ihrem eigenen Namen. Abgesehen von diesen beiden Merkmalen verfügen Domain Services nur über Methoden, welche Geschäftslogik enthalten.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um einen Service handelt}, captionpos=b, label=lst:analyse:characteristics:service, language=my_java]
 private boolean isService() {
@@ -225,7 +225,7 @@ Die Methode \texttt{isService} aus \autoref{lst:analyse:characteristics:service}
     \label{fig:analyse:characteristics:application}
 \end{figure}
 
-Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der \autoref{fig:analyse:characteristics:application}, den Substring \glqq Applictaion\grqq{}. Doch wenn das nicht der Fall ist, erkennt man Application Services sehr leicht an der Methode \texttt{main(String[])}. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus \autoref{lst:analyse:characteristics:service:application} realisiert.
+Im Gegensatz zu Domain Services besitzen Application Services keine Instanz eines Repositories und sind auch nicht einer Entity zugeordnet. Meistens beinhaltet der Name des Applictaion Services, wie in der \autoref{fig:analyse:characteristics:application}, den Substring \glqq Application\grqq{}. Wenn das nicht der Fall ist, können Application Services sehr leicht an der Methode \texttt{main(String[])} erkannt werden. Die Überprüfung dieses Merkmals wurde mit der Methode \texttt{isApplicationService} aus \autoref{lst:analyse:characteristics:service:application} realisiert.
 
 \begin{lstlisting}[caption={Überprüfung ob es sich um einen Application Service handelt}, captionpos=b, label=lst:analyse:characteristics:service:application, language=my_java]
 private boolean isApplicationService() {

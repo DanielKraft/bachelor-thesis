@@ -25,13 +25,13 @@ Als Erstes wurde der Umwandlungsalgorithmus mit dem System Petclinic getestet. P
     \label{fig:discuss:petclinic}
 \end{figure}
 
-Die \autoref{fig:discuss:petclinic} zeigt eine Übersicht der verschiedenen Metriken für das System Petclinic. In der \autoref{fig:discuss:petclinic:ood} sind die Ergebnisse Object-Oriented Design Metrik visualisiert. Im Vergleich zum ursprünglichen System hat sich die Verteilung der Module nicht verbessert. Es gibt immer noch Module, welche sich in der Nähe der Main Sequence befinden, aber auch einzelnen, die weit von ihr entfernt sind.
+Die \autoref{fig:discuss:petclinic} zeigt eine Übersicht der verschiedenen Metriken für das System Petclinic. In der \autoref{fig:discuss:petclinic:ood} sind die Ergebnisse Object-Oriented Design Metrik visualisiert. Im Vergleich zum ursprünglichen System hat sich die Verteilung der Module nicht verbessert. Es gibt immer noch Module, welche sich in der Nähe der Main Sequence befinden, aber auch einzelne, die weit von ihr entfernt sind.
 
 Die Verteilung der verschiedenen Domain-Driven Design Bausteine wurde in der \autoref{fig:discuss:petclinic:ddd} visualisiert. Neben den Modulen haben besonders die Value Objects, Repositories und Factories zugenommen.
 
 \subsection{Beispielsystem Issue auf Basis vom Anemic Domain Model}
 \label{sec:discuss:results:adm}
-Als zweites Beispielsystem wurde das System aus dem \autoref{sec:anhang:beispiel:adm} ausgewählt, da es auf dem Anemic Domain Model basiert und vom Domain-Driven Design abweicht.
+Als zweites Beispielsystem wurde das System Issue aus dem \autoref{sec:anhang:beispiel:adm} ausgewählt, da es auf dem Anemic Domain Model basiert und vom Domain-Driven Design abweicht.
 
 \begin{figure}[H]
     \centering
@@ -48,7 +48,7 @@ Als zweites Beispielsystem wurde das System aus dem \autoref{sec:anhang:beispiel
 
 Die Bewertung des Object-Oriented Design, aus \autoref{fig:discuss:adm:ood}, zeigt, dass das verbesserte System ähnlich verteilt ist wie das ursprüngliche.
 
-Die \autoref{fig:discuss:adm:ddd} zeigt, dass auch dieses System einen deutlichen Zuwachs an Value Objects erfahren hat. Da das ursprüngliche System aus verhältnismäßig wenigen Artefakten bestand, nahm die Anzahl von Modulen nicht so deutlich zu wie im vorherigen Beispiel.
+Die \autoref{fig:discuss:adm:ddd} zeigt, dass auch dieses System einen deutlichen Zuwachs an Value Objects, Repositories und Factories erfahren hat. Da das ursprüngliche System aus verhältnismäßig wenigen Artefakten bestand, nahm die Anzahl von Modulen nicht so deutlich zu wie im vorherigen Beispiel.
 
 \subsection{Beispielsystem Issue auf Basis vom Domain-Driven Design}
 \label{sec:discuss:results:ddd}
@@ -114,11 +114,11 @@ Das erste Szenario kann auftreten, wenn der Umwandlungsalgorithmus Attribute von
     \label{fig:discuss:limits:value_objects}
 \end{figure}
 
-Das Beispiel aus der \autoref{fig:discuss:limits:value_objects} verdeutlicht dieses Szenario. Die beiden Value Objects in der \autoref{fig:discuss:limits:value_objects:new} stammen aus dem verbesserten Petclinic System im \autoref{fig:anhang:petclinic:new:domain:owner}. Der Umwandlungsalgorithmus hat bei der Generierung der beiden Value Objects nicht erkannt, dass die beiden Attribute \texttt{address} und \texttt{city} zusammengehören. In der \autoref{fig:discuss:limits:value_objects:suggestion} ist eine Möglichkeit aufgeführt wie dieses Problem gelöst werden könnte. Es besteht die Möglichkeit, beide Value Objects zu einem Value Object zusammenzufassen.
+Das Beispiel aus der \autoref{fig:discuss:limits:value_objects} verdeutlicht dieses Szenario. Die beiden Value Objects in der \autoref{fig:discuss:limits:value_objects:new} stammen aus dem verbesserten Petclinic System in \autoref{fig:anhang:petclinic:new:domain:owner}. Der Umwandlungsalgorithmus hat bei der Generierung der beiden Value Objects nicht erkannt, dass die beiden Attribute \texttt{address} und \texttt{city} zusammengehören. In der \autoref{fig:discuss:limits:value_objects:suggestion} ist eine Möglichkeit aufgeführt wie dieses Problem gelöst werden könnte. Es besteht die Möglichkeit, beide Value Objects zu einem Value Object zusammenzufassen.
 
 Der Umwandlungsalgorithmus kann dieses Szenario nicht beheben, da er keine sinngemäßen Zusammenhänge erkennen kann.
 
-\subsection{Erkennen von duplizierte Modellen}
+\subsection{Erkennen von duplizierten Modellen}
 \label{sec:discuss:limits:duplicate}
 Wenn der Umwandlungsalgorithmus Attribute von Entities als Value Object auslagert, kann es passieren, dass mehrere Artefakte erzeugt werden, welche denselben Sachverhalt modellieren.
 
@@ -156,6 +156,6 @@ Das letzte Szenario beschäftigt sich mit dem Aufteilen von Domains. Domains sol
     \label{fig:discuss:limits:domain}
 \end{figure}
 
-Die \autoref{fig:discuss:limits:domain:new} zeigt einen Ausschnitt aus dem verbesserten Petclinic System aus dem \autoref{fig:anhang:petclinic:new:domain:owner}. In dieser Domain existieren die zwei Entities \texttt{Owner} und \texttt{Pet}. Sie haben keine Überschneidungen bei ihren Attributen und haben eine bidirektionale Beziehung zueinander, daher könnten diese Entities, mit den dazugehörigen Artefakten, in zwei verschiedene Domains aufgeteilt werden. Dieses verbesserte Modell ist in der \autoref{fig:discuss:limits:domain:suggestion} dargestellt.
+Die \autoref{fig:discuss:limits:domain:new} zeigt einen Ausschnitt aus dem verbesserten Petclinic System aus der \autoref{fig:anhang:petclinic:new:domain:owner}. In dieser Domain existieren die zwei Entities \texttt{Owner} und \texttt{Pet}. Sie haben keine Überschneidungen bei ihren Attributen und haben eine bidirektionale Beziehung zueinander, daher könnten diese Entities, mit den dazugehörigen Artefakten, in zwei verschiedene Domains aufgeteilt werden. Dieses verbesserte Modell ist in der \autoref{fig:discuss:limits:domain:suggestion} dargestellt.
 
 Der Umwandlungsalgorithmus kann dieses Szenario nicht lösen, da er nicht in der Lage ist eine Domain aufzuspalten.

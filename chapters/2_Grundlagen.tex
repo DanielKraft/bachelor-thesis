@@ -25,7 +25,7 @@ Es wird empfohlen für jede Domain ein separates Modell zu erstellen \cite{DDD:A
 
 \subsection{Ubiquitous Language}
 \label{sec:basics:ddd:language}
-Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die \autoref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist\grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung Klassen, Methoden und Modulen beeinflussen.
+Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die \autoref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist\grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung von Klassen, Methoden und Module beeinflussen.
 
 \subsection{Model-Driven Design}
 \label{sec:basics:ddd:mdd}
@@ -42,7 +42,7 @@ In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Desi
     \label{fig:basics:ddd:mdd:layer}
 \end{figure}
 
-Das Model-Driven Design unterteilt sich in die in \autoref{fig:basics:ddd:mdd:layer} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für die Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interface ist dabei irrelevant. 
+Das Model-Driven Design unterteilt sich in die in \autoref{fig:basics:ddd:mdd:layer} gezeigten Schichten. Die oberste Schicht ist das User Interface. Sie ist für die Präsentation von Inhalten sowie der Interpretation von Nutzereingaben zuständig \cite{DDD:Evans:2003}. Die Art des User Interfaces ist dabei irrelevant. 
 
 Die Application Layer des Systems koordiniert Aufgaben und delegiert die Arbeit an Domain-Objekte der nächsten Ebene \cite{DDD:Evans:2003}. Somit enthält die Application Layer keine Geschäftslogik, außerdem hält sie nicht den Status der Domain-Objekte \cite{DDD:Avram:2007}.
 
@@ -64,7 +64,7 @@ Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen
 
 \subsubsection{Aggregates}
 \label{sec:basics:ddd:mdd:aggregate}
-Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects nennt man Aggregates \cite{DDD:Evans:2003}.
+Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects werden Aggregates genannt \cite{DDD:Evans:2003}.
 
 Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
 
@@ -125,4 +125,4 @@ jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung.
 
 Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
 
-Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 10.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 11.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.

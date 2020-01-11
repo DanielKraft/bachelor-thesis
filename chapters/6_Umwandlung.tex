@@ -25,7 +25,7 @@ In der \autoref{fig:suggestion:impl:module} ist die initiale Struktur der Module
 
 \subsection{Zuordnen der Artefakte}
 \label{sec:suggestion:impl:assign}
-Nachdem die Struktur der Module initialisiert wurde, können die Artefakte des ursprünglichen Systems dem richtigen Modul zugeordnet werden. Dabei werden jegliche Infrastruktur Artefakte dem Module \texttt{infrastructure} zugeordnet, siehe \autoref{fig:anhang:petclinic:new:infrastructure} im Anhang. Service Artefakte werden dem zugehörigen Domain Module im Module \texttt{application} zugeteilt. Die \autoref{fig:anhang:petclinic:new:application} aus dem Anhang zeigt eine solche Zuordnung.
+Nachdem die Struktur der Module initialisiert wurde, können die Artefakte des ursprünglichen Systems dem richtigen Modul zugeordnet werden. Dabei werden jegliche Infrastruktur Artefakte dem Modul \texttt{infrastructure} zugeordnet, siehe \autoref{fig:anhang:petclinic:new:infrastructure} im Anhang. Service Artefakte werden dem zugehörigen Domain Modul im Modul \texttt{application} zugeteilt. Die \autoref{fig:anhang:petclinic:new:application} aus dem Anhang zeigt eine solche Zuordnung.
 
 Die Zuordnung von Aggregate Roots, Entities, Value Objects und Domain Events wird aufgrund ihrer zugehörigen Domain entschieden. Dabei ist es irrelevant, ob die Artefakte zuvor gemeinsam in einem Modul waren. Es können durch diesen Prozess jederzeit alte Module zusammengefasst oder aufgeteilt werden. 
 
@@ -50,11 +50,11 @@ private boolean isRootOf(Class root, Artifact artifact) {
 
 Die Methoden in \autoref{lst:suggestion:impl:assign} zeigen wie einem Artefakt eine Domain zugeordnet wird. Die Methode \texttt{getDomainOf} durchläuft alle Aggregate Roots und überprüft mit der zweiten Methode \texttt{isRootOf}, ob das Artefakt zur selben Domain gehört. Damit ein Artefakt einer Domain zugeordnet werden kann, muss eins der folgenden vier Merkmale erfüllt sein. Die ersten beiden Merkmale aus der 11. und 12. Zeile betreffen den Namen des Artefakts. Der Name des Artefakts sollte den Namen oder die Domain der Aggregate Root enthalten. Das dritte Merkmal steht in der 13. Zeile und analysiert den Pfad des Artefakts. Das Artefakt gehört demzufolge zur gleichen Domain wie die Aggregate Root, wenn der Pfad des Artefakts den Domainnamen der Aggregate Root enthält. Das letzte Merkmal ist erfüllt, wenn das Artefakt und die Aggregate Root im ursprünglichen System der gleichen Domain zugeordnet waren.
 
-Dieser Prozess kann durch das Beispiel im \autoref{sec:anhang:beispiel:petclinic} aus dem Anhang verdeutlicht werden. In der \autoref{fig:anhang:petclinic:old} befindet sich das Domain Event \texttt{Visit} in einem eigenen Modul und wird gleichzeitig von der Entity \texttt{Pet} als Attribut verwendet. Nachdem das System überarbeitet wurde, befinden sich beide Artefakte im selbem Module, wie in \autoref{fig:anhang:petclinic:new:domain:owner} zu sehen ist.
+Dieser Prozess kann durch das Beispiel im \autoref{sec:anhang:beispiel:petclinic} aus dem Anhang verdeutlicht werden. In der \autoref{fig:anhang:petclinic:old} befindet sich das Domain Event \texttt{Visit} in einem eigenen Modul und wird gleichzeitig von der Entity \texttt{Pet} als Attribut verwendet. Nachdem das System überarbeitet wurde, befinden sich beide Artefakte im selbem Modul, wie in \autoref{fig:anhang:petclinic:new:domain:owner} zu sehen ist.
 
-Bei Repositories und Factories muss zwischen Interfaces und Klassen unterschieden werden. Inferfaces werden wie in \autoref{fig:anhang:petclinic:new:domain:vet} dem Domain Module zugeordnet. Klassen hingegen sind dem untergeordneten Module \texttt{impl} zugehörig.
+Bei Repositories und Factories muss zwischen Interfaces und Klassen unterschieden werden. Interfaces werden wie in \autoref{fig:anhang:petclinic:new:domain:vet} dem Domain Module zugeordnet. Klassen hingegen sind dem untergeordneten Modul \texttt{impl} zugehörig.
 
-In manchen Fällen können Artefakte keinem Domain Module eindeutig zugeordnet werden. In der \autoref{fig:anhang:petclinic:old} befinden sich in dem Module \texttt{petclinic.model} drei Klassen von denen mehrere Klassen aus verschiedenen Domains abhängig sind, daher wurden diese Klassen von dem Umwandlungsalgorithmus dem separaten Module \texttt{petclinic.domain.model} in \autoref{fig:anhang:petclinic:new:domain:model} zugeordnet.
+In manchen Fällen können Artefakte keinem Domain Modul eindeutig zugeordnet werden. In der \autoref{fig:anhang:petclinic:old} befinden sich in dem Modul \texttt{petclinic.model} drei Klassen von denen mehrere Klassen aus verschiedenen Domains abhängig sind, daher wurden diese Klassen von dem Umwandlungsalgorithmus dem separaten Modul \texttt{petclinic.domain.model} in \autoref{fig:anhang:petclinic:new:domain:model} zugeordnet.
 
 \subsection{Überarbeitung der Artefakte}
 \label{sec:suggestion:impl:refactor}
@@ -145,7 +145,7 @@ Mithilfe der Methode \texttt{getImpl} aus \autoref{lst:suggestion:impl:refactor:
     \label{fig:suggestion:impl:refactor:insert:petrepository}
 \end{figure}
 
-Die \autoref{fig:suggestion:impl:refactor:insert:petrepository:old} zeigt ein Repository-Interface. Allerdings verfügt das System über keine Implementierung des Interfaces, daher müsse diese vom Umwandlungsalgorithmus erzeugt werden. In \autoref{fig:suggestion:impl:refactor:insert:petrepository:new} ist das Ergebnis der Umwandlung zu sehen. Nachdem der Umwandlungsalgorithmus dem Repository-Interface notwendige Methoden hinzugefügt hat, wird eine Klasse erzeugt, welche das Interface implementieren soll.
+Die \autoref{fig:suggestion:impl:refactor:insert:petrepository:old} zeigt ein Repository-Interface. Allerdings verfügt das System über keine Implementierung des Interfaces, daher müsste diese vom Umwandlungsalgorithmus erzeugt werden. In \autoref{fig:suggestion:impl:refactor:insert:petrepository:new} ist das Ergebnis der Umwandlung zu sehen. Nachdem der Umwandlungsalgorithmus dem Repository-Interface notwendige Methoden hinzugefügt hat, wird eine Klasse erzeugt, welche das Interface implementieren soll.
 
 Auch bei der Überarbeitung einer Entity kann es passieren, dass ein neues Artefakt erzeugt werden muss. Da Entities keine Attribute eines Standardtyps besitzen sollten, müssen diese Attribute als Value Object repräsentiert werden. Dafür ist es erforderlich, dass der Umwandlungsalgorithmus neue Value Objects erzeugen kann, wenn sie benötigt werden.
 
@@ -180,7 +180,7 @@ Die Methode \texttt{refactorFields} aus \autoref{lst:suggestion:impl:refactor:in
     \label{fig:suggestion:impl:refactor:insert:baseentity}
 \end{figure}
 
-Die \autoref{fig:suggestion:impl:refactor:insert:baseentity} zeigt Ausschnitte der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in \autoref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 
+Die \autoref{fig:suggestion:impl:refactor:insert:baseentity} zeigt Ausschnitte der Abbildungen \ref{fig:anhang:petclinic:old} und \ref{fig:anhang:petclinic:new:domain:model}. Die Entity in \autoref{fig:suggestion:impl:refactor:insert:baseentity:old} besitzt ein Attribut, welches die Identität der Entity repräsentiert, allerdings wurde dieses Attribut als \texttt{Integer} realisiert. Daher wurde dieses Attribut vom Umwandlungsalgorithmus als Value Object ausgelagert. 
 
 \subsection{Aufräumen der neuen Architektur}
 \label{sec:suggestion:impl:finalize}

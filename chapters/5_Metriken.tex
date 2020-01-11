@@ -24,7 +24,7 @@ Kriterien welche hingegen als \texttt{CRITICAL} oder \texttt{BLOCKER} gekennzeic
 
 \subsection{Bewertung von Modulen}
 \label{sec:rating:modul}
-Bei der Bewertung von Modulen muss zwischen drei Kategorien von Modulen unterscheiden werden. Im Domain-Modul, dem wichtigsten Modul im Domain-Driven Design, sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Dieses Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Im Infrastruktur-Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
+Bei der Bewertung von Modulen muss zwischen drei Kategorien von Modulen unterschieden werden. Im Domain-Modul, dem wichtigsten Modul im Domain-Driven Design, sind alle Domain-Artefakte enthalten. Das zweitwichtigste Modul ist das Applikation-Modul. Dieses Modul beinhaltet nahezu die gesamte Geschäftslogik des Systems. Im Infrastruktur-Modul sind Schnittstellen implementiert, zum Beispiel für Datenbanken oder Benutzeroberflächen.
 
 \begin{table}[htbp] 
     \centering
@@ -122,7 +122,7 @@ Das zweite Kriterium von Value Objects, welches sich grundlegend unterscheidet, 
 
 Auch ein Value Object sollte Getter und Setter für jedes Attribut besitzen. Allerdings sind dabei einzelne Kriterien zu beachten. Zur besseren Lesbarkeit wird empfohlen, Getter ohne den Präfix \texttt{get} zu benennen \cite{DDD:Vernon:2013}. Da die Verletzung dieses Kriteriums nicht gefährlich ist, wurde es als \texttt{INFO} gekennzeichnet.
 
-Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Objects zurückgibt. In beiden Fällen ist gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist, wird dieses Kriterium als \texttt{CRITICAL} eingestuft.
+Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte haben \cite{DDD:Evans:2003}. Dieses Kriterium wird erfüllt, wenn die Methode als \texttt{private} gekennzeichnet wurde oder wenn die Methode eine neue Instanz von dem Value Object zurückgibt. In beiden Fällen ist gewährleistet, dass die Werte des Objects nicht verändert werden. Da die Unveränderbarkeit der Value Objects eine Grundvoraussetzung ist, wird dieses Kriterium als \texttt{CRITICAL} eingestuft.
 
 \subsubsection{Bewertungskriterien von Aggregate Roots}
 \label{sec:rating:artifakt:aggregate}
@@ -146,7 +146,7 @@ Bei den Settern hingegen muss beachtet werden, dass sie keine Seiteneffekte habe
 
 Auch die Kriterien von Aggregate Roots, in der \autoref{tab:rating:artifakt:aggregate:criteria}, sind den Kriterien von Entities sehr ähnlich. Da Aggregate Roots, wie bereits in \autoref{sec:basics:ddd:mdd:aggregate} beschrieben, nur spezielle Entities sind, sind die ersten sechs Kriterien identisch.
 
-Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens einen Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien werden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
+Zusätzlich zu den ersten sechs Kriterien besitzt die Aggregate Root drei weitere. Da eine Aggregate Root ihre zugeordnete Domain repräsentiert, werden zur Verwaltung drei Komponenten benötigt. Nämlich ein Repository, eine Factory und mindestens ein Domain Service \cite{DDD:Vernon:2013}. Diese drei Kriterien werden, aufgrund ihrer Relevanz für die Architektur, als \texttt{MAJOR} eingestuft.
 
 \subsubsection{Bewertungskriterien von Factories}
 \label{sec:rating:artifakt:factory}
@@ -240,7 +240,7 @@ Das wichtigste Bewertungskriterium ist die Unveränderlichkeit von Domain Events
 
 Bei der Bewertung von Services muss zwischen zwei Services unterschieden werden, die Application und Domain Services. 
 
-Die Application Services werden anhand von zwei Kriterien bewertet, siehe \autoref{tab:rating:artifakt:service:criteria}. Der Name des Application Service sollte das Wort \glqq Application\grqq{} beinhalten. Dieses Kriterium ist mit \texttt{INFO} gewichtet. Außerdem muss der Application Service dem Modul \texttt{application} zugeordnet sein. Die Zuordnung zu dem speziellen Modul ist als \texttt{MINOR} eingestuft.
+Die Application Services werden anhand von zwei Kriterien bewertet, siehe \autoref{tab:rating:artifakt:service:criteria}. Der Name des Application Services sollte das Wort \glqq Application\grqq{} beinhalten. Dieses Kriterium ist mit \texttt{INFO} gewichtet. Außerdem muss der Application Service dem Modul \texttt{application} zugeordnet sein. Die Zuordnung zu dem speziellen Modul ist als \texttt{MINOR} eingestuft.
 
 Die Domain Services erfüllen alle Kriterien, wenn sie in dem Modul \texttt{appli\-cation.\-<domain>} enthalten sind. Auch dieses Kriterium besitzt eine Relevanz von \texttt{MINOR}.
 
@@ -261,7 +261,7 @@ Damit die Bewertungen der Domain-Driven Design Baustein zu jedem Zeitpunkt nachv
 }
 \end{lstlisting}
 
-\autoref{lst:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes eines bewerteten Artefakts. Man kann daran deutlich erkennen, welche Kriterien nicht eingehalten wurden und woran es gelegen hat.
+\autoref{lst:rating:issue:output} zeigt einen Ausschnitt des Rückgabewertes eines bewerteten Artefakts. Daran kann deutlich erkannt werden, welche Kriterien nicht eingehalten wurden und woran es gelegen hat.
 
 \section{Bewertung anhand von verschiedenen Metriken}
 \label{sec:analyse:metric}
@@ -291,7 +291,7 @@ Ein Modul gilt als instabil, wenn es mehr Efferent als Afferent Couplings besitz
     \label{fig:analyse:metric:ood}
 \end{figure}
 
-Laut Martin \cite{Metric:Martin:1994} sollte das Verhältnis zwischen der Abstraktheit und der Insabilität eines Moduls ausgeglichen sein. In der \autoref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence genannt. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
+Laut Martin \cite{Metric:Martin:1994} sollte das Verhältnis zwischen der Abstraktheit und der Instabilität eines Moduls ausgeglichen sein. In der \autoref{fig:analyse:metric:ood} ist dieses ausgeglichene Verhältnis als Diagonale dargestellt. Diese Diagonale wird auch Main Sequence genannt. In einem guten Object-Oriented Design sollten alle Module auf der Main Sequence liegen.
 
 \begin{equation}
     \text{Distance} = | \text{Abstractness} + \text{Instability} - 1 | \label{align:analyse:metric:ood:distance}
@@ -319,7 +319,7 @@ Um die Abweichung von der Main Sequence zu ermitteln, kann die Distanz zu der Ma
 }
 \end{lstlisting}
 
-Die in diesem Abschnitt beschriebenen Metriken werden für jedes Module berechnet und in dem Format aus \autoref{lst:analyse:metric:ood:output} zurückgegeben.
+Die in diesem Abschnitt beschriebenen Metriken werden für jedes Modul berechnet und in dem Format aus \autoref{lst:analyse:metric:ood:output} zurückgegeben.
 
 \subsection{Domain-Driven Design Metrik}
 \label{sec:analyse:metric:ddd}
@@ -329,7 +329,7 @@ Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, is
     \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:ddd:total}
 \end{equation}
 
-Im ersten Schritt wird, anhand der \autoref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch erhält man die maximal mögliche Bewertung des Systems.
+Im ersten Schritt wird, anhand der \autoref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch wird die maximal mögliche Bewertung des Systems erlangt.
 
 \begin{equation}
     \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:ddd:fulfilled}
@@ -341,7 +341,7 @@ Als Nächstes wird die \autoref{align:analyse:metric:ddd:fulfilled} angewandt, u
     \text{Metrik} = \frac{\text{Erfüllte Kriterien} \cdot 100}{\text{Totale Kriterien}} \label{align:analyse:metric:ddd}
 \end{equation}
 
-Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse in die \autoref{align:analyse:metric:ddd} eingesetzt. Dabei erhält man eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
+Zur Berechnung der Gesamtbewertung werden die vorherigen Ergebnisse in die \autoref{align:analyse:metric:ddd} eingesetzt. Das Ergebnis ist eine Metrik, welche die prozentuale Erfüllung aller benötigten Kriterien, unter Einbeziehung ihrer Relevanz, aussagt.
 
 \begin{table}[htbp] 
     \centering

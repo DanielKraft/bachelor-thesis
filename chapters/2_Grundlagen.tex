@@ -9,7 +9,7 @@ Das Domain-Driven Design besteht aus dem Strategic Domain-Driven Design und dem 
 \begin{figure}[H] 
     \centering
     \includegraphics[width=0.95\textwidth]{gfx/Simple_Overview.png}
-    \caption{Vereinfachter Überblick über die Pattern-Sprache des \\Domain-Driven Design \cite{DDD:Plod:2019}}
+    \caption{Vereinfachter Überblick über die Pattern-Sprache des \\Domain-Driven Design \cite{DDD:Evans:2019}}
     \label{fig:basics:ddd:pattern}
 \end{figure}
 
@@ -17,7 +17,7 @@ In der \autoref{fig:basics:ddd:pattern} sind die Zusammenhänge der einzelnen Ko
 
 \subsection{Domain}
 \label{sec:basics:ddd:domain}
-Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet\grqq{} \cite{DDD:Plod:2019}. Sie beschreibt somit den Anwendungsbereich eines Systems und hilft dabei ein System in unabhängige Teilsysteme zu unterteilen.
+Laut Evans ist eine Domain \glqq das Fachgebiet, auf das der Benutzer ein Programm anwendet\grqq{} \cite{DDD:Evans:2019}. Sie beschreibt somit den Anwendungsbereich eines Systems und hilft dabei ein System in unabhängige Teilsysteme zu unterteilen.
 
 \subsection{Bounded Context}
 \label{sec:basics:ddd:context}
@@ -25,11 +25,11 @@ Es wird empfohlen für jede Domain ein separates Modell zu erstellen \cite{DDD:A
 
 \subsection{Ubiquitous Language}
 \label{sec:basics:ddd:language}
-Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014, DDD:Plod:2019}. Die \autoref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist\grqq{} \cite{DDD:Plod:2019}. Die Begriffe des Bounded Context können somit die Benennung von Klassen, Methoden und Module beeinflussen.
+Die Ubiquitous Language definiert die genutzte Sprache des Bounded Context \cite{DDD:Evans:2014}. Die \autoref{fig:basics:ddd:pattern} zeigt, dass diese Sprache das Modell der Domain beeinflusst und von den Begriffen des Bounded Context abhängt. Die Ubiquitous Language ist nicht unveränderlich und kann während dem Entwicklungsprozess angepasst werden. Daraus folgt, dass \glqq eine Änderung der Sprache eine Änderung des Modells ist\grqq{} \cite{DDD:Evans:2019}. Die Begriffe des Bounded Context können somit die Benennung von Klassen, Methoden und Module beeinflussen.
 
 \subsection{Model-Driven Design}
 \label{sec:basics:ddd:mdd}
-In der \autoref{fig:basics:ddd:pattern} ist zu sehen, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Plod:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design einen direkten Einfluss auf den Quellcode hat.
+In der \autoref{fig:basics:ddd:pattern} ist zu sehen, dass, neben dem Bounded Context und der Ubiquitous Language, das Model-Driven Design eine große Rolle spielt. Denn \glqq die enge Verknüpfung des Codes mit einem zugrunde liegenden Modell gibt dem Code einen Sinn und macht das Modell relevant\grqq{} \cite{DDD:Evans:2019}. Damit ist gemeint, dass die Definition des Modells im Model-Driven Design einen direkten Einfluss auf den Quellcode hat.
 
 In den nachfolgenden Abschnitten wird auf die Bestandteile des Model-Driven Design, welche in der \autoref{fig:basics:ddd:pattern} zu sehen sind, eingegangen.
 
@@ -54,11 +54,11 @@ Die in den nachfolgenden Abschnitten beschriebenen Bausteine des Model-Driven De
 
 \subsubsection{Entities}
 \label{sec:basics:ddd:mdd:entity}
-Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Plod:2019}. Damit diese Objekte eindeutig identifiziert werden können, wird eine Identität des Objektes benötigt, dafür bieten sich die Attribute nicht an. Solche Identitäten von Objekten werden üblicherweise durch eine automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primärschlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen solcher Objekte werden Entities genannt. Der Vorteil einer Entity ist, dass die Identität eines Objektes nicht von ihrer Referenz abhängt \cite{DDD:Evans:2003}. Dadurch ist gewährleistet, dass die Identität nicht vom Zustand des Objekts abhängig ist und zum Beispiel jederzeit mit einer Datenbank synchronisiert werden kann.
+Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Evans:2019}. Damit diese Objekte eindeutig identifiziert werden können, wird eine Identität des Objektes benötigt, dafür bieten sich die Attribute nicht an. Solche Identitäten von Objekten werden üblicherweise durch eine automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primärschlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen solcher Objekte werden Entities genannt. Der Vorteil einer Entity ist, dass die Identität eines Objektes nicht von ihrer Referenz abhängt \cite{DDD:Evans:2003}. Dadurch ist gewährleistet, dass die Identität nicht vom Zustand des Objekts abhängig ist und zum Beispiel jederzeit mit einer Datenbank synchronisiert werden kann.
 
 \subsubsection{Value Objects}
 \label{sec:basics:ddd:mdd:value_object}
-Nicht für alle Objekte muss es sinnvoll sein, eine Identität zu besitzen. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Plod:2019}. Das Weglassen von Identitäten kann daher für Objekte, welche nur Eigenschaften beschreiben, sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
+Nicht für alle Objekte muss es sinnvoll sein, eine Identität zu besitzen. Denn das Verwalten von Identitäten kann die Systemleistung beeinträchtigen und erzwingt mehr Analysetätigkeiten \cite{DDD:Evans:2014, DDD:Evans:2019}. Das Weglassen von Identitäten kann daher für Objekte, welche nur Eigenschaften beschreiben, sinnvoll sein. Diese Objekte werden Value Objects genannt. Wegen ihrer einfachen Handhabung werden Value Objects meistens als Attribute von Entities oder als Parameter von Nachrichten verwendet \cite{DDD:Evans:2003}.
 
 Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen die Attribute unveränderlich sein \cite{DDD:Avram:2007}. Das bedeutet, dass bei Veränderungen des Objektes ein neues Value Object, mit dem neuen Wert, erzeugt werden muss \cite{DDD:Avram:2007}. Somit gibt eine seiteneffektfreie Methode eines Value Objects immer ein neues Objekt zurück.
 
@@ -66,26 +66,26 @@ Damit bei der Verwendung von Value Objects keine Seiteneffekte auftreten, sollen
 \label{sec:basics:ddd:mdd:aggregate}
 Bei einem komplexen Datenmodell mit Entities und Value Objects, welches von mehreren Nutzern benutzt wird, kann es sehr schwierig sein die Konsistenz von Änderungen zu gewährleisten \cite{DDD:Evans:2003}. Daher werden im Domain-Driven Design Entities und Value Objects einer Domain zusammengefasst. Diese Sammlungen von Entities und Value Objects werden Aggregates genannt \cite{DDD:Evans:2003}.
 
-Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Plod:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Innerhalb eines Aggregates wird eine Entity als Aggregate Root bezeichnet \cite{DDD:Evans:2014, DDD:Evans:2019}. Diese Aggregate Root beinhaltet die restlichen Entities und Value Objects des Aggregates als Attribute. Externe Objekte, außerhalb des Aggregates, dürfen nur Referenzen der Aggregate Root halten \cite{DDD:Evans:2014, DDD:Evans:2019}.
 
 \subsubsection{Factories}
 \label{sec:basics:ddd:mdd:factory}
-Bei komplexen Aggregate Roots kann es schnell kompliziert werden ein Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung von Aggregate Roots oder großer Value Objects viel der internen Struktur preisgeben. Dabei sorgen Factories für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Plod:2019}. 
+Bei komplexen Aggregate Roots kann es schnell kompliziert werden ein Objekt zu erzeugen \cite{DDD:Evans:2003}. Daher wird beim Domain-Driven Design auf Factories zurückgegriffen. Zudem kann die Erzeugung von Aggregate Roots oder großer Value Objects viel der internen Struktur preisgeben. Dabei sorgen Factories für eine Kapselung dieses Prozesses \cite{DDD:Evans:2014, DDD:Evans:2019}. 
 Durch das Auslagern der Parameter-Validierung in die Factory kann zudem die Komplexität des Konstruktors reduziert werden \cite{DDD:Hippchen:2017}. Factories greifen bei dem Erzeugen von Objekten nicht auf bereits vorhandene Objekte zu, sondern erzeugen die Objekte von Grund auf neu \cite{DDD:Avram:2007}.
 
 \subsubsection{Repositories}
 \label{sec:basics:ddd:mdd:repository}
-Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern müssen, werden im Domain-Driven Design Repositories verwendet. Sie simulieren eine Sammlung aller Objekte einer Aggregate Root \cite{DDD:Evans:2014, DDD:Plod:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
+Damit Objekte nicht immer alle Referenzen von benötigten Objekten speichern müssen, werden im Domain-Driven Design Repositories verwendet. Sie simulieren eine Sammlung aller Objekte einer Aggregate Root \cite{DDD:Evans:2014, DDD:Evans:2019}. Tatsächlich bezieht das Repository die Objekte aus der Datenbank und rekonstruiert diese. 
 
-Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandene Objekte mit Identitäten rekonstruiert werden \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Ein Repository unterscheidet sich von einer Factory darin, dass keine neue Identität erzeugt wird, sondern vorhandene Objekte mit Identitäten rekonstruiert werden \cite{DDD:Avram:2007}. Zudem verfügt ein Repository über Schnittstellen zum Hinzufügen und Löschen von Objekten \cite{DDD:Evans:2014, DDD:Evans:2019}.
 
 \subsubsection{Domain Events}
 \label{sec:basics:ddd:mdd:event}
-Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{} \cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Plod:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Plod:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Plod:2019}.
+Seit der Veröffentlichung des Buchs \glqq Domain-Driven Design Reference: Definitions and Pattern Summaries\grqq{} \cite{DDD:Evans:2014} 2014 von Evans, wurden Domain Events dem Domain-Driven Design hinzugefügt. Durch Domain Events werden wichtige Zustandsänderungen von Entities modelliert, wodurch Zugriffe auf frühere Zustände ermöglicht werden \cite{DDD:Evans:2014, DDD:Evans:2019}. Ein bereits erzeugtes Domain Event ist unveränderlich und enthält mindestens einen Zeitstempel sowie die Identität der Entity \cite{DDD:Evans:2014, DDD:Evans:2019}. In manchen Fällen kann auch die Identität des Auslösers eine relevante Information sein \cite{DDD:Evans:2014, DDD:Evans:2019}.
 
 \subsubsection{Services}
 \label{sec:basics:ddd:mdd:service}
-Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt\grqq{} \cite{DDD:Plod:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Service sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
+Wenn eine Operation der Domain \glqq nicht in der natürlichen Verantwortung einer Entity oder eines Value Objects liegt\grqq{} \cite{DDD:Evans:2019}, sollte diese Operation in einen Service ausgelagert werden. Ein solcher Service bildet eine Schnittstelle für mehrere Objekte und sollte zustandslos agieren \cite{DDD:Avram:2007}. Der Name des Service sowie der Operation sollte durch die Ubiquitous Language definiert werden \cite{DDD:Evans:2003}.
 
 \subsubsection{Modules}
 \label{sec:basics:ddd:mdd:module}
@@ -125,4 +125,4 @@ jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung.
 
 Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
 
-Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 11.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 12.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.

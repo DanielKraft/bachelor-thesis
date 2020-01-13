@@ -33,8 +33,8 @@ private boolean isEntity() {
     }
   }
   return !this.artifact.getFields().isEmpty()
-    && containsModelMethods()
-    && !containsEntityName();
+          && containsModelMethods()
+          && !containsEntityName();
 }
 
 private boolean containsModelMethods() {
@@ -42,9 +42,9 @@ private boolean containsModelMethods() {
     .filter(method -> method.getName().equalsIgnoreCase("<init>"))
     .count();
   return artifact.getMethods().isEmpty()
-    || constructors == artifact.getMethods().size()
-    || containsEqualsOrHashCode()
-    || containsGetterOrSetter();
+          || constructors == artifact.getMethods().size()
+          || containsEqualsOrHashCode()
+          || containsGetterOrSetter();
 }
 \end{lstlisting}
 Die Methode \texttt{isEntity} aus \autoref{lst:analyse:characteristics:entity} wird zur Analyse von Artefakten basierend der Merkmale von Entities verwendet. Von der zweiten bis zur achten Zeile werden die Attribute des Artefakts analysiert. 
@@ -73,19 +73,19 @@ private boolean isValueObject() {
     if (isInvalidValueObjectField(field)) {
       return false;
     } else if (field.getType().startsWith("java.")
-        || field.getType().contains(structure.getPath())) {
+                || field.getType().contains(structure.getPath())) {
       ctr++;
     }
   }
   return !this.artifact.getFields().isEmpty()
-    && (ctr == this.artifact.getFields().size()
-        || containsModelMethods());
+          && (ctr == this.artifact.getFields().size()
+              || containsModelMethods());
 }
 
 private boolean isInvalidValueObjectField(Field field) {
   return isId(field)
-    || isConstant(field)
-    || isRepositoryOrFactory(field);
+          || isConstant(field)
+          || isRepositoryOrFactory(field);
 }
 \end{lstlisting}
 
@@ -177,7 +177,7 @@ private boolean isDomainEvent() {
         || field.getType().contains("java.time.")) {
       containsTimestamp = true;
     } else if (!field.getName().equalsIgnoreCase("id")
-        && field.getName().toUpperCase().endsWith("ID")) {
+                && field.getName().toUpperCase().endsWith("ID")) {
       containsIdentity = true;
     }
   }

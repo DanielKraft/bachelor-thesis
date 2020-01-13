@@ -41,10 +41,10 @@ private String getDomainOf(Artifact artifact) {
 
 private boolean isRootOf(Class root, Artifact artifact) {
   return artifact.getLowerName().contains(root.getLowerName())
-    || artifact.getLowerName().contains(root.getDomain())
-    || artifact.getPath().contains("." + root.getDomain() + ".")
-    || (artifact.getDomain() != null
-        && artifact.getDomain().equalsIgnoreCase(root.getDomain()));
+         || artifact.getLowerName().contains(root.getDomain())
+         || artifact.getPath().contains("." + root.getDomain() + ".")
+         || (artifact.getDomain() != null
+            && artifact.getDomain().equalsIgnoreCase(root.getDomain()));
 }
 \end{lstlisting}
 
@@ -87,7 +87,7 @@ private boolean isValueObject(Class artifact) {
   if (artifact.getSuperClass() == null) {
     for (Field field : artifact.getFields()) {
       if (artifact.getName().toLowerCase().contains(field.getName())
-            && field.getType().startsWith("java.lang.")) {
+          && field.getType().startsWith("java.lang.")) {
         return true;
       }
     }

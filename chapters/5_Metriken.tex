@@ -326,13 +326,13 @@ Die in diesem Abschnitt beschriebenen Metriken werden für jedes Modul berechnet
 Damit eine Aussage über den Zustand des Gesamtsystems getroffen werden kann, ist es notwendig eine Metrik zu definieren. In dieser Metrik sollten alle Kriterien und ihre Relevanz einbezogen werden, damit sie aussagekräftig ist.
 
 \begin{equation}
-    \text{Totale Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k) \label{align:analyse:metric:ddd:total}
+    \text{Totale Kriterien} = \sum \limits_{k \in Kriterien} Relevanz(k) \label{align:analyse:metric:ddd:total}
 \end{equation}
 
 Im ersten Schritt wird, anhand der \autoref{align:analyse:metric:ddd:total}, die Wertigkeit aller Kriterien berechnet. Dafür werden die Gewichtungen aller benötigten Kriterien summiert. Dadurch wird die maximal mögliche Bewertung des Systems erlangt.
 
 \begin{equation}
-    \text{Erfüllte Kriterien} = \sum \limits_{k}^\text{Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:ddd:fulfilled}
+    \text{Erfüllte Kriterien} = \sum \limits_{k \in Kriterien} Relevanz(k)\text{ falls }k\text{ erfüllt} \label{align:analyse:metric:ddd:fulfilled}
 \end{equation}
 
 Als Nächstes wird die \autoref{align:analyse:metric:ddd:fulfilled} angewandt, um die Summe der Gewichtungen aller erfüllten Kriterien zu erhalten. Dieser Wert symbolisiert den tatsächlichen Zustand des Systems.

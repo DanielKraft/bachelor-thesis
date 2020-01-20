@@ -54,7 +54,9 @@ Die in den nachfolgenden Abschnitten beschriebenen Bausteine des Model-Driven De
 
 \subsubsection{Entities}
 \label{sec:basics:ddd:mdd:entity}
-Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Evans:2019}. Damit diese Objekte eindeutig identifiziert werden können, wird eine Identität des Objektes benötigt, dafür bieten sich die Attribute nicht an. Solche Identitäten von Objekten werden üblicherweise durch eine automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primärschlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen solcher Objekte werden Entities genannt. Der Vorteil einer Entity ist, dass die Identität eines Objektes nicht von ihrer Referenz abhängt \cite{DDD:Evans:2003}. Dadurch ist gewährleistet, dass die Identität nicht vom Zustand des Objekts abhängig ist und zum Beispiel jederzeit mit einer Datenbank synchronisiert werden kann.
+Viele Objekte durchlaufen einen Lebenszyklus, in dem sich die Attribute ändern können \cite{DDD:Evans:2014, DDD:Evans:2019}. Damit diese Objekte eindeutig identifiziert werden können, wird eine Identität des Objektes benötigt, dafür bieten sich die Attribute nicht an. Solche Identitäten von Objekten werden üblicherweise durch eine automatisch generierte ID realisiert. Diese ID entspricht meistens dem Primärschlüssel in einer Datenbank \cite{DDD:Avram:2007}. Die Klassen solcher Objekte werden Entities genannt. 
+
+Der Vorteil einer Entity ist, dass die Identität eines Objektes nicht von ihrer Referenz abhängt \cite{DDD:Evans:2003}. Dadurch ist gewährleistet, dass die Identität nicht vom Zustand des Objekts abhängig ist und zum Beispiel jederzeit mit einer Datenbank synchronisiert werden kann.
 
 \subsubsection{Value Objects}
 \label{sec:basics:ddd:mdd:value_object}
@@ -123,6 +125,6 @@ Für die Verwendung von Cypher-Abfragen aus Java-Quellcode heraus kann eine Repr
 \label{sec:basics:jqa:usage}
 jQAssistant steht dem Nutzer in drei verschiedenen Ausführungen zur Verfügung. Die erste Variante ist die Verwendung eines Maven Plugins, dabei kann der Scan des Projekts direkt aus dem Projekt heraus ausgeführt werden. Dafür ist es allerdings notwendig, dass das Projekt mit Maven verwaltet wird.
 
-Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive (JAR), Enterprise Archive (EAR) und Web Application Archive (WAR). Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
+Wenn das Projekt nicht mit Maven verwaltet wird oder nur als Archiv zur Verfügung steht, bietet sich das Command Line Tool an. Dieses Werkzeug akzeptiert die Java-Projekte in den drei üblichen Formaten Java Archive, Enterprise Archive und Web Application Archive. Das Werkzeug bietet die Möglichkeit mehrere Archive gleichzeitig zu analysieren.
 
-Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 16.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
+Am einfachsten lässt sich jQAssistant mit einem Docker-Container ausführen. Dafür wird ein offizielles Docker-Image\footnote{\url{https://hub.docker.com/r/jensnerche/jqassistant} (besucht am 20.01.2020)} zur Verfügung gestellt. Dieser Docker-Container beinhaltet das Command Line Tool. Dafür muss das Command Line Tool nicht auf dem ausführenden System vorhanden sein. Für die Umsetzung dieser Arbeit wurde die Methode mit dem Docker-Container ausgewählt, da es eine einfache Bedienung ermöglicht.
